@@ -1,0 +1,30 @@
+
+
+.topselling{
+    width: 90%;
+    height: 90vh;
+    
+    margin-bottom: 30px;
+}
+
+.topselling h1{
+    position: relative;
+    text-align: center;
+    padding: 50px;
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 45px;
+}
+.itembox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    height: 90vh;
+}
+
+.itemboxItem{
+    margin-top: 50px;
+    display: flex;
+    gap: 30px;
+}

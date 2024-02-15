@@ -1,0 +1,87 @@
+.productdisplay{
+    display: flex;
+    margin: 0px 100px;
+    gap:  20px;
+    padding: 40px;
+}
+.productdisplay-left{
+    display: flex;
+    gap: 20px;
+}
+.productdisplayimagelist img{
+    /* border: 2px solid blue; */
+}
+.productdisplayimagelist img:hover{
+    border: 2px solid grey;
+    border-radius: 15px;
+}
+.productdisplaymainimage{
+    /* border: 2px solid red; */
+}
+.productdisplay-right h1{
+    font-weight: 700;
+    font-size: 38px;
+}
+.productDisplayRightStar{
+    display: flex;
+    gap: 20px;
+    /* flex-direction: row; */
+}
+.productDisplayRightStar img{
+    width: 15px;
+    height: 15px;
+}
+.prices{
+    display: flex;
+    gap: 30px;
+    margin: 10px 0px;
+    font-size: 25px;
+}
+.oldprice{
+    text-decoration: line-through;
+    color: grey;
+}
+.newprice{
+    color: rgb(1, 1, 1);
+    font-weight: 600;
+}
+.productdisplay-right hr{
+    /* width: 200px; */
+    background-color: grey;
+    height: 1px;
+    border: none;
+    border-radius: 5px;
+    margin: 20px 0px;
+
+}
+.description{
+    margin: 10px 0px;
+}
+
+.desc{
+    width: 150px;
+    height: 30px;
+    font-size: 20px;
+    font-weight: 600;
+    /* top: -10; */
+    /* background-color: red; */
+    /* text-align: center; */
+}
+.propsdesc{
+    color: grey;
+    margin: 10px 0px;
+}
+.countercontainer{
+    display: flex;
+    gap: 30px;
+    margin: 20px 0px;
+}
+.countercontainer button{
+    width: 350px;
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}

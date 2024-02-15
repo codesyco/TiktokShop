@@ -1,0 +1,142 @@
+.container{
+    left: 1px;
+    display: flex;
+    width: 100%;
+    height: 70px;
+    /* position: absolute; */
+    background-color: #f0f0f0;
+}
+/* nav{
+    display: flex;
+    width: 100%;
+    position: relative;
+    height: 80px;
+    background-color:red;
+    padding-top: 20px;
+} */
+.navitems{
+    display: flex;
+    line-height: 40px;
+    position: relative;
+    column-gap: 20px;
+    width: 32%;
+    font-weight: 600;
+    justify-content: center;
+    align-items: center;
+}
+
+.navitems li {
+    list-style: none;
+    margin: 0px, 20px;
+}
+.navitems li a{
+    font-size: 18px;
+    color: rgb(0,0,0);
+    text-decoration: none;
+    text-decoration: capitalize;
+    letter-spacing: 2px;
+}
+.navitems li a:hover{
+    color: rgb(3, 205, 178);
+    border-bottom: 2px solid;
+
+}
+.logo{
+    display: flex;
+    font-size: 30px;
+    font-weight: 800;
+    color: rgb(0,0,0);
+    letter-spacing: 3px;
+    cursor: pointer;
+    text-transform: uppercase;
+    width:18%;
+    justify-content: flex-start;
+    padding-left: 40px;
+    align-items: center;
+    /* left: auto; */
+}
+.userauth{
+    display: flex;
+    cursor: pointer;
+    width: 14%;
+    column-gap: 20px;
+    font-weight: 600;
+    line-height: 40px;
+    justify-content: center;
+    align-items: center;
+}
+.userauth li{
+    list-style: none;
+    margin: 0px, 20px;
+    
+}
+.userauth li a{
+    text-decoration: none;
+    text-transform: capitalize;
+    color: rgb(0,0,0);
+}
+.searchIcon{
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    margin-top: 17px;
+    width: 300px;
+    height: 35px;
+    /* padding-top: 24px; */
+    /* width: 30%; */
+    /* background-color: red; */
+}
+input{
+   display: flex;
+   align-items: center;
+}
+.searchIcon input{
+    width: 100%;
+    height: 100%;
+    padding: 0 45px 0 50px;
+    outline: none;
+    border: none;
+    border-radius: 18px;
+}
+.searchIcon .icondiv{
+    position: absolute;
+    height: 100%;
+    width: 50px;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sicon{
+    width: 15px;
+    opacity: 50%;
+    aspect-ratio: 2/2;
+}
+.cart_icon{
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+}
+.user_icon{
+    display: flex;
+    align-items: center;
+}
+
+.uicon{
+    width: 23px;
+}
+
+.cartcount{
+    width: 17px;
+    height: 17px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -25px;
+    margin-left: -10px;
+    border-radius: 11px;
+    font-size: 12px;
+    background-color: red;
+    color: white;
+}

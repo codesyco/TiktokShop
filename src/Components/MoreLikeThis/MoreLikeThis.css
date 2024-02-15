@@ -1,0 +1,30 @@
+.morelikethis{
+    margin-top: 50px;
+}
+
+.morelikethis h1{
+    font-size: 30px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+.morelikethis hr{
+    width: 250px;
+    margin: 10px 0px;
+    height: 3px;
+    border: none;
+    background-color: black;
+
+}
+
+.aitembox-morelikethis{
+    margin-top: 40px;
+    gap: 30px;
+    padding: 5px 40px;
+}
+
+.aitemboxitem-morelikethis{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin-top: 10px;
+    gap: 30px;
+}

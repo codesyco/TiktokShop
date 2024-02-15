@@ -1,0 +1,16 @@
+.breadcrumb{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    gap: 10px;
+    text-transform: uppercase;
+    font-weight: 600;
+    align-items: center;
+    margin: 0px 10px;
+}
+.crumb a{
+    text-decoration: none;
+    list-style: none;
+    text-transform: capitalize;
+    color: black;
+}

@@ -1,0 +1,59 @@
+*{
+    margin: 0;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.newsletterFloat{
+    /* position: absolute; */
+    background-color: black;
+    /* top: 330vh; */
+    z-index: 3;
+    display: block;
+    color: white;
+    left: 25%;
+    height: 18vh;
+    padding: 15px;
+    border-radius: 30px;
+    width: 50%;
+}
+.newsletterFloat p{
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.nLetter{
+    display: flex;
+    margin-top: 10px;
+    /* justify-content: space-between; */
+    width: 60%;
+    background-color:white;
+    border-radius: 15px;
+    margin-left: 20%;
+}
+.nLetter input{
+    width: 75%;
+    height: 45px;
+    font-size: 15px;
+    padding: 0 10px;
+    border-radius: 15px 0 0 15px;
+    /* border: solid 1px rgb(242, 242, 242); */
+    border: none;
+    /* margin: 5px; */
+}
+.nLetter:hover{
+    border: solid 1px rgb(166, 166, 166);
+}
+.nLetter button{
+    position: relative;
+    border-radius: 0 15px 15px 0;
+    /* border: solid 1px rgb(242, 242, 242); */
+    border: none;
+    width: 25%;
+    height: 45px;
+    /* margin: 5px; */
+    background-color: white;
+}
+.nLetter button:hover{
+    background-color: #e1e4e4;
+}
