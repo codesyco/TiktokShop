@@ -73,10 +73,10 @@
 }
 .countercontainer{
     display: flex;
-    gap: 30px;
+    gap: 20px;
     margin: 20px 0px;
 }
-.countercontainer button{
+.addtocart{
     width: 350px;
     height: 40px;
     border-radius: 20px;

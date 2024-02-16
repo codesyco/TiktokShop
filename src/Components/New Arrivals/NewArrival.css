@@ -1,12 +1,11 @@
 
 .newarrival{
-    /* background-color: red; */
-    /* border-bottom: solid #d2d3d3; */
+    border-bottom: solid #d2d3d3;
     /* position: absolute; */
     /* top: 100vh; */
     left: 10vh;
     width: 100%;
-    height: 140vh;
+    height: 120vh;
 }
 .newarrival hr{
     width: 250px;
@@ -39,4 +38,5 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     margin-top: 10px;
     gap: 30px;
+    /* background-color: pink; */
 }

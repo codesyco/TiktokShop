@@ -1,12 +1,24 @@
 import "./ProductDisplay.css"
 import star from "../Assets/Star.png"
 import starEmpty from "../Assets/Star empty.png"
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import Product   from "../../Pages/Product"
 import MoreLikeThis from "../MoreLikeThis/MoreLikeThis"
+import { ShopContext } from "../../Context/ShopContext"
 
 const ProductDisplay = (props) => {
+  const [count, setCount] = useState(0);
+
+  const increaseItem = (e) => {
+    setCount(count + 1);
+  };
+
+  const decreaseItem = (e) => {
+    setCount(count - 1);
+  };
     const {product} = props; 
+    const {addToCart} = useContext(ShopContext);
+
   return (
     <div className="main">
       <div className="productdisplay">
@@ -48,10 +60,12 @@ const ProductDisplay = (props) => {
           </div>
           <hr />
           <div className="countercontainer">
-            <div>-</div>
-              0
-            <div>+</div>
-          <button type="text">add to cart</button>
+            <div className="quantity" style={{display:"flex", height:"30px", backgroundColor:"grey", width:"90px"}}>
+              <button disabled={count === 0} onClick={decreaseItem}>&nbsp;- &nbsp;</button>
+                <input style={{width:"30px",display:"flex", padding:"0", margin:"0", textAlign:"center"}} type='number' value={count} readOnly/>
+              <button onClick={increaseItem}>&nbsp; + &nbsp;</button >
+            </div>
+            <button type="text" className="addtocart" onClick={()=>{addToCart(product.id)}}>add to cart</button>
           </div>
         </div>
       </div>

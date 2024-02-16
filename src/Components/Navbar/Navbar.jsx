@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import ProductDisplay from "../ProductDisplay/ProductDisplay";
 const Navbar = (props) => {
     const [counter, setConter] = useState(0);
-    const {product} = props;
+    // const {product} = props;
     return(
         <div class="container">
             <div class="logo">store.co</div>
@@ -16,7 +16,6 @@ const Navbar = (props) => {
                 <li><Link to="/">Shop</Link></li>
                 <li><Link to="/category">On Sale</Link></li>
                 <li><Link to="/category">Category</Link></li>
-                {/* <li><a href="index.html"></a></li> */}
             </ul>
             
             <div className="searchIcon">
@@ -31,7 +30,7 @@ const Navbar = (props) => {
             </ul>
             <div className="cart_icon">
                 <Link to='/cart'><img src={cart_icon} alt="" /></Link>
-                <div className="cartcount">{props.lenght}</div>
+                <div className="cartcount">0</div>
             </div>
             <div className="user_icon">
                 <Link to='/profile'><img className="uicon" src={user_icon} alt="" /></Link>
