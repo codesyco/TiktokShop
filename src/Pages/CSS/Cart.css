@@ -1,0 +1,14 @@
+.ordersummary div{
+    margin: 0px 0px;
+    /* background-color: red; */
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.checoutbtn{
+    width: 400px;
+    height: 40px;
+    border-radius: 20px;
+    border: 1.5px solid black;
+    color: white;
+    background-color: black;
+}

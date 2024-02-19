@@ -1,13 +1,13 @@
-import p1_img from './product_1.jpg'
-import p2_img from './product_2.jpg'
-import p3_img from './product_3.jpg'
-import p4_img from './product_4.jpg'
-import p5_img from './product_5.jpg'
-import p6_img from './product_6.jpg'
-import p7_img from './product_7.jpg'
-import p8_img from './product_8.jpg'
+import p1_img from './product_1.png'
+import p2_img from './product_2.png'
+import p3_img from './product_3.png'
+import p4_img from './product_4.png'
+import p5_img from './product_5.png'
+import p6_img from './product_6.png'
+import p7_img from './product_7.png'
+import p8_img from './product_8.png'
 import p9_img from './product_9.png'
-import p10_img from './product_10.jpg'
+import p10_img from './product_10.png'
 
 
 

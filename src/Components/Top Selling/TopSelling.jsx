@@ -8,6 +8,7 @@ const TopSelling = () => {
         <>
         <div className="topselling">
             <h1 className="TStext">Top Selling</h1>
+            <center><hr /></center>
             <div className="itembox">
                 <div className="itemboxItem">
                     {dataProduct.map((item,i)=>{

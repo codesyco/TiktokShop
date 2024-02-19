@@ -8,8 +8,19 @@ html {
 }
 
 .item{
-    width: 100%px;
+    width: 200px;
+    /* border-radius: 10px; */
     /* border: 2px solid blue; */
+}
+.item a img{
+    background-color: #edefef;
+    /* padding: 10px; */
+    border-radius: 10px;
+    width: 200px;
+    height: 200px;
+}
+.item a img:hover{
+    border: 1px solid black;
 }
 .item button a{
     text-decoration: none;
@@ -48,7 +59,7 @@ html {
 
 .item p{
     margin: 6px 0px;
-    width: 100%;
+    width: 200px;
 }
 
 .itemsPrices{

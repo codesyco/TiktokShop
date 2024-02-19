@@ -1,10 +1,10 @@
 
 .newarrival{
-    border-bottom: solid #d2d3d3;
     /* position: absolute; */
     /* top: 100vh; */
     left: 10vh;
     width: 100%;
+    padding: 0px 80px;
     height: 120vh;
 }
 .newarrival hr{
@@ -28,9 +28,12 @@
 
 }
 .aitembox{
-    margin-top: 40px;
+    margin: 90px 0px;
+    height: 43rem;
     gap: 30px;
     padding: 5px 40px;
+    border-bottom: solid #d2d3d3;
+
 }
 
 .aitemboxitem{

@@ -1,5 +1,7 @@
 .morelikethis{
     margin-top: 50px;
+    width: 100%;
+    padding: 0px 80px;
 }
 
 .morelikethis h1{
@@ -19,12 +21,16 @@
 .aitembox-morelikethis{
     margin-top: 40px;
     gap: 30px;
+    /* height: 43rem; */
     padding: 5px 40px;
 }
 
 .aitemboxitem-morelikethis{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    margin-top: 10px;
+    margin-top: 30px;
     gap: 30px;
+}
+.aitemboxitem-morelikethis a img{
+
 }

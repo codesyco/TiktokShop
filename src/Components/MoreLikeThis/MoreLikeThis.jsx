@@ -11,17 +11,14 @@ const MoreLikeThis = () => {
         <h1>Check out more products</h1>
         <hr />
         </center> 
-        <div>
-            <div className="aitembox-morelikethis">
+        <div className="aitembox-morelikethis">
                 <div className="aitemboxitem-morelikethis">
                     {newArrivalMLT.map((item, i)=>{
                         return <Item key={i} id={item.id} name={item.name} image={item.image} newPrice={item.newPrice} oldPrice={item.oldPrice}/>
                         
                     })}
                 </div>
-            </div>
         </div>
-      
     </div>
     </>
   )

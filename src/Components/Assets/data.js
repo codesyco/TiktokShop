@@ -1,9 +1,9 @@
-import p1_img from './product_1.jpg'
+import p1_img from './product_1.png'
 
-import p3_img from './product_3.jpg'
-import p4_img from './product_4.jpg'
+import p3_img from './product_3.png'
+import p4_img from './product_4.png'
 
-import p7_img from './product_7.jpg'
+import p7_img from './product_7.png'
 
 
 

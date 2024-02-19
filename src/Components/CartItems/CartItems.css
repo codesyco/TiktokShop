@@ -1,0 +1,16 @@
+.classitemFormat img{
+    background-color: #edefef;
+}
+.cartquantity{
+    border: 1px solid gray;
+    border-radius: 4px;
+    background-color: white ;
+}
+* hr{
+    width: 95%;
+    margin: auto;
+    border: none;
+    background-color: grey;
+    height: 1px;
+    color: grey;
+}
