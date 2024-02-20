@@ -13,6 +13,7 @@ import Profile from './Pages/Profile';
 import Login from './Pages/Login';
 import Details from './Pages/Details';
 import Breadcrumb from './Components/Breadcrumb/Breadcrumb';
+import Checkout from './Components/Checkout/Checkout';
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -28,6 +29,7 @@ function App() {
               <Route path=':productId' element={<Product/>}/>
             </Route>
             <Route path='/cart' element={<Cart/>} />
+            <Route path='/checkout' element={<Checkout/>} />
             <Route path='/category' element={<ShopCategory/>} />
             <Route path='/login' element={<Login/>} />
             <Route path='/register' element={<Signup/>} />

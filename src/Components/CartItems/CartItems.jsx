@@ -5,15 +5,15 @@ import { ShopContext } from '../../Context/ShopContext';
 import allProduct from '../Assets/allProducts';
 
 const CartItems = () => {
-  const { cartItems, removeFromCart } = useContext(ShopContext);
-  const [count, setCount] = useState(0);
+  const {getTotalCartAmount,cartItems, removeFromCart } = useContext(ShopContext);
+  // const { product } = props; 
 
-  const increaseItem = (e) => {
-    setCount(count + 1);
+  const increaseItem = () => {
+    // (+ 1);
   };
 
-  const decreaseItem = (e) => {
-    setCount(count - 1);
+  const decreaseItem = () => {
+    // (- 1);
   };
 
   // Function to render the <hr/> tags
@@ -39,6 +39,11 @@ const renderHrTags = (index, cartLength) => {
 
   return (
     <div className='cartitem'>
+      {/* if (productsInCart === 0) {
+        
+        
+      } */}
+
       {productsInCart.map((product, index) => (
         <React.Fragment key={product.id}>
             <div className="cartitembox" style={{display:"flex"}}>
@@ -51,11 +56,11 @@ const renderHrTags = (index, cartLength) => {
                         <img src={remove} width={25} height={25} onClick={() => removeFromCart(product.id)} alt="Remove item" />
                     </div>
                     <div className="quantityandprice" style={{display:"flex", marginTop:"55px", gap:"80px"}}>
-                        <p style={{fontSize:"20px", fontWeight:"700"}}>${product.newPrice * cartItems[product.id]}</p>
+                        <p style={{fontSize:"20px", fontWeight:"700"}}>${(product.newPrice * cartItems[product.id]).toFixed(2)}</p>
                         <div className="quantitybuttons">
-                            <button onClick={decreaseItem}>-</button>
+                            {/* <button onClick={decreaseItem}>-</button> */}
                             <button className='cartquantity' style={{minWidth:"20px", maxWidth:"99px"}}>{cartItems[product.id]}</button>
-                            <button onClick={increaseItem}>+</button>
+                            {/* <button onClick={increaseItem}>+</button>  */}
                         </div>
                     </div>
                 </div>
@@ -63,6 +68,10 @@ const renderHrTags = (index, cartLength) => {
                 {renderHrTags(index, productsInCart.length)}
         </React.Fragment>
       ))}
+      {/* <div className="total">
+        <div>subtotal</div>
+        <p>${getTotalCartAmount()}</p>
+      </div> */}
     </div>
   );
 };
