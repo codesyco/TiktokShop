@@ -6,6 +6,7 @@ import user_icon from "../Assets/user.png"
 import { Link } from "react-router-dom";
 import ProductDisplay from "../ProductDisplay/ProductDisplay";
 import { ShopContext } from "../../Context/ShopContext";
+import menu from '../Assets/Menu.png'
 const Navbar = (props) => {
     // const [counter, setConter] = useState(0);
     const {getTotalCartItems} = useContext(ShopContext)
@@ -30,12 +31,17 @@ const Navbar = (props) => {
                     <li><Link to="/login">login</Link></li>
                     <li><Link to="/register">register</Link></li>
             </ul>
-            <div className="cart_icon">
-                <Link to='/cart'><img src={cart_icon} alt="" /></Link>
-                <div className="cartcount">{getTotalCartItems()}</div>
-            </div>
-            <div className="user_icon">
-                <Link to='/profile'><img className="uicon" src={user_icon} alt="" /></Link>
+            <div className="mobilenav">
+                <div className="cart_icon">
+                    <Link to='/cart'><img src={cart_icon} alt="" /></Link>
+                    <div className="cartcount">{getTotalCartItems()}</div>
+                </div>
+                <div className="user_icon">
+                    <Link to='/profile'><img className="uicon" src={user_icon} alt="" /></Link>
+                </div>
+                <div className="menubar">
+                    <img src={menu} width={20} height={20}alt=" menu" />
+                </div>
             </div>
 
         </div>

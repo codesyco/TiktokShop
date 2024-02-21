@@ -3,7 +3,7 @@ import "./Checkout.css"
 
 const Checkout = () => {
   return (
-  <div className="row" style={{display:"flex", height:"500px"}}>
+  <div className="row" style={{height:"500px"}}>
     <div className="col-75">
       <div className="container">
         <form action="/action_page.php">
@@ -29,7 +29,7 @@ const Checkout = () => {
                 </div>
               </div>
             </div>
-            <div className="col-50">
+            <div className="col-50" >
               <h3>Payment</h3>
               <label for="fname">Accepted Cards</label>
               <div className="icon-container">

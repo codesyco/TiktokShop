@@ -43,3 +43,27 @@
     gap: 30px;
     /* background-color: pink; */
 }
+@media (max-width:768px) {
+    .newarrival{
+        padding: 0px 10px;
+        height: fit-content;
+    }
+    .newarrival h1{
+        font-size: 25px;
+    }
+    .newarrival hr{
+        width: 100px;
+    }
+    .aitembox{
+        height: auto;
+        margin: 70px 0px;
+        padding: 0px;
+    }
+    .aitemboxitem{
+        flex-wrap: wrap;
+        gap: 15px;
+        margin: 50px 0px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}

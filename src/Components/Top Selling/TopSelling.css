@@ -41,3 +41,26 @@
     display: grid;
     gap: 30px;
 }
+@media (max-width:768px) {
+    .topselling{
+        height: 45rem;
+        margin-top: 0px;
+        padding: 0px 10px;
+    }
+    .topselling h1{
+        font-size: 25px;
+    }
+    .topselling hr{
+        width: 100px;
+    }
+    .itembox{
+        padding: 0px;
+        margin: 70px 0px;
+        /* gap: 15px; */
+    }
+    .itemboxItem{
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        margin: 50px 0px;
+    }
+}

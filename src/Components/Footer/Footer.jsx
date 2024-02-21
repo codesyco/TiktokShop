@@ -13,7 +13,9 @@ const Footer = () => {
                     <div>
                         <h1>Shop.co</h1>
                         <p>Feel like part of the movement! Own the items that define the latest TikTok trends.</p>
+                        <a href="">
                         <img src={twitter} alt="twitter" />
+                        </a>
                         <img src={instagram} alt="insta" />
                     </div>
                     <div className="helpfullLinks">
