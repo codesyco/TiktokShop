@@ -1,14 +1,23 @@
 import "./Footer.css"
 import twitter from '../Assets/Instagram.png'
 import instagram from '../Assets/Twitter.png'
-import { Link } from "react-router-dom"
+import { Link,  useLocation } from "react-router-dom"
+import { useState, setState, useEffect } from "react"
 const Footer = () => {
-    // const subbtn = () => {
-    //     do
-    // }
+    const location = useLocation();
+    const [showFooter, setShowFooter] = useState(false)
+
+    useEffect(() => {
+        const paths = location.pathname.split('/');
+        if (paths.includes("checkout")) {
+            setShowFooter(false)
+        } else {
+            setShowFooter(true)
+        }
+    }, [location]);
     return(
-        <>
-            <div className="footer">
+        showFooter ?
+        <div className="footer">
                 <div className="footercontent">
                     <div>
                         <h1>Shop.co</h1>
@@ -54,8 +63,8 @@ const Footer = () => {
                         <button id="subscribe">Subscribe</button>
                     </div>
                 </div>
-            </div>
-        </>
+        </div> :
+        <></>
     )
 } 
 
