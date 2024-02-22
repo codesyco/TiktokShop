@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import CartItems from '../Components/CartItems/CartItems'
 import "./CSS/Cart.css"
 import { Link } from 'react-router-dom'
@@ -9,17 +9,18 @@ import { ShopContext } from '../Context/ShopContext'
 //   document.getElementsByClassName()
 // }
 
-const Cart = ({item}) => {
+const Cart = (props, count) => {
   const {getTotalCartAmount, addToCart} = useContext(ShopContext);
-
+  const product = props
   const gotocheckout = () =>{
-    addToCart(item)
+    addToCart(product.id, count)
   }
 
   return (
     <div className='cart' style={{width: "100%", marginBottom:"auto"}}>
       <div className="cartbody" style={{width:"85%", height:"auto", margin:"auto", padding:"40px 60px"}}>
         <h1 style={{ margin:"0px 0px 40px 0px", fontWeight:"800"}}>YOUR CART</h1>
+
         <div className='orderdetails' style={{width: "85%",border:"1px solid grey", height:"auto", borderRadius:"20px"}}>
           <CartItems/>
         </div>
@@ -43,10 +44,12 @@ const Cart = ({item}) => {
               <p>Total</p>
               <p>${getTotalCartAmount().toFixed(2)}</p>
             </div>
-          <button className='checoutbtn' onClick={gotocheckout}> <Link to="/checkout">
+            <Link to="/checkout">
+              <button className='checoutbtn' onClick={gotocheckout}> 
             Go to Checkout
-            </Link> 
             </button>
+            </Link> 
+
         </div>
       </div>
     </div>

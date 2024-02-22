@@ -1,17 +1,30 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import './Navbar.css'
 import search_icon from "../Assets/search-line.png"
 import cart_icon from "../Assets/shopping-cart-2-line.png"
 import user_icon from "../Assets/user.png"
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import ProductDisplay from "../ProductDisplay/ProductDisplay";
 import { ShopContext } from "../../Context/ShopContext";
 import menu from '../Assets/Menu.png'
 const Navbar = (props) => {
     // const [counter, setConter] = useState(0);
     const {getTotalCartItems} = useContext(ShopContext)
+    const location = useLocation();
+    const [showHeader, setShowHeader] = useState(false)
+
+    useEffect(() => {
+        const paths = location.pathname.split('/');
+        if (paths.includes("checkout")) {
+            setShowHeader(false)
+        } else {
+            setShowHeader(true)
+        }
+    }, [location]);
+
     // const {product} = props;
     return(
+        showHeader? 
         <div class="container">
             <div class="logo">store.co</div>
 
@@ -44,7 +57,8 @@ const Navbar = (props) => {
                 </div>
             </div>
 
-        </div>
+        </div> :
+        <></>
     )
 }
 

@@ -2,16 +2,15 @@
 .footer{
     position: relative;
     background-color: #e1e4e4;
-    width: 100%;
-    height: 45vh;
     margin-top: 90px;
+    display: flex;
+    flex-wrap: wrap;
 }
 .footercontent{
-    padding: 80px;
+    padding: 1rem;
     display: flex;
-    gap: 20px;
+    flex-wrap: wrap;
     cursor: pointer;
-    height: 45vh;
 }
 .footercontent div{
     width: 25%;
@@ -75,7 +74,6 @@
 .nLetter{
     display: flex;
     margin-top: 10px;
-    /* justify-content: space-between; */
     width: 60%;
     background-color:white;
     border-radius: 15px;
@@ -87,9 +85,7 @@
     font-size: 15px;
     padding: 0 10px;
     border-radius: 15px 0 0 15px;
-    /* border: solid 1px rgb(242, 242, 242); */
     border: none;
-    /* margin: 5px; */
 }
 .nLetter:hover{
     border: solid 1px rgb(166, 166, 166);
@@ -97,13 +93,21 @@
 .nLetter button{
     position: relative;
     border-radius: 0 15px 15px 0;
-    /* border: solid 1px rgb(242, 242, 242); */
     border: none;
     width: 25%;
     height: 45px;
-    /* margin: 5px; */
     background-color: white;
 }
 .nLetter button:hover{
     background-color: #e1e4e4;
+}
+
+@media screen and (min-width: 678px){
+    body {
+        /* background-color: aqua; */
+    }
+
+    .footercontent{
+        padding: 80px;
+    }
 }

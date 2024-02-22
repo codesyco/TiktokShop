@@ -11,6 +11,26 @@
     border: 1.5px solid black;
     color: white;
     background-color: black;
+    cursor: pointer;
+}
+.checoutbtn:hover{
+    width: 400px;
+    height: 40px;
+    border-radius: 20px;
+    border: 1.5px solid black;
+    color: white;
+    background-color: black;
+    cursor: pointer;
+    transform: scale(1.02);
+    transition: smooth .1s;
+}
+.checoutbtn:active{
+    width: 400px;
+    height: 40px;
+    border-radius: 20px;
+    border: 1.5px solid black;
+    color: white;
+    background-color: rgb(15, 15, 15);
 }
 .checoutbtn a{
     color: white;
