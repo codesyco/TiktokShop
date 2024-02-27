@@ -4,7 +4,6 @@
     gap: 30px;
     padding: 40px;
     justify-content: space-between;
-
 }
 .quantity{
     background-color: rgb(223, 223, 223);
@@ -18,14 +17,21 @@
     gap: 20px;
 }
 .productdisplayimagelist img{
-    background-color: #e1e4e4;
+    background-color: #f4f4f4;
     padding: 5px;
+    border: 1.5px solid #fff;
+    border-radius: 10px;
+}
+.productdisplayimg img{
+    background-color: #f4f4f4;
+    padding: 15px;
     border-radius: 10px;
 }
 
 .productdisplayimagelist img:hover{
     border: 1.5px solid grey;
-    border-radius: 15px;
+    /* border-radius: 15px; */
+    /* transform: scale(none); */
 }
 
 .productdisplay-right h1{
@@ -65,6 +71,8 @@
 
 }
 .productdisplay-right{
+    /* max-width: 50vw; */
+    /* background-color: blue; */
 }
 .description{
     margin: 10px 0px;
@@ -106,6 +114,38 @@
     color: white;
     cursor: pointer;
 }
+.addtocart:active{
+    transform: scale(1.03);
+    outline: 3px solid rgba(0, 0, 0, 1);
+    animation: rippleButton .5s;
+}
+@keyframes rippleButton{
+    0%{
+        outline-offset: 0px;
+        /* opacity: 100%; */
+        outline: 3px solid rgba(0, 0, 0, 1);
+    }
+    25%{
+        outline-offset: 4px;
+        /* opacity: 75%; */
+        outline: 3px solid rgba(0, 0, 0, 0.8);
+    }
+    50%{
+        outline-offset: 8px;
+        /* opacity: 50%; */
+        outline: 3px solid rgba(0, 0, 0, 0.5);
+    }
+    75%{
+        outline-offset: 12px;
+        /* opacity: 25%; */
+        outline: 3px solid rgba(0, 0, 0, 0.3);
+    }
+    100%{
+        outline-offset: 16px;
+        /* opacity: 5%; */
+        outline: 3px solid rgba(0, 0, 0, 0);
+    }
+}
 .removebtn{
     width: 30%;
     border-radius: 15px 0px 0px 15px;
@@ -115,4 +155,119 @@
     width: 30%;
     border-radius: 0px 15px 15px 0px;
     border: none;
+}
+.toast{
+    position: fixed;
+    max-width: 300px;
+    top: 70px;
+    /* left: 50%; */
+    right: 30px;
+    border-radius: 12px;
+    background: #fff;
+    padding: 13px 25px 13px 15px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    /* border-left: 4px solid #0ade23; */
+    overflow: hidden;
+    transform: translateX(calc(100% + 30px));
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+}
+
+.toast.active{
+    transform: translateX(0%);
+}
+
+.toast .toast-content{
+    display: flex;
+    align-items: center;
+}
+
+.toast-content .check{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 25px;
+    width: 25px;
+    background-color: #0ade23;
+    color: #fff;
+    font-size: 10px;
+    border-radius: 50%;
+}
+
+.toast-content .message{
+    display: flex;
+    flex-direction: column;
+    margin: 0 20px;
+}
+
+.message .text{
+    font-size: 10px;
+    font-weight: 400;;
+    color: #666666;
+}
+
+.message .text.text-1{
+    font-weight: 600;
+    color: #333;
+}
+
+.toast .close{
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    padding: 5px;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.toast .close:hover{
+    opacity: 1;
+}
+
+.toast .progress{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background: #ddd;
+}
+
+.toast .progress:before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #0ade23;
+}
+
+.progress.active:before{
+    animation: progress 5s linear forwards;
+}
+
+@keyframes progress {
+    100%{
+        right: 100%;
+    }
+}
+
+/* button{
+    padding: 12px 20px;
+    font-size: 20px;
+    outline: none;
+    border: none;
+    background-color: #4070f4;
+    color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+} */
+
+/* button:hover{
+    background-color: #0e4bf1;
+} */
+
+.toast.active ~ .addtocart{
+    pointer-events: none;
 }

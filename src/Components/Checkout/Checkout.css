@@ -6,19 +6,14 @@
   } */
 
 .checkout-container{
-    /* background-color: blue; */
-    max-width: 120rem;
-    /* height: 50rem; */
     display: grid;
+    /* gap: 50px; */
     grid-template-columns: 1fr 1fr;
     justify-content: center;
-    /* margin-bottom: 200px; */
-    width: 100%;
-    max-width: 1000px;
-    margin: 4rem auto;
-    position: relative;
+    margin: 4rem 4rem;
+    padding-left: 4rem;
     border-radius: 15px;
-    box-shadow: 0px 0px 5px .5px #000000;
+    /* box-shadow: 0px 0px 5px .5px #000000; */
     /* margin-bottom: 10rem; */
 }
   
@@ -29,7 +24,7 @@
   
   hr {
     color: #fff;
-    margin-bottom: 1.2rem;
+    /* margin-bottom: 1.2rem; */
   }
   
   .left-side {
@@ -37,7 +32,9 @@
     background-position: center;
     background-size: cover; */
     position: relative;
-    
+    /* height: 100vh; */
+    /* overflow-y: auto; */
+    scrollbar-width: 1px;
     border-radius: 15px 0px 0px 15px;
   }
   .itemsFromCart{
@@ -63,6 +60,11 @@
     line-height: 1;
     margin-bottom: 1rem;
   }
+  hr{
+    width: 100%;
+    background-color: #DDDDDD;
+    border: none;
+  }
   
   .home-price {
     color: #aeae97;
@@ -80,9 +82,17 @@
   /* Right Side of container */
   
   .right-side {
-    background-color: #fafede;
-    padding: 1.8rem 3.2rem;
-    border-radius: 0px 15px 15px 0px;
+    background-color: #F6F6F6;
+    /* padding: 0px 0px 1.5rem 0px; */
+    margin-left: 100px;
+    left: 70px;
+    position: relative;
+    border-radius: 15px 15px 15px 15px;
+    height: fit-content;
+    width: 400px;
+  }
+  .total p{
+    padding: 15px 0px;
   }
   
   .receipt {
@@ -97,9 +107,11 @@
   }
   
   .receipt-heading {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
+    font-weight: 650;
     text-align: left;
-    border-top: 2px solid grey;
+    padding: 20px ;
+    /* border-top: 2px solid grey; */
   }
   .shipping-heading {
     font-size: 1.4rem;
@@ -205,5 +217,17 @@
   }
   .cartquantity{
     border: none;
+    background-color: inherit;
+  }
+
+  ::-webkit-scrollbar{
+    width: 12px;
+  }
+  ::-webkit-scrollbar-track{
+    background: rgb(222, 221, 221);
+  }
+  ::-webkit-scrollbar-thumb{
+    background: linear-gradient(#615f61, #c9c8c9);
+    border-radius: 10px;
   }
   

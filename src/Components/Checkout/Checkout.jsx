@@ -6,7 +6,7 @@ import { ShopContext } from '../../Context/ShopContext';
 const Checkout = () => {
   const { getTotalCartAmount, cartItems } = useContext(ShopContext);
   const productsInCart = allProduct.filter(product => cartItems[product.id] > 0);
-  const tax = 7;
+  const tax = 8.79;
   const taxAmount = getTotalCartAmount().toFixed(2);
   const taxTotal = tax + Number(taxAmount);
   const [formData, setFormData] = useState({
@@ -36,7 +36,7 @@ const Checkout = () => {
     if (index >= 2) {
       return <hr key={`hr-${index}`} />;
     }
-  
+
     const hrCount = index % 2 === 0 ? index + 1 : index;
     let hrTags = [];
     for (let i = 0; i < hrCount; i++) {
@@ -48,56 +48,6 @@ const Checkout = () => {
   return (
     <div className="checkout-container">
       <div className="left-side">
-        <div className="itemsFromCart">
-          {productsInCart.map((product, index) => (
-            <React.Fragment key={product.id}>
-              <div className="cartitembox" style={{display:"flex"}}>
-                <div className='classitemFormat' style={{ display: "block", padding: "20px" }}>
-                  <img src={product.image} width={100} height={100} alt={product.name} style={{borderRadius:"10px", padding:"10px"}}/>    
-                </div>
-                <div className="info" style={{width:"100%"}}>
-                  <div style={{padding:"15px 10px 0px 0px", display:"flex", justifyContent:"space-between", width:"100%"}}>
-                    <p style={{fontSize:"15px", fontWeight:"600"}}>{product.name}</p>
-                  </div>
-                  <div className="quantityandprice" style={{display:"flex", marginTop:"55px", gap:"80px"}}>
-                    <div className="quantitybuttons">
-                      <button className='cartquantity' style={{minWidth:"20px", maxWidth:"40px"}}>x {cartItems[product.id]}</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {renderHrTags(index, productsInCart.length)}
-            </React.Fragment>
-          ))}
-        </div>
-        <div className="receipt">
-          <h2 className="receipt-heading">Receipt Summary</h2>
-          <div>
-            <table className="table">
-              <tbody> {/* <tbody> tag added */}
-                <tr>
-                  <td>Discount</td>
-                  <td className="price">To be determined</td>
-                </tr>
-                <tr>
-                  <td>Subtotal</td>
-                  <td className="price">${getTotalCartAmount().toFixed(2)}</td>
-                </tr>
-                <tr>
-                  <td>Tax</td>
-                  <td className="price">${tax}</td>
-                </tr>
-                <tr className="total">
-                  <td>Total</td>
-                  <td className="price">${taxTotal.toFixed(2)}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-
-      <div className="right-side">
         <div className="shippingAddress">
           <h3 className="shipping-heading">Shipping Information</h3>
           <form className='form-box' onSubmit={handleSubmit}> {/* Added onSubmit */}
@@ -317,6 +267,62 @@ const Checkout = () => {
               Your credit card information is encrypted
             </p>
           </div>
+        </div>
+      </div>
+      <div className="right-side">
+        <h2 className="receipt-heading">Receipt Summary</h2>
+        <hr />
+        <div className="itemsFromCart">
+          {productsInCart.map((product, index) => (
+            <React.Fragment key={product.id}>
+              <div className="cartitembox" style={{ display: "flex" }}>
+                <div className='classitemFormat' style={{ display: "block", padding: "10px 10px 10px 20px"}}>
+                  <img src={product.image} width={80} height={80} alt={product.name} style={{ borderRadius: "10px", padding: "10px", backgroundColor:"white"}} />
+                </div>
+                <div className="info" style={{ width: "100%"}}>
+                  <div style={{ padding: "30px 10px 0px 0px", width: "100%" }}>
+                    <p style={{ fontSize: "15px", fontWeight: "500" }}>{product.name}</p>
+                  </div>
+                  <div className="quantityandprice">
+                    <div className="quantitybuttons">
+                      <button className='cartquantity' style={{ minWidth: "20px", maxWidth: "40px" }}>x {cartItems[product.id]}</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {renderHrTags(index, productsInCart.length)}
+            </React.Fragment>
+          ))}
+        </div>
+        <hr />
+        <div className="receipt">
+          <div>
+            <table className="table">
+              <tbody> {/* <tbody> tag added */}
+                <tr>
+                  <td>Shipping</td>
+                  <td className="price">Free</td>
+                </tr>
+                <tr>
+                  <td>Subtotal</td>
+                  <td className="price">${getTotalCartAmount().toFixed(2)}</td>
+                </tr>
+                <tr>
+                  <td>Tax</td>
+                  <td className="price">${tax}</td>
+                </tr>
+                {/* <tr className="total">
+                <td>Total</td>
+                <td className="price">${taxTotal.toFixed(2)}</td>
+              </tr> */}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <hr />
+        <div className='git' style={{display:"flex", justifyContent:"space-between", padding:"0px 20px"}}>
+          <p style={{fontWeight:"650", fontSize:"18px"}}>Total (USD)</p>
+          <p style={{fontWeight:"650", fontSize:"18px"}}>${taxTotal.toFixed(2)}</p>
         </div>
       </div>
     </div>

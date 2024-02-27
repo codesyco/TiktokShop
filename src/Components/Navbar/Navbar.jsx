@@ -26,34 +26,43 @@ const Navbar = (props) => {
     return(
         showHeader? 
         <div class="container">
-            <div class="logo">store.co</div>
+            <div class="logo">
+                <Link to="/">
+                olly.co
+                </Link>
+            </div>
 
-            <ul class="navitems">
-                <li><Link to="/">Shop</Link></li>
-                <li><Link to="/category">On Sale</Link></li>
-                <li><Link to="/category">Category</Link></li>
-            </ul>
             
-            <div className="searchIcon">
+            
+            {/* <div className="searchIcon">
                 <input placeholder= "Search for products..." type="text" />
                 <span className="icondiv">
                     <img className="sicon" src={search_icon} alt="" />
                 </span>
-            </div>
-            <ul class="userauth">
+            </div> */}
+            {/* <ul class="userauth">
                     <li><Link to="/login">login</Link></li>
                     <li><Link to="/register">register</Link></li>
-            </ul>
+            </ul> */}
             <div className="mobilenav">
-                <div className="cart_icon">
-                    <Link to='/cart'><img src={cart_icon} alt="" /></Link>
-                    <div className="cartcount">{getTotalCartItems()}</div>
+                <div>
+                    <ul class="navitems">
+                        <li><Link to="/">Shop</Link></li>
+                        <li><Link to="/category">On Sale</Link></li>
+                        <li><Link to="/category">Category</Link></li>
+                    </ul>
                 </div>
-                <div className="user_icon">
-                    <Link to='/profile'><img className="uicon" src={user_icon} alt="" /></Link>
-                </div>
-                <div className="menubar">
-                    <img src={menu} width={20} height={20}alt=" menu" />
+                <div className="functions">
+                    <div className="cart_icon">
+                        <Link to='/cart'><img src={cart_icon} alt="" /></Link>
+                        <div className="cartcount">{getTotalCartItems()}</div>
+                    </div>
+                    <div className="user_icon">
+                        <Link to='/profile'><img className="uicon" src={user_icon} alt="" /></Link>
+                    </div>
+                    <div className="menubar">
+                        <img src={menu} width={20} height={20}alt=" menu" />
+                    </div>
                 </div>
             </div>
 
