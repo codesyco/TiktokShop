@@ -7,7 +7,6 @@ import { Link, useLocation } from "react-router-dom";
 import ProductDisplay from "../ProductDisplay/ProductDisplay";
 import { ShopContext } from "../../Context/ShopContext";
 import menu from '../Assets/Menu.png'
-import Logo from '../Assets/mainn.png'
 const Navbar = (props) => {
     // const [counter, setConter] = useState(0);
     const {getTotalCartItems} = useContext(ShopContext)
@@ -29,7 +28,7 @@ const Navbar = (props) => {
         <div class="container">
             <div class="logo">
                 <Link to="/">
-                <img src={Logo} width={70} height={20} alt="OLLY" />
+                olly.co
                 </Link>
             </div>
 
