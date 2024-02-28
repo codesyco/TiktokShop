@@ -156,8 +156,8 @@ input{
 .mobilenav{
     display: flex;
     /* background-color: red; */
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center; */
+    /* align-items: center; */
     gap: 40px;
 }
 
