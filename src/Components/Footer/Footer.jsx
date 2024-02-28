@@ -8,6 +8,7 @@ import visa from '../Assets/Visa.png'
 import mastercard from '../Assets/Mastercard Logo.png'
 import discover from '../Assets/Discover Card.png'
 import amex from "../Assets/American Express.png"
+import logosub from "../Assets/footerLogo.png"
 
 const Footer = () => {
     const location = useLocation();
@@ -33,7 +34,7 @@ const Footer = () => {
             </div>
             <div className="footercontent">
                 <div className="footershoplogo">
-                    <h1>Olly.co</h1>
+                    <img src={logosub} width={150} height={50} alt="OLLY" />
                     <p>Feel like part of the movement! Own the items that define the latest TikTok trends.</p>
                     <div className="socials">
                         <div>
