@@ -283,17 +283,17 @@ small {
     line-height: inherit
 }
 
-ul {
+/* ul {
     font-family: inherit;
     font-size: 1rem;
     line-height: 1.5;
     list-style-position: outside;
     margin-bottom: 1.5rem
-}
+} */
 
-ul {
+/* ul {
     margin-left: 1.1rem
-}
+} */
 
 .icon {
     height: 1.3846153846rem;

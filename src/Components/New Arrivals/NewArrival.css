@@ -29,7 +29,7 @@
 }
 .aitembox{
     margin: 90px 0px;
-    height: 43rem;
+    height: auto;
     gap: 30px;
     padding: 5px 40px;
     border-bottom: solid #d2d3d3;
