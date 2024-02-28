@@ -78,9 +78,7 @@
     line-height: 1.5;
     letter-spacing: 0.5px;
   }
-  li {
-    list-style: none;
-  }
+  
   /* Right Side of container */
   
   .right-side {
