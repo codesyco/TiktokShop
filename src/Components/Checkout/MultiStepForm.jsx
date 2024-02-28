@@ -122,9 +122,9 @@ const MultiStepForm = () => {
 
   const goToPreviousStep = () => {
     if (currentStep === 4 && formData.useSameAddress) {
-      setCurrentStep({ currentStep: currentStep - 2 });
+      setCurrentStep(currentStep - 2);
     } else {
-      setCurrentStep({ currentStep: currentStep - 1 });
+      setCurrentStep(currentStep - 1);
     }
   };
 
