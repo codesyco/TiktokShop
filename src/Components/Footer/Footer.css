@@ -2,7 +2,7 @@
 .footer{
     position: relative;
     background-color: #f4f4f4;
-    margin-top: 130px;
+    margin-top: 90px;
     /* display: flex; */
     flex-wrap: wrap;
 }

@@ -1,3 +1,14 @@
+.policy, .terms{
+    padding: 0px 100px;
+}
+.policy span, .terms span{
+    font-weight: 700;
+    font-size: 20px;
+}
+.welcomemessage{
+    font-size: 20px !important;
+}
+
 .terms p{
     color: #000000;
     font-size: 15px;
