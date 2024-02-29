@@ -1,0 +1,99 @@
+.policy, .terms{
+    padding: 0px 100px;
+}
+.policy span, .terms span{
+    font-weight: 700;
+    font-size: 20px;
+}
+.welcomemessage{
+    font-size: 20px !important;
+}
+
+.terms p{
+    color: #000000;
+    font-size: 15px;
+    text-align: left;
+    margin-bottom: 1.75rem;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    margin-bottom: 2.25rem;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+.terms h1{
+    color: #153a5b;
+    text-align: center;
+    margin: 2.23333rem 0 1.75rem 0;
+    font-weight: 700;
+    margin-bottom: 0.73333rem;
+    letter-spacing: .25px;
+    font-size: 40px;
+}
+.terms h2{
+    color: #153a5b;
+    margin: 0;
+    padding: 0;
+    margin-top: 2.23333rem;
+    font-weight: 700;
+    margin-bottom: 0.73333rem;
+    letter-spacing: .25px;
+    font-size: 20px;
+}
+.terms h3{
+    color: #153a5b;
+    margin: 0;
+    padding: 0;
+    margin-top: 2.23333rem;
+    font-weight: 700;
+    margin-bottom: 0.73333rem;
+    letter-spacing: .25px;
+    font-size: 18px;
+}
+.policy p{
+    color: #000000;
+    font-size: 15px;
+    text-align: left;
+    margin-bottom: 1.75rem;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    margin-bottom: 2.25rem;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+.policy h1{
+    color: #153a5b;
+    text-align: center;
+    margin: 2.23333rem 0 1.75rem 0;
+    font-weight: 700;
+    margin-bottom: 0.73333rem;
+    letter-spacing: .25px;
+    font-size: 40px;
+}
+.policy h2{
+    color: #153a5b;
+    margin: 0;
+    padding: 0;
+    margin-top: 2.23333rem;
+    font-weight: 700;
+    margin-bottom: 0.73333rem;
+    letter-spacing: .25px;
+    font-size: 20px;
+}
+.policy h3{
+    color: #153a5b;
+    margin: 0;
+    padding: 0;
+    margin-top: 2.23333rem;
+    font-weight: 700;
+    margin-bottom: 0.73333rem;
+    letter-spacing: .25px;
+    font-size: 18px;
+}

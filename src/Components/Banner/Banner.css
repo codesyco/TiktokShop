@@ -50,10 +50,17 @@
 .shopbtn{
     color: white;
     background-color: black;
-    border: solid black;
+    /* border: solid black;  */
     border-radius: 35px;
     width: 200px;
     height: 45px;
+    transition: .1s;
+}
+.shopbtn:active{
+    transform: scale(1.05);
+}
+.shopbtn:hover{
+    background-color: rgba(0, 0, 0, 0.872);
 }
 @media (max-width:768px) {
     .banner_body{

@@ -1,5 +1,6 @@
 import React from "react";
 import "./Banner.css"
+import { Link } from "react-router-dom";
 import banner from "../Assets/Banner.png"
 
 const Banner = () => {
@@ -10,7 +11,9 @@ const Banner = () => {
             <p className="banner_phrase_2">Shop the latest viral TikTok trends!<br/> Find all the cool products you saw on your feed,<br/> right here.</p>
             <p className="hashtag_text">#TikTokMadeMeBuyIt</p>
             <span className="shopnow">
-                <button className="shopbtn">Shop Now</button>
+                <Link to="/category">
+                    <button className="shopbtn">Shop Now</button>
+                </Link>
             </span>
             <div className="feats">
                 <h2><span className="word20">55+</span>  <br/>Trendy Tiktok Products</h2>
