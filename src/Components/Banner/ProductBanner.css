@@ -1,8 +1,8 @@
-.firstbanner-container{
+.banner-container{
     height: 600px;
     margin-top: 80px;
 }
-.bannerbox{
+.firstbannerbox{
     background: url("../Assets/replace_popbaby.jpg");
     background-repeat: no-repeat;
     background-position: center;
@@ -12,35 +12,45 @@
     margin: 0px 40px;
     border-radius: 20px;
 }
-.firstbanner-container a{
+.secondbannerbox{
+    background: url("../Assets/pantrybanner.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    /* width: 100%; */
+    height: inherit;
+    margin: 0px 40px;
+    border-radius: 20px;
+}
+.banner-container a{
     padding: 140px 0px 0px 110px;
     color: black;
     font-size: 20px;
     font-weight: 600;
 }
-.firstbanner-container button{
+.banner-container button{
     background-color: #FFFFFF;
     width: 300px;
     margin-top: 30px;
     height: 50px;
     border-radius: 40px;
 }
-.firstbanner-container button:hover{
+.banner-container button:hover{
     transition: .2s;
     background-color: #ffffffa9;
 }
-.firstbanner-container button:active{
+.banner-container button:active{
     transform: translateY(-5px) scale(1.03);
     background-color: #FFFFFF;
 
 }
-.firstbanner-container h1{
+.banner-container h1{
     padding: 140px 0px 0px 110px;
     font-weight: 700;
     font-size: 50px;
     color: rgb(255, 255, 255);
 }
-.firstbanner-container p{
+.banner-container p{
     padding: 20px 0px 0px 110px;
     width: 500px;
     font-size: 20px;

@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 
 const ProductBanner = () => {
   return (
-    <div className='firstbanner-container'>
-        <div className='bannerbox'>
+    <div className='banner-container'>
+        <div className='firstbannerbox'>
             <h1>MINI BUT <br />POWERFUL!</h1>
             <p>Blends small cuts (1 inch) ice cube, frozen fruits, vegeatable and seeds well.</p>
             <Link to="/products/1">
