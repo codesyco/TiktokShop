@@ -5,12 +5,16 @@
 }
 html {
     scroll-behavior: smooth;
+    width: fit-content;
 }
 
 .item{
     width: 200px;
     /* border-radius: 10px; */
     /* border: 2px solid blue; */
+    justify-content: center !important;
+    display: flex;
+    flex-direction: column;
 }
 .item a img{
     background-color: #edefef;

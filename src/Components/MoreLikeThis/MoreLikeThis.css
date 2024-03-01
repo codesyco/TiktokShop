@@ -30,6 +30,7 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     margin-top: 30px;
     gap: 30px;
+    justify-items: center;
 }
 .aitemboxitem-morelikethis a img{
 

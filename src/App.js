@@ -14,6 +14,8 @@ import Login from './Pages/Login';
 import Details from './Pages/Details';
 import Breadcrumb from './Components/Breadcrumb/Breadcrumb';
 import Checkout from './Components/Checkout/Checkout';
+import Policy from './Pages/Policy';
+import Terms from './Pages/Terms';
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -34,6 +36,8 @@ function App() {
             <Route path='/login' element={<Login/>} />
             <Route path='/register' element={<Signup/>} />
             <Route path='/profile' element={<Profile/>} />
+            <Route path='/Policy' element={<Policy/>} />
+            <Route path='/Terms-and-conditions' element={<Terms/>} />
             {/* <Route path='/:id' element = {<Product/>}/> */}
           </Routes>
           <Footer/>

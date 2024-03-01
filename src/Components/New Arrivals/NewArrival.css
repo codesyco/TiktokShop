@@ -29,10 +29,9 @@
 }
 .aitembox{
     margin: 90px 0px;
-    height: 43rem;
+    height: auto;
     gap: 30px;
     padding: 5px 40px;
-    border-bottom: solid #d2d3d3;
 
 }
 
@@ -41,6 +40,7 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     margin-top: 10px;
     gap: 30px;
+    justify-items: center;
     /* background-color: pink; */
 }
 @media (max-width:768px) {

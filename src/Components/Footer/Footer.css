@@ -12,7 +12,7 @@
     display: flex;
     flex-wrap: wrap;
     cursor: pointer;
-    padding: 0px 80px;
+    padding: 60px 80px 0px 80px;
 }
 .footercontent div{
     width: 25%;
@@ -32,7 +32,7 @@
     text-transform: uppercase;
 }
 .copyfooter{
-    width: 85%;
+    /* width: 85%; */
     justify-content: center;
     align-items: center;
     padding: 10px 0px 30px 0px;

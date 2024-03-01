@@ -2,7 +2,7 @@ import "./Footer.css"
 import twitter from '../Assets/Instagram.png'
 import instagram from '../Assets/Twitter.png'
 import { Link,  useLocation } from "react-router-dom"
-import { useState, setState, useEffect } from "react"
+import { useState, useEffect } from "react"
 import '@fortawesome/fontawesome-free/css/all.css';
 import visa from '../Assets/Visa.png'
 import mastercard from '../Assets/Mastercard Logo.png'
@@ -25,13 +25,13 @@ const Footer = () => {
     return(
         showFooter ?
         <div className="footer">
-            <div className="newsletterFloat">
+            {/* <div className="newsletterFloat">
                 <p>Subscribe to our newsletter and stay updated</p>
                 <div className="nLetter">
                     <input type="email" placeholder="Enter your email" />
                     <button id="subscribe">Subscribe</button>
                 </div>
-            </div>
+            </div> */}
             <div className="footercontent">
                 <div className="footershoplogo">
                     <img src={logosub} width={150} height={50} alt="OLLY" />
@@ -53,16 +53,10 @@ const Footer = () => {
                     <h2>Helpfull links</h2>
                     <ul className="helpfullLinksRoute">
                         <li className="hLinks">
-                            <Link to= "/terms"> Terms of Delivery</Link>
+                            <Link to= "/Terms-and-conditions" onClick={window.scrollTo(0,0)}> Terms and Condition</Link>
                         </li>
                         <li className="hLinks">
-                            <Link to= "/conditions"> Terms and Condition</Link>
-                        </li>
-                        <li className="hLinks">
-                            <Link to= "/returns">Returns</Link>
-                        </li>
-                        <li className="hLinks">
-                            <Link to= "/policy">Privacy Policy</Link>
+                            <Link to= "/Policy"  onClick={window.scrollTo(0,0)}>Privacy Policy</Link>
                         </li>
                     </ul>
                 </div>

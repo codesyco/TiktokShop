@@ -17,23 +17,14 @@
     transition-property: top;
 
 }
-/* nav{
-    display: flex;
-    width: 100%;
-    position: relative;
-    height: 80px;
-    background-color:red;
-    padding-top: 20px;
-} */
+
 .navitems{
     display: flex;
     line-height: 40px;
     position: relative;
     column-gap: 20px;
-    /* width: 32%; */
     font-weight: 600;
     justify-content: center;
-    /* background-color: blue; */
     align-items: center;
 }
 
@@ -153,8 +144,8 @@ input{
 .mobilenav{
     display: flex;
     /* background-color: red; */
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center; */
+    /* align-items: center; */
     gap: 40px;
 }
 
