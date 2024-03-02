@@ -30,21 +30,20 @@
 }
 .itembox{
     padding: 5px 40px;
-    /* height: 23rem;   */
     gap: 30px;
-    padding: 5px 40px;
 }
 
 .itemboxItem{
-    margin-top: 90px;
+    margin-top: 60px;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     display: grid;
     gap: 30px;
     justify-items: center;
+    margin-bottom: 20px;
 }
 @media (max-width:768px) {
     .topselling{
-        height: 45rem;
+        height: fit-content;
         margin-top: 0px;
         padding: 0px 10px;
     }

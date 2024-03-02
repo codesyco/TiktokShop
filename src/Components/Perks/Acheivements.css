@@ -1,0 +1,23 @@
+.acheivementscard{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    justify-content: center;
+}
+.cardcontainer{
+    height: fit-content;
+    padding: 0px 20px;
+}
+.cardcontainer img{
+    width: 400px;
+    height: 300px;
+    border-radius: 10px;
+}
+.cardcontainer h2{
+    text-align: center;
+    font-weight: 600;
+    font-size: 25px;
+}

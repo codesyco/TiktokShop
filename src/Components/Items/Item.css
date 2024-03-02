@@ -3,10 +3,6 @@
     padding: 0px;
     box-sizing: border-box;
 }
-html {
-    scroll-behavior: smooth;
-    width: fit-content;
-}
 
 .item{
     width: 200px;

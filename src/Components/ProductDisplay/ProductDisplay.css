@@ -1,6 +1,6 @@
 .productdisplay{
     display: flex;
-    margin: 0px 100px;
+    /* margin: 0px 100px; */
     gap: 30px;
     padding: 40px;
     justify-content: space-between;

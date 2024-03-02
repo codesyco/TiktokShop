@@ -5,12 +5,14 @@ import TopSelling from '../Components/Top Selling/TopSelling';
 import './CSS/Home.css'
 import ProductBanner from '../Components/Banner/ProductBanner';
 import ProductBanner2 from '../Components/Banner/ProductBanner2';
+import Acheivements from '../Components/Perks/Acheivements';
 
 const Home = () => {
     return (
         <>
         <div className='home'>
             <Banner/>
+            <Acheivements/>
             <NewArrival/>
             <ProductBanner/>
             <TopSelling/>

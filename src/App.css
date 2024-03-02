@@ -5,4 +5,16 @@
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
+  /* border: 1px solid red; */
+}
+html {
+  scroll-behavior: smooth;
+  width: fit-content;
+}
+
+.classssss{
+  background-color: #f2f0ea;
+  background-color: #a4a4a4;
+  background-color: #edcf5d;
+  background-color: #010101;
 }

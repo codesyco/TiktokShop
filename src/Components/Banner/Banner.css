@@ -11,7 +11,7 @@
     left: 0;
     width: 100%;
     height: 100vh;
-    background-color: #e1e4e4;
+    background-color: #edefef;
     background-image: url("../Assets/Background.png");
     background-repeat: no-repeat;
     background-position: right;
@@ -55,6 +55,7 @@
     width: 200px;
     height: 45px;
 }
+
 @media (max-width:768px) {
     .banner_body{
         height: 60rem;

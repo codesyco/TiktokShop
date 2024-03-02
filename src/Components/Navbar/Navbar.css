@@ -152,6 +152,7 @@ input{
 .menubar{
     display: none;
 }
+
 @media (max-width:768px) {
     .navitems, .searchIcon, .userauth{
         display: none;
