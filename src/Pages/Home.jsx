@@ -6,12 +6,14 @@ import './CSS/Home.css'
 import ProductBanner from '../Components/Banner/ProductBanner';
 import ProductBanner2 from '../Components/Banner/ProductBanner2';
 import Acheivements from '../Components/Perks/Acheivements';
+import Testimonials from '../Components/Testimonials/Testimonials';
 
 const Home = () => {
     return (
         <>
         <div className='home'>
             <Banner/>
+            <Testimonials/>
             <Acheivements/>
             <NewArrival/>
             <ProductBanner/>

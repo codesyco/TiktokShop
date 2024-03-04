@@ -62,7 +62,7 @@ const Footer = () => {
                 </div>
                 <div>
                     <h2>About Us</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo expedita blanditiis exercitationem reprehenderit id. Animi expedita praesentium aspernatur nihil?</p>
+                    <p>Located in the vibrant heart of Orlando, Florida, olly is your ultimate destination for all things trendy and TikTok-inspired. We pride ourselves on curating the hottest selection of products that are sure to elevate your social media game and keep you ahead of the curve.</p>
                 </div>
                 <div className="newsletter">
                     <h2>Newsletter</h2>
