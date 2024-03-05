@@ -1,18 +1,32 @@
 import React, { useContext, useEffect, useState } from "react";
 import './Navbar.css'
 import search_icon from "../Assets/search-line.png"
-import cart_icon from "../Assets/shopping-cart-2-line.png"
+import cart_icon from "../Assets/Shopping Cart.png"
 import user_icon from "../Assets/user.png"
 import { Link, useLocation } from "react-router-dom";
 import ProductDisplay from "../ProductDisplay/ProductDisplay";
 import { ShopContext } from "../../Context/ShopContext";
 import menu from '../Assets/Menu.png'
+import closemenu from '../Assets/Close.png'
 import Logo from '../Assets/mainn.png'
 const Navbar = (props) => {
     // const [counter, setConter] = useState(0);
     const {getTotalCartItems} = useContext(ShopContext)
     const location = useLocation();
     const [showHeader, setShowHeader] = useState(false)
+    const [dropdownmenu, setDropdownmenu] = useState("dropdownmenu hidden")
+    const [menubar, setMenubar] = useState("menubar unclicked")
+    const [isClicked, setIsCLicked] = useState(false)
+    const [menuicon, setMenuicon] = useState(menu)
+    // if (!menuicon) {
+    //     return(
+    //         <img src={menu} alt="" />
+    //     )
+    // }else{
+    //     return(
+    //         <img src={closemenu} alt="" />
+    //     )
+    // }
 
     useEffect(() => {
         const paths = location.pathname.split('/');
@@ -22,14 +36,40 @@ const Navbar = (props) => {
             setShowHeader(true)
         }
     }, [location]);
+    const hamburgerOn = () => {
+        if (!isClicked) {
+            setMenubar("menubar clicked");
+            setDropdownmenu("dropdownmenu visible");
+            setMenuicon(closemenu)
+        } else{
+            setMenubar("menubar unclicked")
+            setDropdownmenu("dropdownmenu hidden")
+            setMenuicon(menu)
+        }
+        setIsCLicked(!isClicked)
+    }
 
     // const {product} = props;
     return(
         showHeader? 
-        <div class="container">
-            <div class="logo">
+        <div className="navcontainer">
+            <div className="burgermenu">
+                <button className={menubar} onClick={hamburgerOn}>
+                    <img src={menuicon} width={20} height={20}alt=" menu" />
+                </button>
+            </div>
+            <div className={dropdownmenu}>
+                <ul>
+                    <li><Link to='/'>shop</Link></li>
+                    <hr />
+                    <li><Link to='/categories'>on sale</Link></li>
+                    <hr />
+                    <li><Link to='/categories'>categories</Link></li>
+                </ul>
+            </div>
+            <div className="logo">
                 <Link to="/">
-                <img src={Logo} width={70} height={20} alt="OLLY" />
+                <img src={Logo} alt="OLLY" />
                 </Link>
             </div>
 
@@ -47,7 +87,7 @@ const Navbar = (props) => {
             </ul> */}
             <div className="mobilenav">
                 <div>
-                    <ul class="navitems">
+                    <ul className="navitems">
                         <li><Link to="/">Shop</Link></li>
                         <li><Link to="/category">On Sale</Link></li>
                         <li><Link to="/category">Category</Link></li>
@@ -61,9 +101,7 @@ const Navbar = (props) => {
                     <div className="user_icon">
                         <Link to='/profile'><img className="uicon" src={user_icon} alt="" /></Link>
                     </div>
-                    <div className="menubar">
-                        <img src={menu} width={20} height={20}alt=" menu" />
-                    </div>
+                    
                 </div>
             </div>
 

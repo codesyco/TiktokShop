@@ -57,3 +57,48 @@
     font-weight: 700;
     color: rgb(255, 251, 251);
 }
+@media (max-width:500px) {
+    .banner-container h1{
+        padding: 2rem 0px 0px 2rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 2rem;
+        color: rgb(255, 255, 255);
+    }
+    .banner-container p{
+        padding: 10px 0px 0px 2rem;
+        width: auto;
+        font-size: 1rem;
+        font-weight: 700;
+        color: rgb(255, 251, 251);
+    }
+    .banner-container button{
+        background-color: #FFFFFF;
+        width: 200px;
+        margin-top: 30px;
+        height: 50px;
+        /* margin-top: 60%; */
+        border-radius: 40px;
+    }
+    .firstbannerbox,.secondbannerbox{
+        margin: 0px;
+    }
+    .banner-container{
+        padding: 10px;
+    }
+    .banner-container a{
+        padding: 0rem;
+        margin-left: 2rem;
+        height: 50px;
+    }
+
+}
+@media (max-width:980px) {
+    
+}
+@media (max-width:1200px) {
+    
+}
+@media (max-width:1440px) {
+    
+}

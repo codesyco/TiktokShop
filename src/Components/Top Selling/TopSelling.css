@@ -41,7 +41,7 @@
     justify-items: center;
     margin-bottom: 20px;
 }
-@media (max-width:768px) {
+@media (max-width:500px) {
     .topselling{
         height: fit-content;
         margin-top: 0px;
@@ -63,4 +63,21 @@
         gap: 15px;
         margin: 50px 0px;
     }
+}
+@media (min-width:501px) {
+    .itemboxItem{
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 15px;
+        margin: 50px 0px;
+    }
+}
+@media (min-width:981px) {
+    .itemboxItem{
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 15px;
+        margin: 50px 0px;
+    }
+}
+@media (min-width:1200px) {
+    
 }

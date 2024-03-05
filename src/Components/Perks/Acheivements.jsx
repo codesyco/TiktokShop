@@ -1,6 +1,6 @@
 import React from 'react'
 import './Acheivements.css'
-import happypeoplecard from '../Assets/happycustomercard.jpg'
+import happycustomer from '../Assets/happycustomer.jpg'
 import deliverycard from '../Assets/delivery.jpg'
 import productscard from '../Assets/productscatalogue.jpg'
 
@@ -16,7 +16,7 @@ const Acheivements = () => {
         <h2> Swift Deliveries</h2>
       </div>
       <div className="cardcontainer">
-        <img src={happypeoplecard} alt="" />
+        <img src={happycustomer} alt="" />
         <h2>Lots of Happy Customers</h2>
       </div>
     </div>

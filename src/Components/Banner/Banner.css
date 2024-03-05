@@ -62,54 +62,86 @@
 .shopbtn:hover{
     background-color: rgba(0, 0, 0, 0.872);
 }
-@media (max-width:768px) {
+@media (max-width:500px) {
     .banner_body{
-        height: 60rem;
-        padding: 20px 0px 0px 20px;
-        background-position: bottom;
-        background-size: 85%;
+        height: 92dvh;
+        padding-top: 20px;
+        padding-right: 20px;
+        padding-left: 1rem;
+        padding-bottom: clamp(2.5rem, 1.429rem + 4.762vw, 3.75rem);
+        background-position: top;
+        background-size: cover;
+        background-color: #eee9e9;
+        align-items: flex-end;
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .banner_body::after{
+        content: ""; 
+        position: absolute; 
+        top: 0;
+        left: 0; 
+        width: 100%;
+        height: 100%; 
+        background: linear-gradient(180deg, rgba(21, 58, 91, 0) 0%, rgba(21, 58, 91, 0) 33.33%, rgba(7, 17, 26, 0.658) 66.67%, rgba(0, 0, 0, 0.925) 100%);
     }
     .banner_phrase{
         font-size: 50px;
+        margin-top: 5%;
+        color: #ffffff;
     }
     .banner_phrase_2{
-        font-size: 20px;
-        color: rgb(78, 76, 76);
+        margin-top: 2rem;
+        font-size: 22px;
+        color: #ffffff;
+
     }
-    .hashtag_text{
-        font-size: 23px;
-        margin: 10px 0px 30px 0px;
+    
+    .shopbtn,.shopnow,.banner_phrase,.banner_phrase_2{
+        z-index: 11;
+        position: relative;
     }
+    
     .shopnow{
         margin: 0px;
         padding: 0px;
     }
     .shopbtn{
-        width: 95%;
+        width: 10rem;
         height: 35px;
         font-size: 15px;
+        margin-top: 2rem;
+        background-color: #ffffff;
+        color: black;
+        font-weight: 700;
+
+    }
+    .shopbtn:active{
+        transform: scale(1.05);
+    }
+    .shopbtn:hover{
+        background-color: rgba(0, 0, 0, 0.872);
     }
     .feats{
         gap: 2rem;
         display: flex;
-        /* background-color: red; */
         justify-content: center;
-        border: 1px solid grey;
-        /* height: 20%; */
-        /* padding-top: 10px; */
         margin-left: 0;
         width: 100%;
-        /* overflow-x: auto; */
+        display: none;
     }
-    .word20{
-        font-size: 30px;
+    .hashtag_text{
+        display: none;
     }
-    .feats h2{
-        width: 20%;
-        height: 90px;
-        font-size: 15px;
-        /* background-color: red; */
-        /* flex-wrap: wrap; */
-        /* background-color: red; */
-    }
+    
+}
+@media (max-width:980px) {
+    
+}
+@media (max-width:1200px) {
+    
+}
+@media (max-width:1440px) {
+    
 }

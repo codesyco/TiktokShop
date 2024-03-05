@@ -60,7 +60,7 @@ const Footer = () => {
                         </li>
                     </ul>
                 </div>
-                <div>
+                <div className="aboutus">
                     <h2>About Us</h2>
                     <p>Located in the vibrant heart of Orlando, Florida, olly is your ultimate destination for all things trendy and TikTok-inspired. We pride ourselves on curating the hottest selection of products that are sure to elevate your social media game and keep you ahead of the curve.</p>
                 </div>
