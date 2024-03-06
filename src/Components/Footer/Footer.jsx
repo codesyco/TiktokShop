@@ -18,7 +18,7 @@ const Footer = () => {
         const paths = location.pathname.split('/');
         const path1 = paths[paths.length - 2]; 
         const path2 = paths[paths.length - 1];
-        if (path1 === "chekout" || path2 === "cart") {
+        if (path1 === "checkout" || path2 === "cart") {
             setShowFooter(false)
         } else {
             setShowFooter(true)
