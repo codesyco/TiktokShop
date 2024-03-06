@@ -118,6 +118,7 @@ const MultiStepForm = () => {
       } else {
         setCurrentStep(currentStep + 1);
       }
+      window.scrollTo(0,0)
   };
 
   const goToPreviousStep = () => {
@@ -126,13 +127,15 @@ const MultiStepForm = () => {
     } else {
       setCurrentStep(currentStep - 1);
     }
+    window.scrollTo(0,0)
+
   };
 
   const renderStep = () => {
     switch (currentStep) {
       case 1:
         return (
-          <div>
+          <div className='emailsection'>
             <label>Email:</label>
             <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder=" " />
             {errors.email && <div className="error">{errors.email}</div>}
@@ -140,7 +143,7 @@ const MultiStepForm = () => {
         );
       case 2:
         return (
-          <div>
+          <div className='shippingInfo'>
             <h1>Shipping Information</h1>
             <div class="checkout-address">
               <div class="dynamic-form-field floating-form-field dynamic-form-field--firstName">
@@ -248,7 +251,7 @@ const MultiStepForm = () => {
         );
       case 3:
         return (
-          <div>
+          <div className='billingInfo'>
             <h1>Billing Information</h1>
             <div class="checkout-address">
               <div class="dynamic-form-field floating-form-field dynamic-form-field--firstName">

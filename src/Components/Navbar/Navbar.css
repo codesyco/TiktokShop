@@ -156,10 +156,10 @@ input{
     gap: 40px;
 }
 
-.menubar{
+.burgermenu{
     display: none;
 }
-.hidemenu{
+.dropdownmenu{
     display: none;
 }
 
@@ -174,9 +174,16 @@ input{
         align-items: center;
         z-index: 20;
     }
+    .navcontainer img{
+        align-items: center;
+        display: grid;
+    }
     .logo img{
-        width: 6rem;
-        height: 1.8rem;
+        width: 4rem;
+        height: 1.5rem;
+    }
+    .burgermenu{
+        display: contents;
     }
     
     .menubar{
@@ -204,8 +211,8 @@ input{
         font-size: 20px;
     }
     .cart_icon img, .user_icon img{
-        width: 40px;
-        height: 40px;
+        width: 25px;
+        height: 25px;
     }
     .user_icon{
         display: none;
@@ -217,8 +224,8 @@ input{
         
     }
     .menubar img{
-        width: 40px;
-        height: 40px;
+        width: 20px;
+        height: 20px;
 
     }
     .dropdownmenu{

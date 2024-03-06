@@ -1,5 +1,5 @@
 .shopCategory{
-    padding-top: 15vh;
+    padding-top: 5vh;
 }
 
 .shopcategoryproducts{
@@ -15,7 +15,7 @@
     height: 40rem;
     width: 30vw;
     margin-top: 10px;
-    border: 1px solid #888;
+    /* border: 1px solid #888; */
 }
 .catpage{
     display: flex;
@@ -39,4 +39,68 @@
 }
 .shopcategory-indexsorting p span{
     font-weight: 600;
+}
+@media (max-width:500px) {
+    aside{
+        display: none;
+    }
+    .testimonials-item{
+        background-color: rgb(241, 241, 241);
+        padding: 30px;
+        border-radius: 30px;
+    }
+    .testimonials-item .info{
+        display: flex;
+        align-items: center;
+    }
+    
+    .testimonials-item img{
+        max-width: 80px;
+        border-radius: 50%;
+        margin-right: 20px;
+        vertical-align: middle;
+    }
+    .testimonials-item .name{
+        font-size: 24px;
+        text-transform: capitalize;
+        font-weight: 600;
+        color: black;
+        line-height: 1.2;
+    }
+    .testimonials-item .job{
+        text-transform: uppercase;
+        color: grey;
+    }
+    .testimonials-item p{
+        margin-top: 20px;
+        color: grey;
+    }
+    .testimonials-item .rating{
+        margin-top: 20px;
+        font-size: 14px;
+        color: hsl(34, 88%, 66%);
+    }
+    .shopcategoryproducts{
+        padding: 40px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin-top: 10px;
+        gap: 30px;
+        width: 70vw;
+    
+    }
+    .shopcategory-indexsorting{
+        display: flex;
+        float: inline-end;
+        justify-content: space-between;
+        align-items: center;
+        margin: auto;
+        display: none;
+    }
+    .shopCategory{
+        padding-top: 0px;
+    }
+    .shopcategoryproducts{
+        width: 100%;
+    }
 }

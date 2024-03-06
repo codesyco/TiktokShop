@@ -23,6 +23,9 @@ const ShopContextProvider = (props) => {
         setCartItems((prev) => ({...prev, [itemId]:prev[itemId] -1}))
     }
     
+    const productsInCart = allProduct.filter(product => cartItems[product.id] > 0);
+    
+    
     const getTotalCartAmount = () => {
         let totalAmount = 0;
         // console.log(cartItems)
@@ -48,7 +51,7 @@ const ShopContextProvider = (props) => {
         return goodscount;
     }
    
-    const contextValue = {getTotalCartItems, getTotalCartAmount, allProduct, cartItems, addToCart, removeFromCart};
+    const contextValue = {getTotalCartItems, getTotalCartAmount, allProduct, cartItems, addToCart, removeFromCart, productsInCart};
 
     return(
         <ShopContext.Provider value={contextValue}>

@@ -4,10 +4,13 @@ import './Item.css'
 import { Link } from 'react-router-dom'
 
 const Item = (props) => {
+  const windowscroll = () => {
+    window.scrollTo(0,0)
+  }
   return (
     <>
-    <div className='item'>
-      <Link to={`/products/${props.id}`}> <img src={props.image} onClick={window.scrollTo(0,0)} className="itemimage" width={200} height={200} alt={props.name} /></Link>
+    <div className='item' onClick={windowscroll}>
+      <Link to={`/products/${props.id}`}> <img src={props.image}  className="itemimage" width={200} height={200} alt={props.name} /></Link>
       
       <p>{props.name}</p>
       <div className="itemsPrices">

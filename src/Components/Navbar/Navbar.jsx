@@ -18,24 +18,17 @@ const Navbar = (props) => {
     const [menubar, setMenubar] = useState("menubar unclicked")
     const [isClicked, setIsCLicked] = useState(false)
     const [menuicon, setMenuicon] = useState(menu)
-    // if (!menuicon) {
-    //     return(
-    //         <img src={menu} alt="" />
-    //     )
-    // }else{
-    //     return(
-    //         <img src={closemenu} alt="" />
-    //     )
-    // }
 
     useEffect(() => {
         const paths = location.pathname.split('/');
-        if (paths.includes("checkout")) {
+        const path1 = paths[paths.length - 2]; 
+        const path2 = paths[paths.length - 1];
+        if (path1 === "chekout" || path2 === "cart") {
             setShowHeader(false)
         } else {
             setShowHeader(true)
         }
-    }, [location]);
+    }, [location])
     const hamburgerOn = () => {
         if (!isClicked) {
             setMenubar("menubar clicked");
@@ -64,7 +57,7 @@ const Navbar = (props) => {
                     <hr />
                     <li><Link to='/categories'>on sale</Link></li>
                     <hr />
-                    <li><Link to='/categories'>categories</Link></li>
+                    {/* <li><Link to='/categories'>categories</Link></li> */}
                 </ul>
             </div>
             <div className="logo">
@@ -90,7 +83,7 @@ const Navbar = (props) => {
                     <ul className="navitems">
                         <li><Link to="/">Shop</Link></li>
                         <li><Link to="/category">On Sale</Link></li>
-                        <li><Link to="/category">Category</Link></li>
+                        {/* <li><Link to="/category">Category</Link></li> */}
                     </ul>
                 </div>
                 <div className="functions">
@@ -98,9 +91,9 @@ const Navbar = (props) => {
                         <Link to='/cart'><img src={cart_icon} alt="" /></Link>
                         <div className="cartcount">{getTotalCartItems()}</div>
                     </div>
-                    <div className="user_icon">
+                    {/* <div className="user_icon">
                         <Link to='/profile'><img className="uicon" src={user_icon} alt="" /></Link>
-                    </div>
+                    </div> */}
                     
                 </div>
             </div>

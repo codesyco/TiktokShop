@@ -35,3 +35,39 @@
 .aitemboxitem-morelikethis a img{
 
 }
+@media (max-width:500px) {
+    .morelikethis{
+        height: 100%;
+        padding: 0px 10px;
+    }
+    
+    .morelikethis h1{
+        font-size: 25px;
+    }
+    .morelikethis hr{
+        width: 100px;
+    }
+    
+    .aitembox-morelikethis{
+        /* gap: 30px; */
+        height: auto;
+        padding: 0px;
+    }
+    
+    .aitemboxitem-morelikethis{
+        display: grid;
+        flex-wrap: wrap;
+        grid-template-columns: 1fr 1fr;
+        margin: 50px 0px;
+        gap: 15px;
+    }
+}
+@media (max-width:980px) {
+    
+}
+@media (max-width:1200px) {
+    
+}
+@media (max-width:1440px) {
+    
+}

@@ -16,12 +16,14 @@ const Footer = () => {
 
     useEffect(() => {
         const paths = location.pathname.split('/');
-        if (paths.includes("checkout")) {
+        const path1 = paths[paths.length - 2]; 
+        const path2 = paths[paths.length - 1];
+        if (path1 === "chekout" || path2 === "cart") {
             setShowFooter(false)
         } else {
             setShowFooter(true)
         }
-    }, [location]);
+    }, [location])
     return(
         showFooter ?
         <div className="footer">

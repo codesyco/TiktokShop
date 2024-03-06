@@ -24,7 +24,7 @@ function App() {
       <div >
         <BrowserRouter>
           <Navbar/>
-          <Breadcrumb/>
+          {/* <Breadcrumb/> */}
           <Routes>
             <Route path='/' element={<Home/>} />
             <Route path='/products' element={<Product/>}>

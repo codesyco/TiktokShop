@@ -231,4 +231,23 @@
     background: linear-gradient(#615f61, #c9c8c9);
     border-radius: 10px;
   }
+  @media (max-width:500px) {
+    .checkout-container{
+      display: grid;
+      grid-template-columns: 1fr;
+      justify-items: center;
+      margin: 2rem auto !important;
+      padding-left: 0rem !important;
+      border-radius: 15px;
+    }
+    .right-side {
+      margin-left: 0px;
+      margin-top: 2rem;
+      left: 0px;
+      position: relative;
+      border-radius: 15px 15px 15px 15px;
+      height: fit-content;
+      width: 400px;
+    }
+  }
   

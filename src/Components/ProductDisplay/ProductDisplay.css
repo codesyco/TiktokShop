@@ -16,6 +16,11 @@
     display: flex;
     gap: 20px;
 }
+.productdisplayimagelist{
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
 .productdisplayimagelist img{
     background-color: #f4f4f4;
     padding: 5px;
@@ -270,4 +275,56 @@
 
 .toast.active ~ .addtocart{
     pointer-events: none;
+}
+@media (max-width:500px) {
+    .productdisplay{
+        display: contents;
+    }
+    .productdisplay-left{
+        display: flex;
+        flex-direction: column-reverse;
+        margin-top: 1rem;
+    }
+    .productdisplay-right{
+        padding: 0px 20px;
+    }
+    .productdisplay-right h1{
+        font-size: 25px;
+        margin-top: 3rem;
+    }
+    .prices{
+        font-size: 18px;
+    }
+    .productdisplayimagelist{
+        display: flex;
+        gap: 5px;
+        flex-direction: row;
+    }
+    .productDisplayRightStar{
+        margin: 1rem 0rem;
+    }
+    .productdisplayimg{
+        width: 100%;
+        padding: 0px 10px;
+    }
+    .productdisplayimg img{
+        width: 100%;
+    }
+}
+@media (min-width:501px) {
+    .itemboxItem{
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 15px;
+        margin: 50px 0px;
+    }
+}
+@media (min-width:981px) {
+    .itemboxItem{
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 15px;
+        margin: 50px 0px;
+    }
+}
+@media (min-width:1200px) {
+    
 }

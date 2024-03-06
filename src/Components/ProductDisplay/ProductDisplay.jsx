@@ -63,7 +63,7 @@ const ProductDisplay = (props) => {
     <div className="main">
       <div className="productdisplay">
         <div className="productdisplay-left">
-          <div className="productdisplayimagelist" style={{ display: "flex", gap: "10px", flexDirection: "column" }}>
+          <div className="productdisplayimagelist" >
             <img src={product?.image} width={100} height={110} alt="" />
             <img src={product?.image} width={100} height={110} alt="" />
             <img src={product?.image} width={100} height={110} alt="" />

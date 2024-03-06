@@ -1070,5 +1070,62 @@ select {
     }
 }
 
-
+@media (max-width:500px) {
+    .multistep-form-container{
+        max-width: 90% !important;
+        width: 450px;
+    }
+    .shippingInfo h1, .billingInfo h1{
+        margin: 1rem 0rem;
+        font-size: 20px;
+        font-weight: 600;
+    }
+    .multistep-form-container button{
+        padding: 10px 20px !important;
+        background-color: rgb(38, 38, 38);
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .multistep-form-container label{
+        display: flex;
+        gap: 10px;
+    }
+    .multistep-form-container label input{
+        margin-left: 10px;
+    }
+    .form-checklist-checkbox~.form-label{
+        padding: 0px !important;
+    }
+    .creditCardTypes-list img{
+        width: 30px;
+        height: 30px;
+    }
+    .creditCardTypes-list-item{
+        margin: 0px;
+        width: fit-content;
+    }
+    .paymentProviderHeader-cc{
+        height: fit-content !important;
+        display: flex;
+        align-content: center;
+    }
+    .paymentProviderHeader-container{
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .paymentProviderHeader-name{
+        padding-top: 0px;
+    }
+    .icon--medium{
+        align-items: center;
+        display: grid;
+    }
+    .form-ccFields iframe{
+        min-height: 350px !important;
+    }
+}
   
