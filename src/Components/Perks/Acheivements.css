@@ -37,6 +37,7 @@
         padding-top: 1.5rem;
         color: rgb(73, 73, 73);
         width: 300px;
+        font-size: 18px;
     }
 }
 @media (max-width:980px) {

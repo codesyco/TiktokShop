@@ -55,10 +55,10 @@ const Footer = () => {
                     <h2>Helpfull links</h2>
                     <ul className="helpfullLinksRoute">
                         <li className="hLinks">
-                            <Link to= "/Terms-and-conditions" onClick={window.scrollTo(0,0)}> Terms and Condition</Link>
+                            <Link to= "/Terms-and-conditions" onClick={window.scrollTo(0,0)}> Terms & Condition</Link>
                         </li>
                         <li className="hLinks">
-                            <Link to= "/Policy"  onClick={window.scrollTo(0,0)}>Privacy Policy</Link>
+                            <Link to= "/Policy"  onClick={window.scrollTo(0,0)}>Policy</Link>
                         </li>
                     </ul>
                 </div>
@@ -72,7 +72,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className="copyfooter">
-                <p>Olly.co 2002-2024&copy;, All right reserved</p>
+                <p>Olly.co 2002-2024&copy;</p>
                 <div>
                     <img src={visa} alt="" />
                     <img src={mastercard} alt="" />
