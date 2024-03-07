@@ -1,7 +1,7 @@
 import "./ProductDisplay.css"
 import star from "../Assets/Star.png"
 import starEmpty from "../Assets/Star empty.png"
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { ShopContext } from "../../Context/ShopContext"
 import MoreLikeThis from "../MoreLikeThis/MoreLikeThis"
 import { isContentEditable } from "@testing-library/user-event/dist/utils"
@@ -13,10 +13,15 @@ const ProductDisplay = (props) => {
   const { addToCart} = useContext(ShopContext);
   const [timer1, setTimer1] = useState(null);
   const [timer2, setTimer2] = useState(null);
+  const [mainImg, setMainImg] = useState(product.image);
 
   const increaseItem = () => {
     setCount(count + 1);
   };
+  // useEffect(() => {
+  //   const mainimg = product.image
+  //   setMainImg(mainimg[product.id])
+  // }, [])
 
   const decreaseItem = () => {
     if (count > 0) {
@@ -64,17 +69,17 @@ const ProductDisplay = (props) => {
       <div className="productdisplay">
         <div className="productdisplay-left">
           <div className="productdisplayimagelist" >
-            <img src={product?.image} width={100} height={110} alt="" />
-            <img src={product?.image} width={100} height={110} alt="" />
-            <img src={product?.image} width={100} height={110} alt="" />
-            <img src={product?.image} width={100} height={110} alt="" />
+            <img src={product.image} width={100} height={110} alt="" />
+            <img src={product.image} width={100} height={110} alt="" />
+            <img src={product.image} width={100} height={110} alt="" />
+            <img src={product.image} width={100} height={110} alt="" />
           </div>
           <div className="productdisplayimg">
-            <img className="productdisplaymainimage" src={product?.image} height={470} alt="" />
+            <img className="productdisplaymainimage" src={mainImg} height={470} alt="" />
           </div>
         </div>
         <div className="productdisplay-right">
-          <h1>{product?.name}</h1>
+          <h1>{product.name}</h1>
           <div className="productDisplayRightStar">
             <div>
               <img src={star} alt="" />
@@ -86,8 +91,8 @@ const ProductDisplay = (props) => {
             <p>(122)</p>
           </div>
           <div className="prices">
-            <div className="oldprice">${product?.oldPrice}</div>
-            <div className="newprice">${product?.newPrice}</div>
+            <div className="oldprice">${product.oldPrice}</div>
+            <div className="newprice">${product.newPrice}</div>
           </div>
           <hr />
           <div className="description">
@@ -95,7 +100,7 @@ const ProductDisplay = (props) => {
               Description
             </div>
             <div className="propsdesc">
-              {product?.desc}
+              {product.desc}
             </div>
           </div>
           <hr />

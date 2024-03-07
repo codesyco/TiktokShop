@@ -1,3 +1,13 @@
+.TestimonialMain{
+  animation: pop-in linear forwards;
+  scale: .7; opacity: 0;
+  animation-timeline: view();
+  animation-range-start: 5%;
+  animation-range-end: 20%;
+}
+@keyframes pop-in {
+  to {scale: 1; opacity: 1;}
+}
 .t-container{
     max-width: 1000px;
     margin: auto;    
@@ -159,7 +169,7 @@
     height: 3rem !important;
   }
   .swiper-pagination-bullets.swiper-pagination-horizontal{
-    left: 19% !important;
+    left: calc(50vw - 8rem) !important;
   }
   .testimonials{
     padding: 0px;

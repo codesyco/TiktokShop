@@ -1,6 +1,17 @@
 .banner-container{
     height: 600px;
     margin-top: 80px;
+    animation: fade-in linear forwards;
+    scale: .7; opacity: 0;
+    animation-timeline: view();
+    animation-range-start: 5%;
+    animation-range-end: 20%;
+}
+@keyframes fade-in {
+    to { scale: 1; opacity: 1;}
+}
+@keyframes fade-out {
+    to {scale: .8; opacity: 0;}
 }
 .firstbannerbox{
     background: url("../Assets/replace_popbaby.jpg");

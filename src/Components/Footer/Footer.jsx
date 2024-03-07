@@ -1,6 +1,6 @@
 import "./Footer.css"
-import twitter from '../Assets/Instagram.png'
-import instagram from '../Assets/Twitter.png'
+import instagram from '../Assets/Instagram.png'
+import twitter from '../Assets/Twitter.png'
 import { Link,  useLocation } from "react-router-dom"
 import { useState, useEffect } from "react"
 import '@fortawesome/fontawesome-free/css/all.css';
@@ -16,7 +16,7 @@ const Footer = () => {
 
     useEffect(() => {
         const paths = location.pathname.split('/');
-        const path1 = paths[paths.length - 2]; 
+        const path1 = paths[paths.length - 1]; 
         const path2 = paths[paths.length - 1];
         if (path1 === "checkout" || path2 === "cart") {
             setShowFooter(false)

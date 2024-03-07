@@ -94,8 +94,8 @@
         color: #ffffff;
     }
     .banner_phrase_2{
-        margin-top: 2rem;
-        font-size: 22px;
+        margin-top: 3%;
+        font-size: 18px;
         color: #ffffff;
 
     }
@@ -117,7 +117,7 @@
         background-color: #ffffff;
         color: black;
         font-weight: 700;
-
+        border: none;
     }
     .shopbtn:active{
         transform: scale(1.05);

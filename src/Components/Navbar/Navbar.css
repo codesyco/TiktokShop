@@ -230,7 +230,7 @@ input{
     .menubar img{
         width: 20px;
         height: 20px;
-
+        background-color: #f4f4f4;
     }
     .dropdownmenu{
         /* display: none; */

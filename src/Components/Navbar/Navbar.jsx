@@ -21,9 +21,8 @@ const Navbar = (props) => {
 
     useEffect(() => {
         const paths = location.pathname.split('/');
-        const path1 = paths[paths.length - 2]; 
         const path2 = paths[paths.length - 1];
-        if (path1 === "chekout" || path2 === "cart") {
+        if (path2 === "cart") {
             setShowHeader(false)
         } else {
             setShowHeader(true)
@@ -41,6 +40,10 @@ const Navbar = (props) => {
             setMenuicon(menu)
         }
         setIsCLicked(!isClicked)
+    }
+    const hideMenuBar = () => {
+        setDropdownmenu("dropdownmenu hidden")
+        setMenuicon(menu)
     }
         // const hidenav = () => {
         //     window.addEventListener( "scroll", function(){
@@ -63,9 +66,9 @@ const Navbar = (props) => {
             </div>
             <div className={dropdownmenu}>
                 <ul>
-                    <li><Link to='/'>shop</Link></li>
+                    <li onClick={hideMenuBar}><Link to='/'>shop</Link></li>
                     <hr />
-                    <li><Link to='/category'>on sale</Link></li>
+                    <li onClick={hideMenuBar}><Link to='/category'>on sale</Link></li>
                     <hr />
                     {/* <li><Link to='/categories'>categories</Link></li> */}
                 </ul>

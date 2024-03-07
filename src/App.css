@@ -10,15 +10,12 @@
 html {
   scroll-behavior: smooth;
   /* position: fixed; */
-  max-width: 100vw;
-}
-body{
-  /* position: fixed; */
+  /* max-width: 100vw; */
 }
 
-.classssss{
+/* .classssss{
   background-color: #f2f0ea;
   background-color: #a4a4a4;
   background-color: #edcf5d;
   background-color: #010101;
-}
+} */
