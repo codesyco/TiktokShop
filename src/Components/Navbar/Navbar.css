@@ -173,10 +173,14 @@ input{
         justify-content: space-between;
         align-items: center;
         z-index: 20;
+        transition: 3s ease-in-out;
     }
     .navcontainer img{
         align-items: center;
         display: grid;
+    }
+    .burgermenu button{
+        border: none;
     }
     .logo img{
         width: 4rem;

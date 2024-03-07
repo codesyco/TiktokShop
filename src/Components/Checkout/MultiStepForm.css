@@ -117,9 +117,6 @@ button::-moz-focus-inner,input::-moz-focus-inner {
     padding: 0
 }
 
-input {
-    line-height: normal
-}
 
 input[type=checkbox],input[type=radio] {
     box-sizing: border-box;
@@ -143,10 +140,6 @@ a:hover {
     cursor: pointer
 }
 
-button {
-    background: none;
-    border: 0
-}
 
 button:active,button:focus {
     box-shadow: none;

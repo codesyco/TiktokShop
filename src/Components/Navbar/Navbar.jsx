@@ -28,6 +28,7 @@ const Navbar = (props) => {
         } else {
             setShowHeader(true)
         }
+        
     }, [location])
     const hamburgerOn = () => {
         if (!isClicked) {
@@ -41,6 +42,15 @@ const Navbar = (props) => {
         }
         setIsCLicked(!isClicked)
     }
+        // const hidenav = () => {
+        //     window.addEventListener( "scroll", function(){
+        //         let scrolled = document.documentElement.scrollTop + document.body.scrollTop;
+        //         if (scrolled > 1){
+        //             setShowHeader(false)
+        //         }else{setShowHeader(true)}
+        //     })
+        // }
+        // hidenav();
 
     // const {product} = props;
     return(
@@ -55,7 +65,7 @@ const Navbar = (props) => {
                 <ul>
                     <li><Link to='/'>shop</Link></li>
                     <hr />
-                    <li><Link to='/categories'>on sale</Link></li>
+                    <li><Link to='/category'>on sale</Link></li>
                     <hr />
                     {/* <li><Link to='/categories'>categories</Link></li> */}
                 </ul>

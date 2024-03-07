@@ -299,6 +299,23 @@
         display: flex;
         gap: 5px;
         flex-direction: row;
+        padding: 0rem .5rem;
+    }
+    .productdisplayimagelist img{
+        min-width: 30px;
+    }
+    .productdisplayimagelist img:hover{
+        border: 1.5px solid rgba(128, 128, 128, 0.336);
+    }
+    .countercontainer{
+        min-width: 80px;
+        gap: 20px;
+    }
+    .addtocart{
+        justify-content: flex-end;
+    }
+    .quantity{
+        min-width: 80px;
     }
     .productDisplayRightStar{
         margin: 1rem 0rem;

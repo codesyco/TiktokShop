@@ -16,6 +16,7 @@ import Breadcrumb from './Components/Breadcrumb/Breadcrumb';
 import Checkout from './Components/Checkout/Checkout';
 import Policy from './Pages/Policy';
 import Terms from './Pages/Terms';
+import Headroom from 'react-headroom'
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -23,7 +24,9 @@ function App() {
     <>
       <div >
         <BrowserRouter>
+        <Headroom>
           <Navbar/>
+        </Headroom>
           {/* <Breadcrumb/> */}
           <Routes>
             <Route path='/' element={<Home/>} />
