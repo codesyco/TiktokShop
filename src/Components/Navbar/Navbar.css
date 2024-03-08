@@ -52,7 +52,7 @@
 }
 .logo img{
     width: 4rem;
-    height: 1.3rem;
+    /* height: 4rem; */
 }
 .userauth{
     display: flex;
@@ -173,7 +173,11 @@ input{
         justify-content: space-between;
         align-items: center;
         z-index: 20;
-        transition: 3s ease-in-out;
+        /* transition: 3s ease-in-out; */
+        box-shadow: none;
+    }
+    @keyframes navbottomshadow {
+        
     }
     .navcontainer img{
         align-items: center;
@@ -182,10 +186,10 @@ input{
     .burgermenu button{
         border: none;
     }
-    .logo img{
+    /* .logo img{
         width: 4rem;
         height: 1.5rem;
-    }
+    } */
     .burgermenu{
         display: contents;
     }

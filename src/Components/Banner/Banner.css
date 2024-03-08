@@ -6,18 +6,39 @@
 }
 
 .banner_body{
-    /* position: absolute; */
-    /* top: 65px; */
-    left: 0;
+    /* left: 0; */
     width: 100%;
-    height: 90vh;
-    background-color: #e1e4e4;
+    height: calc(100vh - 68px);
+    height: calc(100dvh - 68px);
+    background-color: #f4f4f4;
     background-image: url("../Assets/Background.png");
     background-repeat: no-repeat;
     background-position: right;
-    background-size: 45%;
-    padding: 30px 0 0 100px;
+    background-size: contain;
+    padding-right: 30px;
+    position: relative;
+    overflow: hidden;
+    padding-left: 3rem;
+    padding-bottom: clamp(2.5rem, 1.429rem + 4.762vw, 3.75rem);
 }
+.bwrapper{
+    display: grid;
+    grid-template-columns:repeat(1, 1fr);
+    width: 100%;
+    height: 100%;
+    grid-auto-flow: column;
+    align-items: flex-end;
+}
+.banner_body .bwrapper::after{
+    content: ""; 
+    position: absolute; 
+    top: 0;
+    left: 0;
+    box-sizing: inherit; 
+    width: 100%;
+    height: 100%; 
+    background: linear-gradient(180deg, rgba(21, 58, 91, 0) 0%, rgba(21, 58, 91, 0) 33.33%, rgba(7, 17, 26, 0.075) 66.67%, rgba(0, 0, 0, 0.829) 100%);
+  }
 .hashtag_text{
     margin-bottom: 25px;
 }
@@ -29,39 +50,54 @@
     gap: 20px;
     margin: 10px 0 0 30px;
 }
-.feats h2{
-    font-weight: 400;
-    text-transform: capitalize;
-    /* background-color: red; */
-    width: 200px;
-}
-.word20{
-    font-weight: 700;
-    font-size: 40px;
-}
 .banner_phrase{
     font-size: 65px;
     font-weight: 900;
+    color: rgba(0, 0, 0, 0.932);
+    z-index: 11;
+    position: relative;
+    line-height: 70px;
+}
+.banner_phrase_2{
+    font-size: 18px;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.795);
+    z-index: 11;
+    position: relative;
+}
+.hashtag_text{
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+    z-index: 11;
+    position: relative;
 }
 .shopnow{
-    margin: 10px;
-    padding: 20px;
+    /* padding: 20px; */
 }
 .shopbtn{
     color: white;
     background-color: black;
     /* border: solid black;  */
     border-radius: 35px;
+    border: 2px solid black;
     width: 200px;
     height: 45px;
     transition: .1s;
+    position: relative;
+    z-index: 11;
+    left: 0;
+    margin: 20px 0px 0px 0px;
+
 }
 .shopbtn:active{
     transform: scale(1.05);
 }
 .shopbtn:hover{
-    background-color: rgba(0, 0, 0, 0.872);
+    background-color: rgba(255, 255, 255, 0.872);
+    color: black;
 }
+
 @media (max-width:500px) {
     .banner_body{
         height: calc(100vh - 68px);
@@ -72,7 +108,7 @@
         padding-bottom: clamp(2.5rem, 1.429rem + 4.762vw, 3.75rem);
         background-position: center;
         background-size: cover;
-        background-color: #eee9e9;
+        background-color: #f4f4f4;
         align-items: flex-end;
         display: grid;
         grid-auto-flow: column;
@@ -81,10 +117,10 @@
         overflow: hidden;
     }
     .banner_body::after{
-        content: ""; 
+      left: 0; 
+           content: ""; 
         position: absolute; 
-        left: 0; 
-        width: 100%;
+       width: 100%;
         height: 100%; 
         background: linear-gradient(180deg, rgba(21, 58, 91, 0) 0%, rgba(21, 58, 91, 0) 33.33%, rgba(7, 17, 26, 0.658) 66.67%, rgba(0, 0, 0, 0.925) 100%);
     }
@@ -92,6 +128,7 @@
         font-size: 50px;
         margin-top: 5%;
         color: #ffffff;
+        line-height: normal;
     }
     .banner_phrase_2{
         margin-top: 3%;

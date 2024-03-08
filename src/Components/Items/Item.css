@@ -109,7 +109,23 @@
     }
 }
 @media (max-width:980px) {
-    
+    .item{
+        width: 200px;
+    }
+    .itemimage{
+
+    }
+    .item a img{
+        background-color: #edefef;
+        /* padding: 10px; */
+        border-radius: 10px;
+        width: 150px;
+        height: 150px;
+    }
+    .item p{
+        margin: 6px 0px;
+        width: 150px;
+    }
 }
 @media (max-width:1200px) {
     

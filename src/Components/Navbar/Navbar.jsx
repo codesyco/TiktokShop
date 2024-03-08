@@ -8,7 +8,7 @@ import ProductDisplay from "../ProductDisplay/ProductDisplay";
 import { ShopContext } from "../../Context/ShopContext";
 import menu from '../Assets/Menu.png'
 import closemenu from '../Assets/Close.png'
-import Logo from '../Assets/mainn.png'
+import Logo from '../Assets/newLogo.png'
 const Navbar = (props) => {
     // const [counter, setConter] = useState(0);
     const {getTotalCartItems} = useContext(ShopContext)

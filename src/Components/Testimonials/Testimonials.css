@@ -2,6 +2,7 @@
   animation: pop-in linear forwards;
   scale: .7; opacity: 0;
   animation-timeline: view();
+  /* -webkit-animation-t */
   animation-range-start: 5%;
   animation-range-end: 20%;
 }
