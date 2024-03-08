@@ -65,10 +65,31 @@
     }
 }
 @media (min-width:501px) {
+    .topselling{
+        height: 100%;
+        padding: 0px 10px;
+    }
+    
+    .topselling h1{
+        font-size: 25px;
+    }
+    .topselling hr{
+        width: 100px;
+    }
+
+    
+    .itembox{
+        /* gap: 30px; */
+        height: auto;
+        padding: 0px;
+    }
+    
     .itemboxItem{
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 15px;
+        display: grid;
+        flex-wrap: wrap;
+        grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
         margin: 50px 0px;
+        gap: 15px;
     }
 }
 @media (min-width:981px) {

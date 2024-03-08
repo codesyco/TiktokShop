@@ -8,8 +8,38 @@
       "type":"image/jpg"
     },
     {
+      "src":"icon-16x16.jpg",
+      "sizes":"16x16",
+      "type":"image/jpg"
+    },
+    {
+      "src":"icon-32x32.jpg",
+      "sizes":"32x32",
+      "type":"image/jpg"
+    },
+    {
+      "src":"icon-24x24.jpg",
+      "sizes":"24x24",
+      "type":"image/jpg"
+    },
+    {
       "src": "icon-96x96.jpg",
       "sizes": "96x96",
+      "type": "image/jpg"
+    },
+    {
+      "src": "icon-122x122.png",
+      "sizes": "120x120",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-128x128.jpg",
+      "sizes": "128x128",
+      "type": "image/jpg"
+    },
+    {
+      "src": "icon-144x144.jpg",
+      "sizes": "144x144",
       "type": "image/jpg"
     },
     {

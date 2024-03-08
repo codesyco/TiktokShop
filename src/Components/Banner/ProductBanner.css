@@ -5,7 +5,7 @@
     scale: .7; opacity: 0;
     animation-timeline: view();
     animation-range-start: 5%;
-    animation-range-end: 20%;
+    animation-range-end: 30%;
 }
 @keyframes fade-in {
     to { scale: 1; opacity: 1;}
