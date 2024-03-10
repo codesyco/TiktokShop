@@ -4,16 +4,23 @@ import { ShopContext } from '../Context/ShopContext'
 import { useParams } from 'react-router-dom';
 import Breadcrumb from '../Components/Breadcrumb/Breadcrumb';
 import ProductDisplay from '../Components/ProductDisplay/ProductDisplay';
+import ShopCategory from './ShopCategory';
 
 
 const Product = () => {
   const {allProduct} = useContext(ShopContext);
   const {productId} = useParams();
   const product = allProduct.find((e)=> e.id === Number(productId))
+  console.log(product)
   return (
     <div>
-      {/* <Breadcrumb product={allProduct.name}/> */}
-      <ProductDisplay product={product}/>
+      {product ? (
+        <Breadcrumb product={product}/>,
+        console.log(<Breadcrumb/>),
+        <ProductDisplay product={product} />
+      ) : (
+        <ShopCategory/>
+      )}
     </div>
   )
 }

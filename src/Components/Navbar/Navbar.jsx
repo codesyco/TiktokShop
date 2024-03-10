@@ -16,16 +16,26 @@ const Navbar = (props) => {
     const [showHeader, setShowHeader] = useState(false)
     const [dropdownmenu, setDropdownmenu] = useState("dropdownmenu hidden")
     const [menubar, setMenubar] = useState("menubar unclicked")
+    const [logo, setLogo] = useState("logo")
     const [isClicked, setIsCLicked] = useState(false)
     const [menuicon, setMenuicon] = useState(menu)
 
     useEffect(() => {
         const paths = location.pathname.split('/');
+        const path1 = paths[paths.length - 1];
         const path2 = paths[paths.length - 1];
         if (path2 === "cart") {
             setShowHeader(false)
         } else {
             setShowHeader(true)
+        };
+        if (path1 === "checkout") {
+            setMenubar("menubar hidden")
+            setLogo("logo rm-ma")
+        }
+        else{
+            setMenubar("menubar unclicked")
+            setLogo("logo")
         }
         
     }, [location])
@@ -73,7 +83,7 @@ const Navbar = (props) => {
                     {/* <li><Link to='/categories'>categories</Link></li> */}
                 </ul>
             </div>
-            <div className="logo">
+            <div className={logo}>
                 <Link to="/">
                 <img src={Logo} alt="OLLY" />
                 </Link>

@@ -161,6 +161,8 @@
     }
     .shopbtn:hover{
         background-color: rgba(0, 0, 0, 0.872);
+        color: white;
+        border: 1px solid white;
     }
     .feats{
         gap: 2rem;

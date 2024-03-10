@@ -297,6 +297,7 @@ select {
     transition: all 100ms ease-out;
     width: 100%
 }
+.customerEmail-floating--enabled
 
 .form-input {
     background-color: #f5f5f5;
@@ -980,6 +981,15 @@ select {
     height: 2.6923076923rem;
     margin-right: 1.5rem
 }
+.emailsection label{
+    font-weight: 800;
+}
+.emailsection p{
+    font-size: 13px;
+}
+.emailsection span{
+    font-weight: 700;
+}
 
 .stepHeader-title {
     margin: 0 0 0 1.5rem;
@@ -1065,8 +1075,8 @@ select {
 
 @media (max-width:500px) {
     .multistep-form-container{
-        max-width: 90% !important;
-        width: 450px;
+        max-width: 100% !important;
+        width: 400px;
     }
     .shippingInfo h1, .billingInfo h1{
         margin: 1rem 0rem;

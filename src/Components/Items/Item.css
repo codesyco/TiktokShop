@@ -114,6 +114,8 @@
     }
     .item a{
         width: 150px;
+        text-decoration: none;
+        color: black;
 
     }
     .item a img{

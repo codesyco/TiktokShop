@@ -10,7 +10,7 @@ const Item = (props) => {
   return (
     <>
     <div className='item' onClick={windowscroll}>
-      <Link to={`/products/${props.id}`}> <img src={props.image}  className="itemimage" width={200} height={200} alt={props.name} /></Link>
+      <Link to={`/products/${props.id}`}> <img src={props.image}  className="itemimage" width={200} height={200} alt={props.name} />
       
       <p>{props.name}</p>
       <div className="itemsPrices">
@@ -29,6 +29,7 @@ const Item = (props) => {
           Add to cart
         </button> */}
       </div>
+      </Link>
     </div>
     </>
   )

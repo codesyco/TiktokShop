@@ -4,7 +4,7 @@
     margin-bottom: 20px;
     margin-top: 20px;
 }
-.checoutbtn{
+.checkoutbtn{
     width: 400px;
     height: 40px;
     border-radius: 20px;
@@ -13,7 +13,7 @@
     background-color: black;
     cursor: pointer;
 }
-.checoutbtn:hover{
+.checkoutbtn:hover{
     width: 400px;
     height: 40px;
     border-radius: 20px;
@@ -24,7 +24,7 @@
     transform: scale(1.02);
     transition: smooth .1s;
 }
-.checoutbtn:active{
+.checkoutbtn:active{
     width: 400px;
     height: 40px;
     border-radius: 20px;
@@ -32,7 +32,7 @@
     color: white;
     background-color: rgb(15, 15, 15);
 }
-.checoutbtn a{
+.checkoutbtn a{
     color: white;
     text-decoration: none;
 }
@@ -100,13 +100,20 @@
     .cart-container nav{
         display: flex;
         justify-content: space-between;
+        /* background-color: blue; */
+    }
+    .cart-container nav a{
+        /* height: 35px; */
+        justify-self: center;
     }
     .cart-container nav p{
         font-weight: 700;
+        align-self: center;
     }
     .cart-container nav img{
         width: 20px;
         height: 20px;
+        margin: 10px;
     }
     .sadicon{
         display: flex;
@@ -135,11 +142,12 @@
         background-color: black;
         color: white;
         height: 3rem;
+        border: none;
     }
     .cartbody{
         padding: 40px 0px !important;
     }
-    .checoutbtn{
+    .checkoutbtn{
         width: 300px;
         height: 40px;
         border-radius: 20px;
@@ -178,5 +186,23 @@
         width: 100% !important;
         justify-content: center;
         display: grid;
+    }
+    .checkoutbtn:hover{
+        width: 300px;
+        height: 40px;
+        border-radius: 20px;
+        border: 1.5px solid black;
+        color: white;
+        background-color: black;
+        cursor: pointer;
+        transition: smooth .1s;
+    }
+    .checkoutbtn.active{
+        width: 300px;
+        height: 40px;
+        border-radius: 20px;
+        border: 1.5px solid black;
+        color:black;
+        background-color: rgb(255, 253, 253);
     }
 }

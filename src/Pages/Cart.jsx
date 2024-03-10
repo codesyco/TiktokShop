@@ -13,9 +13,11 @@ import sad from '../Components/Assets/Sad.png'
 
 const Cart = (props, count) => {
   const {getTotalCartAmount, addToCart, productsInCart} = useContext(ShopContext);
+  const [checkoutani, setCheckoutani] =useState("checkoutbtn")
   const product = props
   const gotocheckout = () =>{
     addToCart(product.id, count)
+    setCheckoutani("checkoutbtn")
   }
   if (productsInCart <= 0) {
     return(
@@ -23,7 +25,9 @@ const Cart = (props, count) => {
         <nav>
           <p>Your cart</p>
           <Link to='/'>
+
           <img src={close} alt="" />
+          
           </Link>
         </nav>
         <div className='bodySection'>
@@ -76,7 +80,7 @@ const Cart = (props, count) => {
               <p>${getTotalCartAmount().toFixed(2)}</p>
             </div>
             <Link to="/checkout">
-              <button className='checoutbtn' onClick={gotocheckout}> 
+              <button className={checkoutani} onClick={gotocheckout}> 
               Go to Checkout
               </button>
             </Link> 
