@@ -11,9 +11,10 @@ import Breadcrumb from "../Breadcrumb/Breadcrumb"
 const ProductDisplay = ({product}) => {
   const [count, setCount] = useState(1);
   // const { product } = props; 
-  const { addToCart} = useContext(ShopContext);
+  const { addToCart, getTotalCartItems} = useContext(ShopContext);
   const [timer1, setTimer1] = useState(null);
   const [timer2, setTimer2] = useState(null);
+  const [timer3, setTimer3] = useState(null);
   // const [prodimg, setProdimg] = useState({
   //   img: product.image,
   //   img1: product.img1,
@@ -23,11 +24,18 @@ const ProductDisplay = ({product}) => {
   // })
   const [mainImg, setMainImg] = useState(product.image);
   const [toastActive, setToastActive] = useState(" toast");
-  const [progressActive, setProgressActive] = useState("progress")
+  const [progressActive, setProgressActive] = useState("progress");
+  // const [forceRender, setForceRender] = useState(false)
 
   useEffect(()=>{
-    setMainImg(product.image)
+    setMainImg(product.image);
   }, [product])
+  useEffect(()=>{
+    if (getTotalCartItems > 1) {
+      clearTimeout(timer1);
+    clearTimeout(timer2);
+    }
+  }, [getTotalCartItems])
   
 
   const increaseItem = () => {
@@ -48,17 +56,24 @@ const ProductDisplay = ({product}) => {
   const handleAddToCart = () => {
     addToCart(product.id, count);
     setCount(1);
-    setToastActive("toast active")
-    setProgressActive("progress active")
+    setToastActive("toast active");
+    setProgressActive(""); // Remove progress active class
 
+    clearTimeout(timer1);
+    clearTimeout(timer2);
+
+    // Set new timers
     setTimer1(setTimeout(() => {
-      setToastActive("toast")
+        setToastActive("toast");
     }, 5000)); 
 
-    setTimer2(setTimeout(() => {
-      setProgressActive("progress")
-    }, 5300));
-  };
+    setTimeout(() => {
+        setProgressActive("progress active"); // Add progress active class after a brief delay
+        setTimer2(setTimeout(() => {
+            setProgressActive(""); // Remove progress active class after animation ends
+        }, 5000)); // Adjust the duration to match the toast duration (5 seconds)
+    }, 100); // Adjust the delay as needed
+};
   
 
   const handleCloseClick = () => {

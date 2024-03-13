@@ -9,9 +9,10 @@ import { ShopContext } from "../../Context/ShopContext";
 import menu from '../Assets/Menu.png'
 import closemenu from '../Assets/Close.png'
 import Logo from '../Assets/newLogo.png'
+
 const Navbar = (props) => {
     // const [counter, setConter] = useState(0);
-    const {getTotalCartItems} = useContext(ShopContext)
+    const {getTotalCartItems, cart} = useContext(ShopContext)
     const location = useLocation();
     const [showHeader, setShowHeader] = useState(false)
     const [dropdownmenu, setDropdownmenu] = useState("dropdownmenu hidden")
@@ -19,6 +20,7 @@ const Navbar = (props) => {
     const [logo, setLogo] = useState("logo")
     const [isClicked, setIsCLicked] = useState(false)
     const [menuicon, setMenuicon] = useState(menu)
+    const [hideCartCount, setHideCartCount] = useState("hidden")
 
     useEffect(() => {
         const paths = location.pathname.split('/');
@@ -36,9 +38,22 @@ const Navbar = (props) => {
         else{
             setMenubar("menubar unclicked")
             setLogo("logo")
+        };
+        if (getTotalCartItems() > 0) {
+            setHideCartCount("cartcount")
+        }else{
+            setHideCartCount("hidden")
         }
         
     }, [location])
+    useEffect(() => {
+        const cartItemCount = getTotalCartItems()
+        if (cartItemCount > 0) {
+            setHideCartCount("cartcount");
+        } else {
+            setHideCartCount("hidden");
+        }
+    }, [getTotalCartItems]);
     const hamburgerOn = () => {
         if (!isClicked) {
             setMenubar("menubar clicked");
@@ -76,7 +91,7 @@ const Navbar = (props) => {
             </div>
             <div className={dropdownmenu}>
                 <ul>
-                    <li onClick={hideMenuBar}><Link to='/'>shop</Link></li>
+                    <li onClick={hideMenuBar}><Link to="/">shop</Link></li>
                     <hr />
                     <li onClick={hideMenuBar}><Link to='/category'>on sale</Link></li>
                     <hr />
@@ -112,7 +127,7 @@ const Navbar = (props) => {
                 <div className="functions">
                     <div className="cart_icon">
                         <Link to='/cart'><img src={cart_icon} alt="" /></Link>
-                        <div className="cartcount">{getTotalCartItems()}</div>
+                        <div className={hideCartCount}>{getTotalCartItems()}</div>
                     </div>
                     {/* <div className="user_icon">
                         <Link to='/profile'><img className="uicon" src={user_icon} alt="" /></Link>

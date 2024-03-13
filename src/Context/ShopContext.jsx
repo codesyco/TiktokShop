@@ -13,6 +13,25 @@ const getDefaultCart = () => {
 
 const ShopContextProvider = (props) => {
     const [cartItems, setCartItems] = useState(getDefaultCart());
+    const [userlog, setUserlog] = useState({
+        email: '',
+        shippingAddress: '',
+        shippingApartment: '',
+        shippingCity: '',
+        shippingZip: '',
+        shippingState: 'AL',
+        billingAddress: '',
+        billingApartment: '',
+        billingCity: '',
+        billingZip: '',
+        billingState: 'AL',
+        useSameAddress: false,
+        firstName: '',
+        lastName: '',
+        cardNumber: '',
+        expiryDate: '',
+        cvv: '',
+      })
 
     const addToCart = (itemId, count) => {
         setCartItems((prev) => ({...prev, [itemId]:prev[itemId] + count}))
@@ -50,8 +69,12 @@ const ShopContextProvider = (props) => {
         }
         return goodscount;
     }
+
+    const userLogs = (props) => {
+        setUserlog(props)
+    }
    
-    const contextValue = {getTotalCartItems, getTotalCartAmount, allProduct, cartItems, addToCart, removeFromCart, productsInCart};
+    const contextValue = {getTotalCartItems, getTotalCartAmount, allProduct, cartItems, addToCart, removeFromCart, productsInCart, userLogs, userlog};
 
     return(
         <ShopContext.Provider value={contextValue}>

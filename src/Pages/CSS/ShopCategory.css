@@ -11,6 +11,20 @@
     width: 70vw;
 
 }
+.heading h1{
+    font-size: 40px;
+    font-weight: 700;
+}
+.heading hr{
+    width: 5rem;
+    /* border: none; */
+    /* color: black; */
+    /* border: px solid black; */
+    /* height: 4px; */
+    /* border-radius: 15px; */
+    /* color: black; */
+    background-color: black;
+}
 .stickybar{
     height: 40rem;
     width: 30vw;

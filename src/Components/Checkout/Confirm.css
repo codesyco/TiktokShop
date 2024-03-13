@@ -1,0 +1,66 @@
+.orderContainer{
+    padding: 1rem 1rem;
+}
+.orderWrapper{
+    padding: 1rem 1rem;
+    max-width: 800px;
+    border: 1px solid grey;
+    border-radius: 1rem;
+    margin: 0px auto;
+}
+
+.orderMessage{
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+.orderMessage h1 {
+    margin-bottom: 1rem;
+}
+.tracking{
+    padding: 1rem 0rem;
+}
+.itemOrdered{
+    padding: .5rem;
+}
+.orderAddress{
+    display: flex;
+    padding: 1rem 0rem;
+}
+.o-wrapper{
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    padding: .5rem;
+    display: flex;
+    gap: 3rem;
+}
+.shipadd h2{
+    font-size: small;
+    text-transform: capitalize;
+    margin: .3rem 0rem;
+}
+.shipadd p{
+    font-size: x-small;
+}
+.billadd h2{
+    margin: .3rem 0rem;
+    font-size: small;
+    text-transform: capitalize;
+}
+.billadd p{
+    font-size: x-small;
+}
+.navaway{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+}
+.btnorder{
+    border: none;
+    padding: .5rem;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}

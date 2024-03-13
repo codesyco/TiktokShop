@@ -17,6 +17,7 @@ import Checkout from './Components/Checkout/Checkout';
 import Policy from './Pages/Policy';
 import Terms from './Pages/Terms';
 import Headroom from 'react-headroom'
+import Confirm from './Components/Checkout/Confirm';
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -37,6 +38,7 @@ function App() {
             <Route path='/checkout' element={<Checkout/>} />
             <Route path='/category' element={<ShopCategory/>} />
             <Route path='/login' element={<Login/>} />
+            <Route path='/order' element={<Confirm/>} />
             <Route path='/register' element={<Signup/>} />
             <Route path='/profile' element={<Profile/>} />
             <Route path='/Policy' element={<Policy/>} />

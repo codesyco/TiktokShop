@@ -12,6 +12,12 @@
     display: flex;
     flex-direction: column;
 }
+.item a{
+    width: 150px;
+    text-decoration: none;
+    color: black;
+
+}
 .item a img{
     background-color: #edefef;
     /* padding: 10px; */
@@ -93,7 +99,10 @@
     .item{
         width: 150px;
     }
-    .itemimage{
+    .item a{
+        width: 150px;
+        text-decoration: none;
+        color: black;
 
     }
     .item a img{

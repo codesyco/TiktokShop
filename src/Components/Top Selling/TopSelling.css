@@ -97,6 +97,7 @@
         grid-template-columns: 1fr 1fr 1fr 1fr;
         gap: 15px;
         margin: 50px 0px;
+        padding: 0rem 5rem;
     }
 }
 @media (min-width:1200px) {

@@ -1,11 +1,26 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './MultiStepForm.css'
 import mastercard from '../Assets/Mastercard Logo.png'
 import visa from '../Assets/Visa.png'
 import amex from '../Assets/American Express.png'
 import discover from '../Assets/Discover Card.png'
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { ShopContext } from '../../Context/ShopContext';
 
 const MultiStepForm = () => {
+  const [renderCard, setRenderCard] = useState(false)
+  const {userLogs} = useContext(ShopContext)
+  // const cardPage = async () => {
+  //   const cardContainer = await fetch("https://apps.minibc.com/apps/recurring/checkouts/payment/hosted/form/braintree/usd?storeID=NmZ1VzRYWkJ2dGxQWW9xUUZHTVFoQT09LkhMeCtFeStvTXc3UVd4TksvUkExTGc9PQEQUALSEQUALS&amp;token=608c2c052d2c3", {mode:"no-cors"})
+
+  //   setRenderCard(cardContainer)
+  // }
+
+  // useEffect(()=>{
+  //   cardPage()
+  // }, [])
+
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
     email: '',
@@ -13,12 +28,16 @@ const MultiStepForm = () => {
     shippingApartment: '',
     shippingCity: '',
     shippingZip: '',
-    shippingState: 'AL',
+    shippingState: '',
+    shippingPhone: '',
+    shippingCountry: '',
     billingAddress: '',
     billingApartment: '',
     billingCity: '',
     billingZip: '',
-    billingState: 'AL',
+    billingState: '',
+    billingPhone: '',
+    billingCountry:'',
     useSameAddress: false,
     firstName: '',
     lastName: '',
@@ -27,6 +46,7 @@ const MultiStepForm = () => {
     cvv: '',
   });
   const [errors, setErrors] = useState({});
+  
 
   const validateStep = () => {
     const errors = {};
@@ -104,21 +124,25 @@ const MultiStepForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (validateStep()) {
       if (currentStep === 4) {
         // Submit form data
-        console.log('Form submitted:', formData);
+        // console.log('Form submitted:', formData);
       } else {
         setCurrentStep(currentStep + 1);
       }
+    }
   };
 
   const goToNextStep = () => {
+    if (validateStep()) {
       if (currentStep === 2 && formData.useSameAddress) {
         setCurrentStep(currentStep + 2); // Skip to step 4
       } else {
         setCurrentStep(currentStep + 1);
       }
       window.scrollTo(0,0)
+    }
   };
 
   const goToPreviousStep = () => {
@@ -128,8 +152,40 @@ const MultiStepForm = () => {
       setCurrentStep(currentStep - 1);
     }
     window.scrollTo(0,0)
-
   };
+  // const urls = "http://localhost:4400/order"
+  // const postForm = () =>{
+    //   axios.post(urls, {
+      //     cardNumber: formData.cardNumber,
+      //     expiryDate: formData.expiryDate,
+      //     cvv: formData.cvv
+      //   })
+      // }
+      
+  const urlss = "http://localhost:4400/api/user"
+
+  const usrn = (e)=>{
+    e.preventDefault();
+    console.log(formData)
+    userLogs(formData);
+    try {
+      axios.post(urlss, {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        shippingAddress: formData.shippingAddress,
+        shippingApartment: formData.shippingApartment,
+        shippingCity: formData.shippingCity,
+        shippingState: formData.shippingState,
+        shippingZip: formData.shippingZip,
+        shippingCountry: formData.shippingCountry,
+        shippingPhone: formData.shippingPhone,
+        useSameAddress: formData.useSameAddress
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
 
   const renderStep = () => {
     switch (currentStep) {
@@ -144,70 +200,175 @@ const MultiStepForm = () => {
         );
       case 2:
         return (
-          <div className='shippingInfo'>
+          <div className="shippingInfo">
             <h1>Shipping Information</h1>
             <div class="checkout-address">
               <div class="dynamic-form-field floating-form-field dynamic-form-field--firstName">
-                <div class="form-field"><input aria-labelledby="firstNameInput-label firstNameInput-field-error-message"
-                  autoComplete="given-name" id="firstNameInput" type="text"
-                  class="form-input optimizedCheckout-form-input floating-input" name="shippingAddress.firstName" 
-                  data-test="firstNameInput-text" placeholder=" " value={formData.shippingAddress.firstName} onChange={handleChange}  /><label for="firstNameInput"
-                    id="firstNameInput-label" class="floating-label form-label optimizedCheckout-form-label">First
-                    Name</label></div>
+                <div class="form-field">
+                  <input
+                    aria-labelledby="firstNameInput-label firstNameInput-field-error-message"
+                    autoComplete="given-name"
+                    id="firstNameInput"
+                    type="text"
+                    class="form-input optimizedCheckout-form-input floating-input"
+                    name="firstName"
+                    data-test="firstNameInput-text"
+                    placeholder=" "
+                    value={formData.firstName}
+                    onChange={handleChange}
+                  />
+                  {errors.firstName && <div className="error">{errors.firstName}</div>}
+                  <label
+                    for="firstNameInput"
+                    id="firstNameInput-label"
+                    class="floating-label form-label optimizedCheckout-form-label"
+                  >
+                    First Name
+                  </label>
+                </div>
               </div>
               <div class="dynamic-form-field floating-form-field dynamic-form-field--lastName">
-                <div class="form-field"><input aria-labelledby="lastNameInput-label lastNameInput-field-error-message"
-                  autoComplete="family-name" id="lastNameInput" type="text"
-                  class="form-input optimizedCheckout-form-input floating-input" name="shippingAddress.lastName"
-                  data-test="lastNameInput-text" placeholder=" " value={formData.shippingAddress.lastName} onChange={handleChange}/><label for="lastNameInput"
-                    id="lastNameInput-label" class="floating-label form-label optimizedCheckout-form-label">Last
-                    Name</label></div>
+                <div class="form-field">
+                  <input
+                    aria-labelledby="lastNameInput-label lastNameInput-field-error-message"
+                    autoComplete="family-name"
+                    id="lastNameInput"
+                    type="text"
+                    class="form-input optimizedCheckout-form-input floating-input"
+                    name="lastName"
+                    data-test="lastNameInput-text"
+                    placeholder=" "
+                    value={formData.lastName}
+                    onChange={handleChange}
+                  />
+                  {errors.lastName && <div className="error">{errors.lastName}</div>}
+                  <label
+                    for="lastNameInput"
+                    id="lastNameInput-label"
+                    class="floating-label form-label optimizedCheckout-form-label"
+                  >
+                    Last Name
+                  </label>
+                </div>
               </div>
               <div class="dynamic-form-field floating-form-field dynamic-form-field--countryCode">
                 <div class="form-field">
                   <div class="floating-select-chevron">
-                    <div class="icon"><svg height="24" viewBox="0 0 24 24" width="24"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
-                    </svg></div>
-                  </div><select aria-labelledby="countryCodeInput-label countryCodeInput-field-error-message"
-                    autoComplete="country" class="floating-select form-select optimizedCheckout-form-select"
-                    data-test="countryCodeInput-select" id="countryCodeInput" name="shippingAddress.countryCode">
+                    <div class="icon">
+                      <svg
+                        height="24"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <select
+                    aria-labelledby="countryCodeInput-label countryCodeInput-field-error-message"
+                    autoComplete="country"
+                    class="floating-select form-select optimizedCheckout-form-select"
+                    data-test="countryCodeInput-select"
+                    id="countryCodeInput"
+                    name="shippingCountry"
+                    onChange={handleChange}
+                  >
                     <option value="">Select a country</option>
                     <option value="US">United States</option>
-                  </select><label for="countryCodeInput" id="countryCodeInput-label"
-                    class="floating-label form-label optimizedCheckout-form-label">Country</label>
+                  </select>
+                  {errors.shippingCountry && <div className="error">{errors.shippingCountry}</div>}
+                  <label
+                    for="countryCodeInput"
+                    id="countryCodeInput-label"
+                    class="floating-label form-label optimizedCheckout-form-label"
+                  >
+                    Country
+                  </label>
                 </div>
               </div>
               <div class="dynamic-form-field floating-form-field dynamic-form-field--postCode">
-                <div class="form-field"><input aria-labelledby="postCodeInput-label postCodeInput-field-error-message"
-                  id="postCodeInput" type="text"
-                  class="form-input optimizedCheckout-form-input floating-input ui-autocomplete-input"
-                  name="shippingZip" data-test="postCodeInput-text" placeholder=" " value={formData.shippingZip} onChange={handleChange}
-                  autoComplete="off" /><span role="status" aria-live="polite"
-                    class="ui-helper-hidden-accessible"></span><label for="postCodeInput" id="postCodeInput-label"
-                      class="floating-label form-label optimizedCheckout-form-label">Postal Code</label></div>
+                <div class="form-field">
+                  <input
+                    aria-labelledby="postCodeInput-label postCodeInput-field-error-message"
+                    id="postCodeInput"
+                    type="text"
+                    pattern="[0-9]{5}(?:-[0-9]{4})?"
+                    class="form-input optimizedCheckout-form-input floating-input ui-autocomplete-input"
+                    name="shippingZip"
+                    data-test="postCodeInput-text"
+                    placeholder=" "
+                    value={formData.shippingZip}
+                    onChange={handleChange}
+                    autoComplete="off"
+                  />
+                  {errors.shippingZip && <div className="error">{errors.shippingZip}</div>}
+                  <span
+                    role="status"
+                    aria-live="polite"
+                    class="ui-helper-hidden-accessible"
+                  ></span>
+                  <label
+                    for="postCodeInput"
+                    id="postCodeInput-label"
+                    class="floating-label form-label optimizedCheckout-form-label"
+                  >
+                    Postal Code
+                  </label>
+                </div>
               </div>
               <div class="dynamic-form-field floating-form-field dynamic-form-field--city">
-                <div class="form-field"><input aria-labelledby="cityInput-label cityInput-field-error-message"
-                  id="cityInput" type="text"
-                  class="form-input optimizedCheckout-form-input floating-input ui-autocomplete-input"
-                  name="shippingCity" data-test="cityInput-text" placeholder=" " value={formData.shippingCity} onChange={handleChange}
-                  autoComplete="off" /><span role="status" aria-live="polite"
-                    class="ui-helper-hidden-accessible"></span><label for="cityInput" id="cityInput-label"
-                      class="floating-label form-label optimizedCheckout-form-label">City</label></div>
+                <div class="form-field">
+                  <input
+                    aria-labelledby="cityInput-label cityInput-field-error-message"
+                    id="cityInput"
+                    type="text"
+                    class="form-input optimizedCheckout-form-input floating-input ui-autocomplete-input"
+                    name="shippingCity"
+                    data-test="cityInput-text"
+                    placeholder=" "
+                    value={formData.shippingCity}
+                    onChange={handleChange}
+                    autoComplete="off"
+                  />
+                  {errors.shippingCity && <div className="error">{errors.shippingCity}</div>}
+                  <span
+                    role="status"
+                    aria-live="polite"
+                    class="ui-helper-hidden-accessible"
+                  ></span>
+                  <label
+                    for="cityInput"
+                    id="cityInput-label"
+                    class="floating-label form-label optimizedCheckout-form-label"
+                  >
+                    City
+                  </label>
+                </div>
               </div>
               <div class="dynamic-form-field floating-form-field dynamic-form-field--provinceCode">
                 <div class="form-field">
                   <div class="floating-select-chevron">
-                    <div class="icon"><svg height="24" viewBox="0 0 24 24" width="24"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
-                    </svg></div>
-                  </div><select aria-labelledby="provinceCodeInput-label provinceCodeInput-field-error-message"
-                    autoComplete="address-level1" class="floating-select form-select optimizedCheckout-form-select"
-                    data-test="provinceCodeInput-select" id="provinceCodeInput"
-                    name="shippingAddress.stateOrProvinceCode">
+                    <div class="icon">
+                      <svg
+                        height="24"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <select
+                    aria-labelledby="provinceCodeInput-label provinceCodeInput-field-error-message"
+                    autoComplete="address-level1"
+                    class="floating-select form-select optimizedCheckout-form-select"
+                    data-test="provinceCodeInput-select"
+                    id="provinceCodeInput"
+                    name="shippingState"
+                    onChange={handleChange}
+                  >
                     <option value="">Select a state</option>
                     <option value="AL">Alabama</option>
                     <option value="AK">Alaska</option>
@@ -271,42 +432,113 @@ const MultiStepForm = () => {
                     <option value="WV">West Virginia</option>
                     <option value="WI">Wisconsin</option>
                     <option value="WY">Wyoming</option>
-                  </select><label for="provinceCodeInput" id="provinceCodeInput-label"
-                    class="floating-label form-label optimizedCheckout-form-label">State/Province</label>
+                  </select>
+                  {errors.shippingState && <div className="error">{errors.shippingState}</div>}
+                  <label
+                    for="provinceCodeInput"
+                    id="provinceCodeInput-label"
+                    class="floating-label form-label optimizedCheckout-form-label"
+                  >
+                    State/Province
+                  </label>
                 </div>
               </div>
               <div class="dynamic-form-field floating-form-field dynamic-form-field--addressLine1">
-                <div class="form-field"><input
-                  aria-labelledby="addressLine1Input-label addressLine1Input-field-error-message" maxLength="40"
-                  id="addressLine1Input" type="text"
-                  class="form-input optimizedCheckout-form-input floating-input ui-autocomplete-input"
-                  name="shippingAddress.address1" data-test="addressLine1Input-text" placeholder=" "
-                  value={formData.shippingAddress.address1} onChange={handleChange} autoComplete="off" /><span role="status" aria-live="polite"
-                    class="ui-helper-hidden-accessible"></span><label for="addressLine1Input"
-                      id="addressLine1Input-label" class="floating-label form-label optimizedCheckout-form-label">Address
-                    Line 1</label></div>
+                <div class="form-field">
+                  <input
+                    aria-labelledby="addressLine1Input-label addressLine1Input-field-error-message"
+                    maxLength="40"
+                    id="addressLine1Input"
+                    type="text"
+                    class="form-input optimizedCheckout-form-input floating-input ui-autocomplete-input"
+                    name="shippingAddress"
+                    data-test="addressLine1Input-text"
+                    placeholder=" "
+                    value={formData.shippingAddress}
+                    onChange={handleChange}
+                    autoComplete="off"
+                  />
+                  {errors.shippingAddress && <div className="error">{errors.shippingAddress}</div>}
+                  <span
+                    role="status"
+                    aria-live="polite"
+                    class="ui-helper-hidden-accessible"
+                  ></span>
+                  <label
+                    for="addressLine1Input"
+                    id="addressLine1Input-label"
+                    class="floating-label form-label optimizedCheckout-form-label"
+                  >
+                    Address Line 1
+                  </label>
+                </div>
               </div>
               <div class="dynamic-form-field floating-form-field dynamic-form-field--addressLine2">
-                <div class="form-field"><input
-                  aria-labelledby="addressLine2Input-label addressLine2Input-field-error-message"
-                  id="addressLine2Input" type="text"
-                  class="form-input optimizedCheckout-form-input floating-input ui-autocomplete-input"
-                  name="shippingApartment" data-test="addressLine2Input-text" placeholder=" " value={formData.shippingApartment} onChange={handleChange}
-                  autoComplete="off" /><span role="status" aria-live="polite"
-                    class="ui-helper-hidden-accessible"></span><label for="addressLine2Input"
-                      id="addressLine2Input-label" class="floating-label form-label optimizedCheckout-form-label">Address
-                    Line 2 <small class="optimizedCheckout-contentSecondary">(Optional)</small></label></div>
+                <div class="form-field">
+                  <input
+                    aria-labelledby="addressLine2Input-label addressLine2Input-field-error-message"
+                    id="addressLine2Input"
+                    type="text"
+                    class="form-input optimizedCheckout-form-input floating-input ui-autocomplete-input"
+                    name="shippingApartment"
+                    data-test="addressLine2Input-text"
+                    placeholder=" "
+                    value={formData.shippingApartment}
+                    onChange={handleChange}
+                    autoComplete="off"
+                  />
+                  {errors.shippingApartment && <div className="error">{errors.shippingApartment}</div>}
+                  <span
+                    role="status"
+                    aria-live="polite"
+                    class="ui-helper-hidden-accessible"
+                  ></span>
+                  <label
+                    for="addressLine2Input"
+                    id="addressLine2Input-label"
+                    class="floating-label form-label optimizedCheckout-form-label"
+                  >
+                    Apt/suite{" "}
+                    <small class="optimizedCheckout-contentSecondary">
+                      (Optional)
+                    </small>
+                  </label>
+                </div>
               </div>
               <div class="dynamic-form-field floating-form-field dynamic-form-field--phone">
-                <div class="form-field"><input aria-labelledby="phoneInput-label phoneInput-field-error-message"
-                  autoComplete="tel" id="phoneInput" type="tel"
-                  class="form-input optimizedCheckout-form-input floating-input" name="shippingPhone"
-                  data-test="phoneInput-text" placeholder=" " value={formData.shippingPhone} onChange={handleChange} /><label for="phoneInput" id="phoneInput-label"
-                    class="floating-label form-label optimizedCheckout-form-label">Phone Number <small
-                      class="optimizedCheckout-contentSecondary">(Optional)</small></label></div>
+                <div class="form-field">
+                  <input
+                    aria-labelledby="phoneInput-label phoneInput-field-error-message"
+                    autoComplete="tel"
+                    id="phoneInput"
+                    type="tel"
+                    class="form-input optimizedCheckout-form-input floating-input"
+                    name="shippingPhone"
+                    data-test="phoneInput-text"
+                    placeholder=" "
+                    value={formData.shippingPhone}
+                    onChange={handleChange}
+                  />
+                  {errors.shippingPhone && <div className="error">{errors.shippingPhone}</div>}
+                  <label
+                    for="phoneInput"
+                    id="phoneInput-label"
+                    class="floating-label form-label optimizedCheckout-form-label"
+                  >
+                    Phone Number{" "}
+                    <small class="optimizedCheckout-contentSecondary">
+                      (Optional)
+                    </small>
+                  </label>
+                </div>
               </div>
               <label>
-                <input type="checkbox" name="useSameAddress" checked={formData.useSameAddress} onChange={handleChange} />
+                <input
+                  type="checkbox"
+                  name="useSameAddress"
+                  checked={formData.useSameAddress}
+                  onChange={handleChange}
+                />
                 My Billing Address is same as Shipping address
               </label>
             </div>
@@ -314,106 +546,336 @@ const MultiStepForm = () => {
         );
       case 3:
         return (
-          <div className='billingInfo'>
+          <div className="billingInfo">
             <h1>Billing Information</h1>
             <div class="checkout-address">
               <div class="dynamic-form-field floating-form-field dynamic-form-field--firstName">
-                <div class="form-field"><input aria-labelledby="firstNameInput-label firstNameInput-field-error-message"
-                  autoComplete="given-name" id="firstNameInput" type="text"
-                  class="form-input optimizedCheckout-form-input floating-input" name="shippingAddress.firstName"
-                  data-test="firstNameInput-text" placeholder=" " value={formData.billingAddress.firstName}
-                  onChange={handleChange} /><label for="firstNameInput"
-                    id="firstNameInput-label" class="floating-label form-label optimizedCheckout-form-label">First
-                    Name</label></div>
+                <div class="form-field">
+                  <input
+                    aria-labelledby="firstNameInput-label firstNameInput-field-error-message"
+                    autoComplete="given-name"
+                    id="firstNameInput"
+                    type="text"
+                    class="form-input optimizedCheckout-form-input floating-input"
+                    name="firstName"
+                    data-test="firstNameInput-text"
+                    placeholder=" "
+                    value={formData.firstName}
+                    onChange={handleChange}
+                  />
+                  {errors.firstName && <div className="error">{errors.firstName}</div>}
+                  <label
+                    for="firstNameInput"
+                    id="firstNameInput-label"
+                    class="floating-label form-label optimizedCheckout-form-label"
+                  >
+                    First Name
+                  </label>
+                </div>
               </div>
               <div class="dynamic-form-field floating-form-field dynamic-form-field--lastName">
-                <div class="form-field"><input aria-labelledby="lastNameInput-label lastNameInput-field-error-message"
-                  autoComplete="family-name" id="lastNameInput" type="text"
-                  class="form-input optimizedCheckout-form-input floating-input" name="shippingAddress.lastName"
-                  data-test="lastNameInput-text" placeholder=" " value={formData.billingAddress.lastName} onChange={handleChange} /><label for="lastNameInput"
-                    id="lastNameInput-label" class="floating-label form-label optimizedCheckout-form-label">Last
-                    Name</label></div>
+                <div class="form-field">
+                  <input
+                    aria-labelledby="lastNameInput-label lastNameInput-field-error-message"
+                    autoComplete="family-name"
+                    id="lastNameInput"
+                    type="text"
+                    class="form-input optimizedCheckout-form-input floating-input"
+                    name="lastName"
+                    data-test="lastNameInput-text"
+                    placeholder=" "
+                    value={formData.lastName}
+                    onChange={handleChange}
+                  />
+                  {errors.lastName && <div className="error">{errors.lastName}</div>}
+                  <label
+                    for="lastNameInput"
+                    id="lastNameInput-label"
+                    class="floating-label form-label optimizedCheckout-form-label"
+                  >
+                    Last Name
+                  </label>
+                </div>
               </div>
               <div class="dynamic-form-field floating-form-field dynamic-form-field--countryCode">
                 <div class="form-field">
                   <div class="floating-select-chevron">
-                    <div class="icon"><svg height="24" viewBox="0 0 24 24" width="24"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
-                    </svg></div>
-                  </div><select aria-labelledby="countryCodeInput-label countryCodeInput-field-error-message"
-                    autoComplete="country" class="floating-select form-select optimizedCheckout-form-select"
-                    data-test="countryCodeInput-select" id="countryCodeInput" name="shippingAddress.countryCode">
+                    <div class="icon">
+                      <svg
+                        height="24"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <select
+                    aria-labelledby="countryCodeInput-label countryCodeInput-field-error-message"
+                    autoComplete="country"
+                    class="floating-select form-select optimizedCheckout-form-select"
+                    data-test="countryCodeInput-select"
+                    id="countryCodeInput"
+                    name="billingCountry"
+                    onChange={handleChange}
+                  >
                     <option value="">Select a country</option>
                     <option value="US">United States</option>
-                  </select><label for="countryCodeInput" id="countryCodeInput-label"
-                    class="floating-label form-label optimizedCheckout-form-label">Country</label>
+                  </select>
+                  {errors.billingCountry && <div className="error">{errors.billingCountry}</div>}
+                  <label
+                    for="countryCodeInput"
+                    id="countryCodeInput-label"
+                    class="floating-label form-label optimizedCheckout-form-label"
+                  >
+                    Country
+                  </label>
                 </div>
               </div>
               <div class="dynamic-form-field floating-form-field dynamic-form-field--postCode">
-                <div class="form-field"><input aria-labelledby="postCodeInput-label postCodeInput-field-error-message"
-                  id="postCodeInput" type="text"
-                  class="form-input optimizedCheckout-form-input floating-input ui-autocomplete-input"
-                  name="shippingAddress.postalCode" data-test="postCodeInput-text" placeholder=" " value={formData.billingAddress.billingZip} onChange={handleChange}
-                  autoComplete="off" /><span role="status" aria-live="polite"
-                    class="ui-helper-hidden-accessible"></span><label for="postCodeInput" id="postCodeInput-label"
-                      class="floating-label form-label optimizedCheckout-form-label">Postal Code</label></div>
+                <div class="form-field">
+                  <input
+                    aria-labelledby="postCodeInput-label postCodeInput-field-error-message"
+                    id="postCodeInput"
+                    type="text"
+                    class="form-input optimizedCheckout-form-input floating-input ui-autocomplete-input"
+                    name="billingZip"
+                    data-test="postCodeInput-text"
+                    placeholder=" "
+                    value={formData.billingZip}
+                    onChange={handleChange}
+                    autoComplete="off"
+                  />
+                  {errors.billingZip && <div className="error">{errors.billingZip}</div>}
+                  <span
+                    role="status"
+                    aria-live="polite"
+                    class="ui-helper-hidden-accessible"
+                  ></span>
+                  <label
+                    for="postCodeInput"
+                    id="postCodeInput-label"
+                    class="floating-label form-label optimizedCheckout-form-label"
+                  >
+                    Postal Code
+                  </label>
+                </div>
               </div>
               <div class="dynamic-form-field floating-form-field dynamic-form-field--city">
-                <div class="form-field"><input aria-labelledby="cityInput-label cityInput-field-error-message"
-                  id="cityInput" type="text"
-                  class="form-input optimizedCheckout-form-input floating-input ui-autocomplete-input"
-                  name="shippingAddress.city" data-test="cityInput-text" placeholder=" " value={formData.billingAddress.billingCity} onChange={handleChange}
-                  autoComplete="off" /><span role="status" aria-live="polite"
-                    class="ui-helper-hidden-accessible"></span><label for="cityInput" id="cityInput-label"
-                      class="floating-label form-label optimizedCheckout-form-label">City</label></div>
+                <div class="form-field">
+                  <input
+                    aria-labelledby="cityInput-label cityInput-field-error-message"
+                    id="cityInput"
+                    type="text"
+                    class="form-input optimizedCheckout-form-input floating-input ui-autocomplete-input"
+                    name="billingCity"
+                    data-test="cityInput-text"
+                    placeholder=" "
+                    value={formData.billingCity}
+                    onChange={handleChange}
+                    autoComplete="off"
+                  />
+                  {errors.billingCity && <div className="error">{errors.billingCity}</div>}
+                  <span
+                    role="status"
+                    aria-live="polite"
+                    class="ui-helper-hidden-accessible"
+                  ></span>
+                  <label
+                    for="cityInput"
+                    id="cityInput-label"
+                    class="floating-label form-label optimizedCheckout-form-label"
+                  >
+                    City
+                  </label>
+                </div>
               </div>
               <div class="dynamic-form-field floating-form-field dynamic-form-field--provinceCode">
                 <div class="form-field">
                   <div class="floating-select-chevron">
-                    <div class="icon"><svg height="24" viewBox="0 0 24 24" width="24"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
-                    </svg></div>
-                  </div><select aria-labelledby="provinceCodeInput-label provinceCodeInput-field-error-message"
-                    autoComplete="address-level1" class="floating-select form-select optimizedCheckout-form-select"
-                    data-test="provinceCodeInput-select" id="provinceCodeInput"
-                    name="shippingAddress.stateOrProvinceCode">
+                    <div class="icon">
+                      <svg
+                        height="24"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <select
+                    aria-labelledby="provinceCodeInput-label provinceCodeInput-field-error-message"
+                    autoComplete="address-level1"
+                    class="floating-select form-select optimizedCheckout-form-select"
+                    data-test="provinceCodeInput-select"
+                    id="provinceCodeInput"
+                    name="billingState"
+                    onChange={handleChange}
+                  >
                     <option value="">Select a state</option>
                     <option value="AL">Alabama</option>
-                  </select><label for="provinceCodeInput" id="provinceCodeInput-label"
-                    class="floating-label form-label optimizedCheckout-form-label">State/Province</label>
+                    <option value="AK">Alaska</option>
+                    <option value="AS">American Samoa</option>
+                    <option value="AZ">Arizona</option>
+                    <option value="AR">Arkansas</option>
+                    <option value="AA">Armed Forces Americas</option>
+                    <option value="AE">Armed Forces Europe</option>
+                    <option value="AP">Armed Forces Pacific</option>
+                    <option value="CA">California</option>
+                    <option value="CO">Colorado</option>
+                    <option value="CT">Connecticut</option>
+                    <option value="DE">Delaware</option>
+                    <option value="DC">District of Columbia</option>
+                    <option value="FM">Federated States Of Micronesia</option>
+                    <option value="FL">Florida</option>
+                    <option value="GA">Georgia</option>
+                    <option value="GU">Guam</option>
+                    <option value="HI">Hawaii</option>
+                    <option value="ID">Idaho</option>
+                    <option value="IL">Illinois</option>
+                    <option value="IN">Indiana</option>
+                    <option value="IA">Iowa</option>
+                    <option value="KS">Kansas</option>
+                    <option value="KY">Kentucky</option>
+                    <option value="LA">Louisiana</option>
+                    <option value="ME">Maine</option>
+                    <option value="MH">Marshall Islands</option>
+                    <option value="MD">Maryland</option>
+                    <option value="MA">Massachusetts</option>
+                    <option value="MI">Michigan</option>
+                    <option value="MN">Minnesota</option>
+                    <option value="MS">Mississippi</option>
+                    <option value="MO">Missouri</option>
+                    <option value="MT">Montana</option>
+                    <option value="NE">Nebraska</option>
+                    <option value="NV">Nevada</option>
+                    <option value="NH">New Hampshire</option>
+                    <option value="NJ">New Jersey</option>
+                    <option value="NM">New Mexico</option>
+                    <option value="NY">New York</option>
+                    <option value="NC">North Carolina</option>
+                    <option value="ND">North Dakota</option>
+                    <option value="MP">Northern Mariana Islands</option>
+                    <option value="OH">Ohio</option>
+                    <option value="OK">Oklahoma</option>
+                    <option value="OR">Oregon</option>
+                    <option value="PW">Palau</option>
+                    <option value="PA">Pennsylvania</option>
+                    <option value="PR">Puerto Rico</option>
+                    <option value="RI">Rhode Island</option>
+                    <option value="SC">South Carolina</option>
+                    <option value="SD">South Dakota</option>
+                    <option value="TN">Tennessee</option>
+                    <option value="TX">Texas</option>
+                    <option value="UT">Utah</option>
+                    <option value="VT">Vermont</option>
+                    <option value="VI">Virgin Islands</option>
+                    <option value="VA">Virginia</option>
+                    <option value="WA">Washington</option>
+                    <option value="WV">West Virginia</option>
+                    <option value="WI">Wisconsin</option>
+                    <option value="WY">Wyoming</option>
+                  </select>
+                  {errors.billingState && <div className="error">{errors.billingState}</div>}
+                  <label
+                    for="provinceCodeInput"
+                    id="provinceCodeInput-label"
+                    class="floating-label form-label optimizedCheckout-form-label"
+                  >
+                    State/Province
+                  </label>
                 </div>
               </div>
               <div class="dynamic-form-field floating-form-field dynamic-form-field--addressLine1">
-                <div class="form-field"><input
-                  aria-labelledby="addressLine1Input-label addressLine1Input-field-error-message" maxLength="40"
-                  id="addressLine1Input" type="text"
-                  class="form-input optimizedCheckout-form-input floating-input ui-autocomplete-input"
-                  name="shippingAddress.address1" data-test="addressLine1Input-text" placeholder=" "
-                  value={formData.billingAddress.billingAddress} autoComplete="off" onChange={handleChange} /><span role="status" aria-live="polite"
-                    class="ui-helper-hidden-accessible"></span><label for="addressLine1Input"
-                      id="addressLine1Input-label" class="floating-label form-label optimizedCheckout-form-label">Address
-                    Line 1</label></div>
+                <div class="form-field">
+                  <input
+                    aria-labelledby="addressLine1Input-label addressLine1Input-field-error-message"
+                    maxLength="40"
+                    id="addressLine1Input"
+                    type="text"
+                    class="form-input optimizedCheckout-form-input floating-input ui-autocomplete-input"
+                    name="billingAddress"
+                    data-test="addressLine1Input-text"
+                    placeholder=" "
+                    value={formData.billingAddress}
+                    autoComplete="off"
+                    onChange={handleChange}
+                  />
+                  {errors.billingAddress && <div className="error">{errors.billingAddress}</div>}
+                  <span
+                    role="status"
+                    aria-live="polite"
+                    class="ui-helper-hidden-accessible"
+                  ></span>
+                  <label
+                    for="addressLine1Input"
+                    id="addressLine1Input-label"
+                    class="floating-label form-label optimizedCheckout-form-label"
+                  >
+                    Address Line 1
+                  </label>
+                </div>
               </div>
               <div class="dynamic-form-field floating-form-field dynamic-form-field--addressLine2">
-                <div class="form-field"><input
-                  aria-labelledby="addressLine2Input-label addressLine2Input-field-error-message"
-                  id="addressLine2Input" type="text"
-                  class="form-input optimizedCheckout-form-input floating-input ui-autocomplete-input"
-                  name="shippingAddress.address2" data-test="addressLine2Input-text" placeholder=" " value={formData.billingAddress.billingApartment} onChange={handleChange}
-                  autoComplete="off" /><span role="status" aria-live="polite"
-                    class="ui-helper-hidden-accessible"></span><label for="addressLine2Input"
-                      id="addressLine2Input-label" class="floating-label form-label optimizedCheckout-form-label">Address
-                    Line 2 <small class="optimizedCheckout-contentSecondary">(Optional)</small></label></div>
+                <div class="form-field">
+                  <input
+                    aria-labelledby="addressLine2Input-label addressLine2Input-field-error-message"
+                    id="addressLine2Input"
+                    type="text"
+                    class="form-input optimizedCheckout-form-input floating-input ui-autocomplete-input"
+                    name="billingApartment"
+                    data-test="addressLine2Input-text"
+                    placeholder=" "
+                    value={formData.billingApartment}
+                    onChange={handleChange}
+                    autoComplete="off"
+                  />
+                  {errors.billingApartment && <div className="error">{errors.billingApartment}</div>}
+                  <span
+                    role="status"
+                    aria-live="polite"
+                    class="ui-helper-hidden-accessible"
+                  ></span>
+                  <label
+                    for="addressLine2Input"
+                    id="addressLine2Input-label"
+                    class="floating-label form-label optimizedCheckout-form-label"
+                  >
+                    Apt/suite
+                    <small class="optimizedCheckout-contentSecondary">
+                      (Optional)
+                    </small>
+                  </label>
+                </div>
               </div>
               <div class="dynamic-form-field floating-form-field dynamic-form-field--phone">
-                <div class="form-field"><input aria-labelledby="phoneInput-label phoneInput-field-error-message"
-                  autoComplete="tel" id="phoneInput" type="tel"
-                  class="form-input optimizedCheckout-form-input floating-input" name="shippingAddress.phone"
-                  data-test="phoneInput-text" placeholder=" " value={formData.billingAddress.billingPhone} onChange={handleChange} /><label for="phoneInput" id="phoneInput-label"
-                    class="floating-label form-label optimizedCheckout-form-label">Phone Number <small
-                      class="optimizedCheckout-contentSecondary">(Optional)</small></label></div>
+                <div class="form-field">
+                  <input
+                    aria-labelledby="phoneInput-label phoneInput-field-error-message"
+                    autoComplete="tel"
+                    id="phoneInput"
+                    type="tel"
+                    class="form-input optimizedCheckout-form-input floating-input"
+                    name="billingPhone"
+                    data-test="phoneInput-text"
+                    placeholder=" "
+                    value={formData.billingPhone}
+                    onChange={handleChange}
+                  />
+                  {errors.billingPhone && <div className="error">{errors.billingPhone}</div>}
+                  <label
+                    for="phoneInput"
+                    id="phoneInput-label"
+                    class="floating-label form-label optimizedCheckout-form-label"
+                  >
+                    Phone Number{" "}
+                    <small class="optimizedCheckout-contentSecondary">
+                      (Optional)
+                    </small>
+                  </label>
+                </div>
               </div>
             </div>
           </div>
@@ -421,60 +883,114 @@ const MultiStepForm = () => {
       case 4:
         return (
           <div>
-            <li
-              class="form-checklist-item optimizedCheckout-form-checklist-item form-checklist-item--selected optimizedCheckout-form-checklist-item--selected">
+            <li class="form-checklist-item optimizedCheckout-form-checklist-item form-checklist-item--selected optimizedCheckout-form-checklist-item--selected">
               <div class="form-checklist-header form-checklist-header--selected">
-                <div class="form-field"><input id="radio-braintree" type="radio"
-                  class="form-checklist-checkbox optimizedCheckout-form-checklist-checkbox"
-                  name="paymentProviderRadio" value="braintree" checked="" /><label for="radio-braintree"
-                    class="form-label optimizedCheckout-form-label">
+                <div class="form-field">
+                  <input
+                    id="radio-braintree"
+                    type="radio"
+                    class="form-checklist-checkbox optimizedCheckout-form-checklist-checkbox"
+                    name="paymentProviderRadio"
+                    value="braintree"
+                    checked=""
+                  />
+                  <label
+                    for="radio-braintree"
+                    class="form-label optimizedCheckout-form-label"
+                  >
                     <div class="paymentProviderHeader-container">
-                      <div class="paymentProviderHeader-nameContainer" data-test="payment-method-braintree">
-                        <div aria-level="6" class="paymentProviderHeader-name" data-test="payment-method-name"
-                          role="heading">Credit Card</div>
+                      <div
+                        class="paymentProviderHeader-nameContainer"
+                        data-test="payment-method-braintree"
+                      >
+                        <div
+                          aria-level="6"
+                          class="paymentProviderHeader-name"
+                          data-test="payment-method-name"
+                          role="heading"
+                        >
+                          Credit Card
+                        </div>
                       </div>
                       <div class="paymentProviderHeader-cc">
                         <ul class="creditCardTypes-list">
-                          <li class="creditCardTypes-list-item" data-test="visa-icon"><span class="cardIcon">
-                            <div class="icon cardIcon-icon icon--medium" data-test="credit-card-icon-visa">
-                              <img src={visa} alt="" />
-                            </div>
-                          </span></li>
-                          <li class="creditCardTypes-list-item" data-test="mastercard-icon"><span
-                            class="cardIcon">
-                            <div class="icon cardIcon-icon icon--medium"
-                              data-test="credit-card-icon-mastercard">
-                              <img src={mastercard} alt="" />
-                            </div>
-                          </span></li>
-                          <li class="creditCardTypes-list-item" data-test="american-express-icon"><span
-                            class="cardIcon">
-                            <div class="icon cardIcon-icon icon--medium"
-                              data-test="credit-card-icon-american-express">
-                              <img src={amex} alt="" />
-                            </div>
-                          </span></li>
-                          <li class="creditCardTypes-list-item" data-test="discover-icon"><span class="cardIcon">
-                            <div class="icon cardIcon-icon icon--medium"
-                              data-test="credit-card-icon-discover">
-                              <img src={discover} alt="" />
-                            </div>
-                          </span></li>
+                          <li
+                            class="creditCardTypes-list-item"
+                            data-test="visa-icon"
+                          >
+                            <span class="cardIcon">
+                              <div
+                                class="icon cardIcon-icon icon--medium"
+                                data-test="credit-card-icon-visa"
+                              >
+                                <img src={visa} alt="" />
+                              </div>
+                            </span>
+                          </li>
+                          <li
+                            class="creditCardTypes-list-item"
+                            data-test="mastercard-icon"
+                          >
+                            <span class="cardIcon">
+                              <div
+                                class="icon cardIcon-icon icon--medium"
+                                data-test="credit-card-icon-mastercard"
+                              >
+                                <img src={mastercard} alt="" />
+                              </div>
+                            </span>
+                          </li>
+                          <li
+                            class="creditCardTypes-list-item"
+                            data-test="american-express-icon"
+                          >
+                            <span class="cardIcon">
+                              <div
+                                class="icon cardIcon-icon icon--medium"
+                                data-test="credit-card-icon-american-express"
+                              >
+                                <img src={amex} alt="" />
+                              </div>
+                            </span>
+                          </li>
+                          <li
+                            class="creditCardTypes-list-item"
+                            data-test="discover-icon"
+                          >
+                            <span class="cardIcon">
+                              <div
+                                class="icon cardIcon-icon icon--medium"
+                                data-test="credit-card-icon-discover"
+                              >
+                                <img src={discover} alt="" />
+                              </div>
+                            </span>
+                          </li>
                         </ul>
                       </div>
                     </div>
-                  </label></div>
+                  </label>
+                </div>
               </div>
               <div class="form-checklist-body">
                 <div>
-                  <div class="paymentMethod paymentMethod--creditCard" data-test="credit-cart-payment-method">
+                  <div
+                    class="paymentMethod paymentMethod--creditCard"
+                    data-test="credit-cart-payment-method"
+                  >
                     <fieldset class="form-fieldset creditCardFieldset">
                       <legend class="form-legend is-srOnly">Credit card</legend>
                       <div class="form-body">
-                        <div class="form-ccFields"><iframe id="mbc-payment-form--braintree_credit_card"
-                          src="https://apps.minibc.com/apps/recurring/checkouts/payment/hosted/form/braintree/usd?storeID=NmZ1VzRYWkJ2dGxQWW9xUUZHTVFoQT09LkhMeCtFeStvTXc3UVd4TksvUkExTGc9PQEQUALSEQUALS&amp;token=608c2c052d2c3"
-                          frameborder="0" allowtransparency="true" scrolling="no"
-                          style={{ width: "100%", minHeight: "164px", height: "147px" }}></iframe></div>
+                        <div class="form-ccFields">
+                          <iframe
+                            id="mbc-payment-form--braintree_credit_card"
+                            src="https://apps.minibc.com/apps/recurring/checkouts/payment/hosted/form/braintree/usd?storeID=NmZ1VzRYWkJ2dGxQWW9xUUZHTVFoQT09LkhMeCtFeStvTXc3UVd4TksvUkExTGc9PQEQUALSEQUALS&amp;token=608c2c052d2c3"
+                            frameborder="0"
+                            allowtransparency="true"
+                            scrolling="no"
+                            style={{ width: "100%", height: "168px" }}
+                          ></iframe>
+                        </div>
                       </div>
                     </fieldset>
                   </div>
@@ -490,14 +1006,35 @@ const MultiStepForm = () => {
 
   return (
     <div className="multistep-form-container">
-        <form onSubmit={handleSubmit}>
-          {renderStep()}
-          <div className="button-container">
-            {currentStep !== 1 && <button type="button" onClick={goToPreviousStep} className='buttonp'>Previous</button>}
-            {currentStep !== 4 ? <button type="button" onClick={goToNextStep}>Next</button> : <button type="submit" className='placeorder'>PLACE ORDER</button>}
-          </div>
-        </form>
-      </div>
+      <form onSubmit={usrn}>
+        {renderStep()}
+        <div className="button-container">
+          {currentStep !== 1 && (
+            <button
+              type="button"
+              onClick={goToPreviousStep}
+              className="buttonp"
+            >
+              Previous
+            </button>
+          )}
+          {currentStep !== 4 ? (
+            <button type="button" onClick={goToNextStep}>
+              Next
+            </button>
+          ) : (
+            <button type="submit" className="placeorder">
+              PLACE ORDER
+            </button>
+          )}
+          {
+            <Link to="/order">
+              <button type="submit">checkout</button>
+            </Link>
+          }
+        </div>
+      </form>
+    </div>
   );
 };
 
