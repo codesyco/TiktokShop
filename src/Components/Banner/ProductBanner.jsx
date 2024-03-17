@@ -7,7 +7,7 @@ const ProductBanner = () => {
     <div className='banner-container'>
         <div className='firstbannerbox'>
             <h1>MINI BUT <br />POWERFUL!</h1>
-            <p>Blends small cuts (1 inch) ice cube, frozen fruits, vegeatable and seeds well.</p>
+            <p>Blends ice cube, frozen fruits and seeds well.</p>
             <Link to="/products/1">
                 <button>Preview</button>
             </Link>

@@ -11,12 +11,10 @@ const Product = () => {
   const {allProduct} = useContext(ShopContext);
   const {productId} = useParams();
   const product = allProduct.find((e)=> e.id === Number(productId))
-  console.log(product)
   return (
     <div>
       {product ? (
         <Breadcrumb product={product}/>,
-        console.log(<Breadcrumb/>),
         <ProductDisplay product={product} />
       ) : (
         <ShopCategory/>

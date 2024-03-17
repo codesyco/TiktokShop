@@ -11,17 +11,11 @@ import Breadcrumb from "../Breadcrumb/Breadcrumb"
 const ProductDisplay = ({product}) => {
   const [count, setCount] = useState(1);
   // const { product } = props; 
-  const { addToCart, getTotalCartItems} = useContext(ShopContext);
+  const { addToCart, getTotalCartItems, productsInCart, cartItems} = useContext(ShopContext);
   const [timer1, setTimer1] = useState(null);
   const [timer2, setTimer2] = useState(null);
   const [timer3, setTimer3] = useState(null);
-  // const [prodimg, setProdimg] = useState({
-  //   img: product.image,
-  //   img1: product.img1,
-  //   img2: product.img2,
-  //   img3: product.img3,
-  //   img4: product.img4
-  // })
+  
   const [mainImg, setMainImg] = useState(product.image);
   const [toastActive, setToastActive] = useState(" toast");
   const [progressActive, setProgressActive] = useState("progress");
@@ -41,40 +35,49 @@ const ProductDisplay = ({product}) => {
   const increaseItem = () => {
     setCount(count + 1);
   };
-  // useEffect(() => {
-  //   const mainimg = product.image
-  //   setMainImg(mainimg[product.id])
-  // }, [])
 
+  
   const decreaseItem = () => {
     if (count > 0) {
       setCount(count - 1);
     }
   };
   
+  
 
   const handleAddToCart = () => {
     addToCart(product.id, count);
     setCount(1);
+
+    // localStorage.setItem('cart', JSON.stringify(productsInCart));
+
     setToastActive("toast active");
-    setProgressActive(""); // Remove progress active class
+    setProgressActive(""); 
 
     clearTimeout(timer1);
     clearTimeout(timer2);
 
-    // Set new timers
     setTimer1(setTimeout(() => {
         setToastActive("toast");
     }, 5000)); 
 
     setTimeout(() => {
-        setProgressActive("progress active"); // Add progress active class after a brief delay
+        setProgressActive("progress active"); 
         setTimer2(setTimeout(() => {
-            setProgressActive(""); // Remove progress active class after animation ends
-        }, 5000)); // Adjust the duration to match the toast duration (5 seconds)
-    }, 100); // Adjust the delay as needed
+            setProgressActive(""); 
+        }, 5000)); 
+    }, 100); 
 };
-  
+const dynamicQuantity = (event) => {
+
+  const newValue = parseInt(event.target.value)
+  if (newValue === '' || newValue === '0' || newValue === '-1') { 
+    setCount(1);
+  } else if (!isNaN(newValue)) {
+    setCount(parseInt(newValue));
+  }
+
+}
 
   const handleCloseClick = () => {
     setToastActive("toast")
@@ -90,23 +93,38 @@ const ProductDisplay = ({product}) => {
   const updadteimages = (img) => {
     setMainImg(img)
   }
-  // const mainImgMemo = useMemo(() => mainImg, [mainImg])
 
   return (
     <div className="main">
       <div className="productdisplay">
         <div className="productdisplay-left">
-          <div className="productdisplayimagelist" >
-            {[product?.img1, product?.img2, product?.img3, product?.img4].map((img,index) => {
-               return <img  key={index} src={img} width={100} height={110} onClick={()=> updadteimages(img)} alt="" />
-            })}
+          <div className="productdisplayimagelist">
+            {[product?.img1, product?.img2, product?.img3, product?.img4].map(
+              (img, index) => {
+                return (
+                  <img
+                    key={index}
+                    src={img}
+                    width={100}
+                    height={110}
+                    onClick={() => updadteimages(img)}
+                    alt=""
+                  />
+                );
+              }
+            )}
           </div>
           <div className="productdisplayimg">
-            <img className="productdisplaymainimage" src={mainImg} height={470} alt="" />
+            <img
+              className="productdisplaymainimage"
+              src={mainImg}
+              height={470}
+              alt=""
+            />
           </div>
         </div>
         <div className="productdisplay-right">
-          <Breadcrumb/>
+          <Breadcrumb />
           <h1>{product.name}</h1>
           <div className="productDisplayRightStar">
             <div>
@@ -124,40 +142,72 @@ const ProductDisplay = ({product}) => {
           </div>
           <hr />
           <div className="description">
-            <div className="desc">
-              Description
-            </div>
-            <div className="propsdesc">
-              {product.desc}
-            </div>
+            <div className="desc">Description</div>
+            <div className="propsdesc">{product.desc}</div>
           </div>
           <hr />
           <div className="countercontainer">
-            <div className="quantity" style={{ display: "flex", height: "35px",marginTop:"2px", width: "100px", justifyContent:"space-between", borderRadius:"15px"}}>
-              <button disabled={count === 1} onClick={decreaseItem} className="removebtn">&nbsp;- &nbsp;</button>
-              <input style={{ width: "40%", left:"30px", border:"none" }} type='text' value={count} onChange={null}/>
-              <button onClick={increaseItem} className="addbtn">&nbsp; + &nbsp;</button >
+            <div
+              className="quantity"
+              style={{
+                display: "flex",
+                height: "35px",
+                marginTop: "2px",
+                width: "100px",
+                justifyContent: "space-between",
+                borderRadius: "15px",
+              }}
+            >
+              <button
+                disabled={count === 1}
+                onClick={decreaseItem}
+                className="removebtn"
+              >
+                &nbsp;- &nbsp;
+              </button>
+              <input
+                style={{ width: "40%", left: "30px", border: "none" }}
+                type="number"
+                name="name"
+                value={count}
+                onChange={dynamicQuantity}
+              />
+              <button onClick={increaseItem} className="addbtn">
+                &nbsp; + &nbsp;
+              </button>
             </div>
-            <button type="text" className="addtocart" id="btn" onClick={handleAddToCart}>add to cart</button>
+            <button
+              type="text"
+              className="addtocart"
+              id="btn"
+              onClick={handleAddToCart}
+            >
+              add to cart
+            </button>
           </div>
-          <div class={toastActive}>
-            <div class="toast-content">
-              <i class="fas fa-solid fa-check check"></i>
+          <div className={toastActive}>
+            <div className="toast-content">
+              <i className="fas fa-solid fa-check check"></i>
 
-              <div class="message">
-                <span class="text text-1">Your item has been added to cart</span>
-                {/* <span class="text text-2">Your item has been added to cart</span> */}
+              <div className="message">
+                <span className="text text-1">
+                  Your item has been added to cart
+                </span>
+                {/* <span className="text text-2">Your item has been added to cart</span> */}
               </div>
             </div>
-            <i class="fa-solid fa-xmark close" onClick={handleCloseClick}></i>
+            <i
+              className="fa-solid fa-xmark close"
+              onClick={handleCloseClick}
+            ></i>
 
-            <div class={progressActive}></div>
+            <div className={progressActive}></div>
           </div>
         </div>
       </div>
       <MoreLikeThis />
     </div>
-  )
+  );
 }
 
 export default ProductDisplay;

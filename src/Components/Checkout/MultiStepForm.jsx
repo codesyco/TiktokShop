@@ -4,22 +4,15 @@ import mastercard from '../Assets/Mastercard Logo.png'
 import visa from '../Assets/Visa.png'
 import amex from '../Assets/American Express.png'
 import discover from '../Assets/Discover Card.png'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { ShopContext } from '../../Context/ShopContext';
-
+import { TailSpin } from 'react-loader-spinner'
 const MultiStepForm = () => {
   const [renderCard, setRenderCard] = useState(false)
-  const {userLogs} = useContext(ShopContext)
-  // const cardPage = async () => {
-  //   const cardContainer = await fetch("https://apps.minibc.com/apps/recurring/checkouts/payment/hosted/form/braintree/usd?storeID=NmZ1VzRYWkJ2dGxQWW9xUUZHTVFoQT09LkhMeCtFeStvTXc3UVd4TksvUkExTGc9PQEQUALSEQUALS&amp;token=608c2c052d2c3", {mode:"no-cors"})
+  const {userLogs, issubmitted} = useContext(ShopContext)
+  const navigate = useNavigate()
 
-  //   setRenderCard(cardContainer)
-  // }
-
-  // useEffect(()=>{
-  //   cardPage()
-  // }, [])
 
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
@@ -46,6 +39,7 @@ const MultiStepForm = () => {
     cvv: '',
   });
   const [errors, setErrors] = useState({});
+  const [isFormDisabled, setIsFormDisabled] = useState(false);
   
 
   const validateStep = () => {
@@ -120,18 +114,11 @@ const MultiStepForm = () => {
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData({ ...formData, [name]: type === 'checkbox' ? checked : value });
-  };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (validateStep()) {
-      if (currentStep === 4) {
-        // Submit form data
-        // console.log('Form submitted:', formData);
-      } else {
-        setCurrentStep(currentStep + 1);
-      }
-    }
+    // type === 'checkbox' ? setFormData({ ...formData, [name]: type}) :
+    // setFormData({ ...formData, [name]: value });
+
+
   };
 
   const goToNextStep = () => {
@@ -153,37 +140,142 @@ const MultiStepForm = () => {
     }
     window.scrollTo(0,0)
   };
-  // const urls = "http://localhost:4400/order"
-  // const postForm = () =>{
-    //   axios.post(urls, {
-      //     cardNumber: formData.cardNumber,
-      //     expiryDate: formData.expiryDate,
-      //     cvv: formData.cvv
-      //   })
-      // }
+
       
   const urlss = "http://localhost:4400/api/user"
 
-  const usrn = (e)=>{
+  // const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false)
+
+  const handleSubmit = (e)=> {
     e.preventDefault();
-    console.log(formData)
     userLogs(formData);
-    try {
-      axios.post(urlss, {
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-        shippingAddress: formData.shippingAddress,
-        shippingApartment: formData.shippingApartment,
-        shippingCity: formData.shippingCity,
-        shippingState: formData.shippingState,
-        shippingZip: formData.shippingZip,
-        shippingCountry: formData.shippingCountry,
-        shippingPhone: formData.shippingPhone,
-        useSameAddress: formData.useSameAddress
-      })
-    } catch (error) {
-      console.log(error)
-    }
+    setLoading(true)
+
+    // navigate('/order');
+    issubmitted();
+    
+    // if (formData.useSameAddress) {
+    //   // const postData = shippingData;
+    //   axios.post(urlss, {
+    //     firstName: formData.firstName,
+    //     lastName: formData.lastName,
+    //     shippingAddress: formData.shippingAddress,
+    //     shippingApartment: formData.shippingApartment,
+    //     shippingCity: formData.shippingCity,
+    //     shippingState: formData.shippingState,
+    //     shippingZip: formData.shippingZip,
+    //     shippingCountry: formData.shippingCountry,
+    //     shippingPhone: formData.shippingPhone,
+    //     useSameAddress: formData.useSameAddress 
+    //   })
+    //     .then(() => {
+    //       console.log('Shipping data submitted successfully');
+    //     })
+    //     .catch(error => {
+    //       console.error('Error submitting shipping data:', error);
+    //     });
+    // } else {
+    //   const billingData = {
+    //     firstName: formData.firstName,
+    //     lastName: formData.lastName,
+    //     shippingAddress: formData.shippingAddress,
+    //     shippingApartment: formData.shippingApartment,
+    //     shippingCity: formData.shippingCity,
+    //     shippingState: formData.shippingState,
+    //     shippingZip: formData.shippingZip,
+    //     shippingCountry: formData.shippingCountry,
+    //     shippingPhone: formData.shippingPhone,
+    //     useSameAddress: formData.useSameAddress,
+    //     billingAddress : formData.billingAddress,
+    //     billingApartment : formData.billingApartment,
+    //     billingCity : formData.billingCity,
+    //     billingState : formData.billingState,
+    //     billingZip : formData.billingZip,
+    //     billingCountry : formData.billingCountry,
+    //     billingPhone : formData.billingPhone,  
+    //   };
+    //   axios.post(urlss, {
+    //     firstName: formData.firstName,
+    //     lastName: formData.lastName,
+    //     shippingAddress: formData.shippingAddress,
+    //     shippingApartment: formData.shippingApartment,
+    //     shippingCity: formData.shippingCity,
+    //     shippingState: formData.shippingState,
+    //     shippingZip: formData.shippingZip,
+    //     shippingCountry: formData.shippingCountry,
+    //     shippingPhone: formData.shippingPhone,
+    //     useSameAddress: formData.useSameAddress,
+    //     billingAddress : formData.billingAddress,
+    //     billingApartment : formData.billingApartment,
+    //     billingCity : formData.billingCity,
+    //     billingState : formData.billingState,
+    //     billingZip : formData.billingZip,
+    //     billingCountry : formData.billingCountry,
+    //     billingPhone : formData.billingPhone, 
+    //   })
+    //     .then(() => {
+    //       console.log('Form data submitted successfully');
+    //     })
+    //     .catch(error => {
+    //       console.error('Error submitting form data:', error);
+    //     });
+    // }
+    setTimeout(() => {
+      if (formData.useSameAddress) {
+          axios.post(urlss, {
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            shippingAddress: formData.shippingAddress,
+            shippingApartment: formData.shippingApartment,
+            shippingCity: formData.shippingCity,
+            shippingState: formData.shippingState,
+            shippingZip: formData.shippingZip,
+            shippingCountry: formData.shippingCountry,
+            shippingPhone: formData.shippingPhone,
+            useSameAddress: formData.useSameAddress
+          })
+          .then(() => {
+              console.log('Shipping data submitted successfully');
+          })
+          .catch(error => {
+              console.error('Error submitting shipping data:', error);
+          });
+      } else {
+          axios.post(urlss, {
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            shippingAddress: formData.shippingAddress,
+            shippingApartment: formData.shippingApartment,
+            shippingCity: formData.shippingCity,
+            shippingState: formData.shippingState,
+            shippingZip: formData.shippingZip,
+            shippingCountry: formData.shippingCountry,
+            shippingPhone: formData.shippingPhone,
+            useSameAddress: formData.useSameAddress,
+            billingAddress : formData.billingAddress,
+            billingApartment : formData.billingApartment,
+            billingCity : formData.billingCity,
+            billingState : formData.billingState,
+            billingZip : formData.billingZip,
+            billingCountry : formData.billingCountry,
+            billingPhone : formData.billingPhone,
+          })
+          .then(() => {
+              console.log('Form data submitted successfully');
+          })
+          .catch(error => {
+              console.error('Error submitting form data:', error);
+          });
+      }
+      setIsFormDisabled(true);
+      setLoading(false);
+
+      // setTimeout(() => {
+          navigate('/order');
+      // }, 5000);
+    }, 5000); 
+    setIsFormDisabled(true);
   }
 
 
@@ -1006,9 +1098,26 @@ const MultiStepForm = () => {
 
   return (
     <div className="multistep-form-container">
-      <form onSubmit={usrn}>
+      <form onSubmit={handleSubmit}>
         {renderStep()}
-        <div className="button-container">
+         {currentStep === 4 ?
+          (<button type="submit" className="placeorder" >
+            {loading ?  <TailSpin
+              visible={true}
+              height="30"
+              width="100%"
+              color="#ffffff"
+              ariaLabel="tail-spin-loading"
+              radius="1"
+              // wrapperStyle={{}}
+              wrapperClass=""
+              />
+               : 'PLACE ORDER'}
+            </button>)
+          : <></>
+        }
+      </form>
+      <div className="button-container">
           {currentStep !== 1 && (
             <button
               type="button"
@@ -1018,24 +1127,14 @@ const MultiStepForm = () => {
               Previous
             </button>
           )}
-          {currentStep !== 4 ? (
-            <button type="button" onClick={goToNextStep}>
+          {currentStep !== 4 ? 
+            (<button type="button" onClick={goToNextStep}>
               Next
-            </button>
-          ) : (
-            <button type="submit" className="placeorder">
-              PLACE ORDER
-            </button>
-          )}
-          {
-            <Link to="/order">
-              <button type="submit">checkout</button>
-            </Link>
-          }
+            </button>)
+           : <></>}
         </div>
-      </form>
     </div>
   );
-};
 
+}
 export default MultiStepForm;

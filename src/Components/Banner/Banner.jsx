@@ -2,6 +2,7 @@ import React from "react";
 import "./Banner.css"
 import banner from "../Assets/Banner.png"
 import { Link } from "react-router-dom";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const Banner = () => {
     return(

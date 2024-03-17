@@ -6,11 +6,6 @@ import { ShopContext } from '../Context/ShopContext'
 import close from '../Components/Assets/Close.png'
 import sad from '../Components/Assets/Sad.png'
 
-// const displaytotal = (productsInCart, index) => {
-//   ${productsInCart.newPrice * cartItems[product.id]}
-//   document.getElementsByClassName()
-// }
-
 const Cart = (props, count) => {
   const {getTotalCartAmount, addToCart, productsInCart} = useContext(ShopContext);
   const [checkoutani, setCheckoutani] =useState("checkoutbtn")

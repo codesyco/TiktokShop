@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
 import allProduct from "../Components/Assets/allProducts"
 
 export const ShopContext = createContext(null);
@@ -31,12 +31,45 @@ const ShopContextProvider = (props) => {
         cardNumber: '',
         expiryDate: '',
         cvv: '',
-      })
+      } )
 
     const addToCart = (itemId, count) => {
-        setCartItems((prev) => ({...prev, [itemId]:prev[itemId] + count}))
-        // console.log(cartItems);
-    }
+        setCartItems((prev) => ({...prev, [itemId]:prev[itemId] + count}));
+        // console.log(cartItems)
+    };
+    useEffect(() => {
+        const storedCart = localStorage.getItem('cart');
+        if (storedCart) {
+          setCartItems(JSON.parse(storedCart));
+        }
+      }, []);
+    
+      // Save cart items to localStorage whenever cartItems change
+    useEffect(() => {
+        localStorage.setItem('cart', JSON.stringify(cartItems));
+    }, [cartItems]);
+
+    
+    //     const cartvalue = () => {
+
+    //         const storedCartRaw = localStorage.getItem('cart');
+    //         const storedCartvalue = JSON.parse(storedCartRaw);
+
+    //         try {
+    //             if(storedCartRaw){
+    //                 setCartItems(storedCartvalue);
+    //             }else{
+    //                 return {}
+    //             }
+    //         } catch (error) {
+    //             console.log(error.message)
+    //         }
+    //     }
+    //     cartvalue()
+    // }, []);
+
+    // useEffect(() => {
+    // }, [getDefaultCart()]);
 
     const removeFromCart = (itemId) => {
         setCartItems((prev) => ({...prev, [itemId]:prev[itemId] -1}))
@@ -70,11 +103,16 @@ const ShopContextProvider = (props) => {
         return goodscount;
     }
 
+    const [submitted, setSubmitted] = useState(false)
+
+    const issubmitted = () => {
+        setSubmitted(true)
+    }
     const userLogs = (props) => {
         setUserlog(props)
     }
    
-    const contextValue = {getTotalCartItems, getTotalCartAmount, allProduct, cartItems, addToCart, removeFromCart, productsInCart, userLogs, userlog};
+    const contextValue = {getTotalCartItems, getTotalCartAmount, allProduct, cartItems, addToCart, removeFromCart, productsInCart, userLogs, userlog, issubmitted, submitted};
 
     return(
         <ShopContext.Provider value={contextValue}>

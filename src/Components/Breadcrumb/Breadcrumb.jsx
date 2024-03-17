@@ -35,12 +35,12 @@ const Breadcrumb = () => {
 
     return (
       <div className="breadcrumb" >
-        <Link to={currentlink} style={{ display:"flex", textDecoration:"none", gap:"5px"}}>
+        <div to={currentlink} style={{ display:"flex", textDecoration:"none", gap:"5px"}}>
           <Link to={"/"} style={{listStyle:"none", textDecoration:"none", color:"black", textTransform:"capitalize"}}>Home </Link>
            <img src={arrowIcon} width={10} height={10} style={{top:"5px", position:"relative"}} alt=""/> 
            {crumbs}
-        </Link>
-    </div>
+        </div>
+      </div>
   )
   }
 }

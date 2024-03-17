@@ -12,6 +12,18 @@
 .quantity input{
     text-align: center;
 }
+.quantity input:focus{
+    outline: none;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield; 
+}
 .productdisplay-left{
     display: flex;
     gap: 20px;
@@ -296,7 +308,6 @@
     }
     .countercontainer{
         min-width: 80px;
-        gap: 20px;
     }
     .addtocart{
         justify-content: flex-end;
