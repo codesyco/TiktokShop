@@ -284,7 +284,7 @@ const MultiStepForm = () => {
       case 1:
         return (
           <div className='emailsection'>
-            <label>Customer info</label>
+            <label>Contact</label>
             <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Enter your email" />
             {errors.email && <div className="error">{errors.email}</div>}
             <p><span>An invoice would be sent to this email address</span> <br />This invoice will include a breakdown of your purchase. You can use this invoice for your records or as proof of purchase.</p>

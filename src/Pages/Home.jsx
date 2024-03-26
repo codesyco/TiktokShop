@@ -7,6 +7,7 @@ import ProductBanner from '../Components/Banner/ProductBanner';
 import ProductBanner2 from '../Components/Banner/ProductBanner2';
 import Acheivements from '../Components/Perks/Acheivements';
 import Testimonials from '../Components/Testimonials/Testimonials';
+import ProductBanner3 from '../Components/Banner/ProductBanner3';
 
 const Home = () => {
     return (
@@ -15,9 +16,10 @@ const Home = () => {
             <Banner/>
             <Testimonials/>
             <Acheivements/>
-            <NewArrival/>
+            <ProductBanner3/>
+            {/* <NewArrival/> */}
             <ProductBanner/>
-            <TopSelling/>
+            {/* <TopSelling/> */}
             <ProductBanner2/>
         </div>
         </>

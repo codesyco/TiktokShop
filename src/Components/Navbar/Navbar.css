@@ -22,7 +22,7 @@
     display: flex;
     line-height: 40px;
     position: relative;
-    column-gap: 20px;
+    column-gap: 40px;
     font-weight: 600;
     justify-content: center;
     align-items: center;
@@ -43,6 +43,9 @@
 }
 .hidden{
     display: none;
+    filter: blur(5px);
+    transform: translateX(-100%);
+    transition: all 1s;
 }
 .navitems li a:hover{
     color: rgb(3, 205, 178);
@@ -77,21 +80,25 @@
     text-transform: capitalize;
     color: rgb(0,0,0);
 }
+.search-container {
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s ease-in-out; /* Smooth transition */
+}
+  
+  .search-container.show {
+    opacity: 1; /* Visible state */
+}
+  
+  .search-container.hide {
+    opacity: 0; /* Hidden state (optional for immediate removal) */
+}
 .searchIcon{
     position: relative;
     justify-content: center;
     align-items: center;
-    margin-top: 17px;
     width: 300px;
     height: 35px;
-    /* padding-top: 24px; */
-    /* width: 30%; */
-    /* background-color: red; */
 }
-/* input{
-   display: flex;
-   align-items: center;
-} */
 .searchIcon input{
     width: 100%;
     height: 100%;
@@ -131,7 +138,7 @@
     display: flex;
     gap: 20px;
     justify-content: space-evenly;
-    margin-right: 30px;
+    margin-right: 20px;
 }
 
 .uicon{
@@ -155,8 +162,11 @@
     display: flex;
     /* background-color: red; */
     /* justify-content: center; */
-    /* align-items: center; */
-    gap: 40px;
+    align-items: center;
+    gap: 20px;
+}
+.mobilenav a{
+    height: max-content;
 }
 
 .burgermenu{
@@ -264,17 +274,19 @@
     }
     .hidden{
         display: none;
+        scale: .2;
+        opacity: 0;
+        filter: blur(5px);
+        transform: translateX(-100%);
+        transition: all 1s;
     }
     .visible{
         display: inherit;
-        animation: smooth-in ease-in-out forwards;
-        scale: .5; opacity: 0;
-        animation-range: contain;
-        animation-duration: contain;
-        /* width: 100%; */
-    }
-    @keyframes smooth-in {
-        to {scale: 1; opacity: 1;}
+        filter: blur(0);
+        transform: translateX(0);
+        /* animation: smooth-in ease-in-out forwards; */
+        scale: 1;
+        opacity: 1;
     }
     .dropdownmenu ul{
         width: 100%;

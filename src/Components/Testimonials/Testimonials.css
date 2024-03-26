@@ -5,6 +5,7 @@
   /* -webkit-animation-t */
   animation-range-start: 5%;
   animation-range-end: 35%;
+  overflow: hidden;
 }
 @keyframes pop-in {
   to {scale: 1; opacity: 1;}

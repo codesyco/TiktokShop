@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import './Navbar.css'
-import search_icon from "../Assets/search-line.png"
+import search_icon from "../Assets/Search.png"
 import cart_icon from "../Assets/Shopping Cart.png"
 import user_icon from "../Assets/user.png"
 import { Link, useLocation } from "react-router-dom";
@@ -9,6 +9,7 @@ import { ShopContext } from "../../Context/ShopContext";
 import menu from '../Assets/Menu.png'
 import closemenu from '../Assets/Close.png'
 import Logo from '../Assets/newLogo.png'
+import { Button, Drawer } from 'antd';
 
 const Navbar = (props) => {
     // const [counter, setConter] = useState(0);
@@ -21,6 +22,8 @@ const Navbar = (props) => {
     const [isClicked, setIsCLicked] = useState(false)
     const [menuicon, setMenuicon] = useState(menu)
     const [hideCartCount, setHideCartCount] = useState("hidden")
+    const [searchClick, setSearchClick] = useState(false)
+    const searchInputRef = useRef(null);
 
     useEffect(() => {
         const paths = location.pathname.split('/');
@@ -70,75 +73,104 @@ const Navbar = (props) => {
         setDropdownmenu("dropdownmenu hidden")
         setMenuicon(menu)
     }
-        // const hidenav = () => {
-        //     window.addEventListener( "scroll", function(){
-        //         let scrolled = document.documentElement.scrollTop + document.body.scrollTop;
-        //         if (scrolled > 1){
-        //             setShowHeader(false)
-        //         }else{setShowHeader(true)}
-        //     })
-        // }
-        // hidenav();
+    const searchtoggle = () => {
+        setSearchClick(true)
+    }
+    const handleKeyPress = (event) => {
+        if (event.key === 'Enter') {
+          setSearchClick(false);
+          searchInputRef.current.value = ''; 
+        }
+    };
 
-    // const {product} = props;
-    return(
-        showHeader? 
-        <div className="navcontainer">
-            <div className="burgermenu">
-                <button className={menubar} onClick={hamburgerOn}>
-                    <img src={menuicon} width={20} height={20}alt=" menu" />
-                </button>
-            </div>
-            <div className={dropdownmenu}>
-                <ul>
-                    <li onClick={hideMenuBar}><Link to="/">shop</Link></li>
-                    <hr />
-                    <li onClick={hideMenuBar}><Link to='/category'>on sale</Link></li>
-                    <hr />
-                    {/* <li><Link to='/categories'>categories</Link></li> */}
-                </ul>
-            </div>
-            <div className={logo}>
-                <Link to="/">
-                <img src={Logo} alt="OLLY" />
-                </Link>
-            </div>
+    return showHeader ? (
+      <div className="navcontainer">
+        <div className="burgermenu">
+          <button className={menubar} onClick={hamburgerOn}>
+            <img src={menuicon} width={20} height={20} alt=" menu" />
+          </button>
+        </div>
+        <div className={dropdownmenu}>
+          <ul>
+            <li onClick={hideMenuBar}>
+              <Link to="/">shop</Link>
+            </li>
+            <hr />
+            <li onClick={hideMenuBar}>
+              <Link to="/category">on sale</Link>
+            </li>
+            <hr />
+            {/* <li><Link to='/categories'>categories</Link></li> */}
+          </ul>
+        </div>
+        <div className={logo}>
+          <Link to="/">
+            <img src={Logo} alt="OLLY" />
+          </Link>
+        </div>
+        <div>
+          {/* <ul class="userauth"> */}
 
-            
-            
-            {/* <div className="searchIcon">
-                <input placeholder= "Search for products..." type="text" />
+          {/* </ul> */}
+          <ul className="navitems">
+            <li>
+              <Link to="/">Shop</Link>
+            </li>
+            <li>
+              <Link to="/category">On Sale</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            {/* <li><Link to="/category">Category</Link></li> */}
+          </ul>
+        </div>
+        <div className="mobilenav">
+          <div className={`search-container ${searchClick ? "show" : "hide"}`}>
+            {searchClick && (
+              <div className="searchIcon">
+                <input
+                  placeholder="Search for products..."
+                  type="text"
+                  ref={searchInputRef}
+                  onKeyDown={handleKeyPress}
+                />
                 <span className="icondiv">
-                    <img className="sicon" src={search_icon} alt="" />
+                  <img className="sicon" src={search_icon} alt="" />
                 </span>
-            </div> */}
-            {/* <ul class="userauth">
-                    <li><Link to="/login">login</Link></li>
-                    <li><Link to="/register">register</Link></li>
-            </ul> */}
-            <div className="mobilenav">
-                <div>
-                    <ul className="navitems">
-                        <li><Link to="/">Shop</Link></li>
-                        <li><Link to="/category">On Sale</Link></li>
-                        {/* <li><Link to="/category">Category</Link></li> */}
-                    </ul>
-                </div>
-                <div className="functions">
-                    <div className="cart_icon">
-                        <Link to='/cart'><img src={cart_icon} alt="" /></Link>
-                        <div className={hideCartCount}>{getTotalCartItems()}</div>
-                    </div>
-                    {/* <div className="user_icon">
-                        <Link to='/profile'><img className="uicon" src={user_icon} alt="" /></Link>
-                    </div> */}
-                    
-                </div>
+              </div>
+            )}
+          </div>
+          <img
+            src={search_icon}
+            alt=""
+            style={{
+              width: "20px",
+              aspectRatio: "2:2",
+              height: "20px",
+              justifyContent: "center",
+              position: "relative",
+            }}
+            onClick={searchtoggle}
+          />
+          <div className="functions">
+            <div className="cart_icon">
+              <Link to="/cart">
+                <img src={cart_icon} alt="" />
+              </Link>
+              <div className={hideCartCount}>{getTotalCartItems()}</div>
             </div>
-
-        </div> :
-        <></>
-    )
+            <div className="user_icon">
+              <Link to="/profile">
+                <img className="uicon" src={user_icon} alt="" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    ) : (
+      <></>
+    );
 }
 
 export default Navbar
