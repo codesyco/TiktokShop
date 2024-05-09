@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react'
 import allProduct from "../Components/Assets/allProducts"
+import axios from 'axios';
 
 export const ShopContext = createContext(null);
 
@@ -11,8 +12,10 @@ const getDefaultCart = () => {
     return cart;
 }
 
+
 const ShopContextProvider = (props) => {
     const [cartItems, setCartItems] = useState(getDefaultCart());
+    const [shopProducts, setShopProducts] = useState([])
     const [userlog, setUserlog] = useState({
         email: '',
         shippingAddress: '',
@@ -33,6 +36,14 @@ const ShopContextProvider = (props) => {
         cvv: '',
       } )
 
+    const allProduct2 = async () => {
+        const rawdata = await axios.get("http://localhost:4400/api/product")
+        try {
+            return setShopProducts(rawdata.data.response)
+        } catch (error) {
+            console.error(error.message)
+        }
+    }
     const addToCart = (itemId, count) => {
         setCartItems((prev) => ({...prev, [itemId]:prev[itemId] + count}));
         // console.log(cartItems)
@@ -112,7 +123,7 @@ const ShopContextProvider = (props) => {
         setUserlog(props)
     }
    
-    const contextValue = {getTotalCartItems, getTotalCartAmount, allProduct, cartItems, addToCart, removeFromCart, productsInCart, userLogs, userlog, issubmitted, submitted};
+    const contextValue = {getTotalCartItems, getTotalCartAmount, allProduct, cartItems, addToCart, removeFromCart, productsInCart, userLogs, userlog, issubmitted, submitted, allProduct2, shopProducts};
 
     return(
         <ShopContext.Provider value={contextValue}>

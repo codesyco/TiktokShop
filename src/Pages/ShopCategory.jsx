@@ -13,26 +13,28 @@ import ProductBanner3 from "../Components/Banner/ProductBanner3";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import kichenwarebanner from '../Components/Assets/ninja5.jpg'
+import kichenwarebanner from "../Components/Assets/ninja5.jpg";
 
 const ShopCategory = (props) => {
-  const { allProducts } = useContext(ShopContext);
+  const { allProduct2, shopProducts } = useContext(ShopContext);
   const [data, setData] = useState([]);
-  const fetch = async () => {
-    const res = await axios.get("http://localhost:4400/api/product");
-    try {
-      console.log(data);
-      return setData(res.data.response);
-    } catch (error) {
-      console.error(error.message);
-    }
-  };
+  // const fetch = async () => {
+  //   const res = await axios.get("http://localhost:4400/api/product");
+  //   try {
+  //     console.log(data);
+  //     return setData(res.data.response);
+  //   } catch (error) {
+  //     console.error(error.message);
+  //   }
+  // };
   const windowscroll = () => {
     window.scrollTo(0, 0);
   };
 
   useEffect(() => {
-    fetch();
+    allProduct2();
+    console.log(shopProducts);
+    setData(shopProducts);
   }, []);
   return (
     <div className="shopCategory">
@@ -116,42 +118,51 @@ const ShopCategory = (props) => {
           <div className="kitchenware">
             <div className="kwcontainer">
               <div className="kwwrapper">
-              {data.map((el, index) => (
-                <div key={index} className="item" onClick={windowscroll} >
-                  <Link to={`/products/${el.id}`}>
-                    {" "}
-                    <LazyLoadImage
-                      src={`http://localhost:4400/${el.image}`}
-                      className="itemimage"
-                      width={450}
-                      height={450}
-                      alt={el.name}
+                {data.map((el, index) => (
+                  <div key={index} className="item" onClick={windowscroll}>
+                    <Link to={`/products/${el.id}`}>
+                      {" "}
+                      <LazyLoadImage
+                        src={`http://localhost:4400/${el.image}`}
+                        className="itemimage"
+                        width={450}
+                        height={450}
+                        alt={el.name}
                       />
-                    <p>{el.name}</p>
-                    <div className="itemsPrices">
-                      <div className="itemPricesNew">${el.newPrice}</div>
-                      <div className="itemPricesOld">${el.oldPrice}</div>
-                    </div>
-                    <div className="interactiveButtons">
-                      {/* <button className='previewbtn'>
+                      <p>{el.name}</p>
+                      <div className="itemsPrices">
+                        <div className="itemPricesNew">${el.newPrice}</div>
+                        <div className="itemPricesOld">${el.oldPrice}</div>
+                      </div>
+                      <div className="interactiveButtons">
+                        {/* <button className='previewbtn'>
                     <Link to={":id"} key={data.id}>Preview</Link>
                   </button> */}
-                      {/* <button className='addtocart'>
+                        {/* <button className='addtocart'>
                     Add to cart
                   </button> */}
-                    </div>
-                  </Link>
-                </div>
-              ))}
+                      </div>
+                    </Link>
+                  </div>
+                ))}
               </div>
             </div>
             <div className="kwbanner">
               <div className="imageBanner">
-                <img src={kichenwarebanner} alt="kitchenwareBanner" loading="lazy" className="kwbimg"/>
+                <img
+                  src={kichenwarebanner}
+                  alt="kitchenwareBanner"
+                  loading="lazy"
+                  className="kwbimg"
+                />
               </div>
               <div className="descBanner">
                 <h2>Homemade Ice Cream Made Easy</h2>
-                <p>All without a recipe! With its simple controls and easy-to-clean parts, the CREAMi is perfect for creating frozen treats the whole family will love.</p>
+                <p>
+                  All without a recipe! With its simple controls and
+                  easy-to-clean parts, the CREAMi is perfect for creating frozen
+                  treats the whole family will love.
+                </p>
               </div>
             </div>
           </div>

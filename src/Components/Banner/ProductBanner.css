@@ -1,10 +1,24 @@
 @import '../../Pages/CSS/colors.css';
 
 .banner-container{
-    height: 600px;
+    height: 550px;
     margin-top: 80px;
+    padding: 0 2rem;
     animation: fade-in linear forwards;
     scale: .7; opacity: 0;
+    animation-timeline: view();
+    animation-range-start: 5%;
+    animation-range-end: 30%;
+}
+.bannerContainer{
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 2rem;
+    box-sizing: border-box;
+    margin-top: 5rem;
+    position: relative;
+    scale: .7; opacity: 0;
+    animation: fade-in linear forwards;
     animation-timeline: view();
     animation-range-start: 5%;
     animation-range-end: 30%;
@@ -22,7 +36,6 @@
     background-size: cover;
     /* width: 100%; */
     height: inherit;
-    margin: 0px 40px;
     border-radius: 20px;
 }
 
@@ -33,17 +46,9 @@
     background-size: cover;
     /* width: 100%; */
     height: inherit;
-    margin: 0px 40px;
     border-radius: 20px;
 }
-.bannerContainer{
-    margin: 0 auto;
-    width: 100%;
-    padding: 0 1rem;
-    box-sizing: border-box;
-    margin-top: 5rem;
-    position: relative;
-}
+
 .bannerwrapper{
     display: flex;  
     flex-direction: row;
