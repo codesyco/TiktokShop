@@ -278,7 +278,6 @@
     display: flex;
     flex-direction: row;
     gap: 20px;
-    margin: 10px 0px;
     width: 200px;
 }
 .itemPricesNew{

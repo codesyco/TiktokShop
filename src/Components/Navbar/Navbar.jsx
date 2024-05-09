@@ -4,16 +4,14 @@ import search_icon from "../Assets/Search.png";
 import cart_icon from "../Assets/Shopping Cart.png";
 import user_icon from "../Assets/user.png";
 import { Link, useLocation } from "react-router-dom";
-import ProductDisplay from "../ProductDisplay/ProductDisplay";
 import { ShopContext } from "../../Context/ShopContext";
 import menu from "../Assets/Menu.png";
 import closemenu from "../Assets/Close.png";
 import Logo from "../Assets/newLogo.png";
-import { Button, Drawer } from "antd";
 
 const Navbar = (props) => {
   // const [counter, setConter] = useState(0);
-  const { getTotalCartItems, cart } = useContext(ShopContext);
+  const { getTotalCartItems } = useContext(ShopContext);
   const location = useLocation();
   const [showHeader, setShowHeader] = useState(false);
   const [dropdownmenu, setDropdownmenu] = useState("dropdownmenu hidden");

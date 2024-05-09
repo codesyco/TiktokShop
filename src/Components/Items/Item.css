@@ -1,9 +1,3 @@
-*{
-    margin: 0;
-    padding: 0px;
-    box-sizing: border-box;
-}
-
 .item{
     width: 200px;
     /* border-radius: 10px; */
@@ -65,14 +59,15 @@
 
 .item p{
     margin: 6px 0px;
-    width: 200px;
+}
+.item a p{
+    width: fit-content;
 }
 
 .itemsPrices{
     display: flex;
     flex-direction: row;
     gap: 20px;
-    margin: 10px 0px;
 }
 .itemPricesNew{
     color: black;
@@ -129,14 +124,12 @@
     }
     .item a img{
         background-color: #edefef;
-        /* padding: 10px; */
         border-radius: 10px;
         width: 150px;
         height: 150px;
     }
     .item p{
         margin: 6px 0px;
-        width: 150px;
     }
 }
 @media (max-width:1200px) {
