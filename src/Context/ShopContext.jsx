@@ -50,6 +50,7 @@ const ShopContextProvider = (props) => {
     };
     useEffect(() => {
         const storedCart = localStorage.getItem('cart');
+        allProduct2()
         if (storedCart) {
           setCartItems(JSON.parse(storedCart));
         }

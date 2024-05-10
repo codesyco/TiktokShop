@@ -111,7 +111,7 @@ const Navbar = (props) => {
           <img src={Logo} alt="OLLY" />
         </Link>
       </div>
-      <div>
+      <div className="navQuicklinks">
         {/* <ul class="userauth"> */}
 
         {/* </ul> */}
@@ -148,11 +148,8 @@ const Navbar = (props) => {
           src={handleSearchICon()}
           alt=""
           style={{
-            width: "20px",
             aspectRatio: "2:2",
-            height: "20px",
             justifyContent: "center",
-            position: "relative",
           }}
           onClick={searchtoggle}
         />

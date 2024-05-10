@@ -101,6 +101,7 @@ const dynamicQuantity = (event) => {
           <div className="productdisplayimagelist">
             {[product?.img1, product?.img2, product?.img3, product?.img4].map(
               (img, index) => {
+                console.log(img);
                 return (
                   <img
                     key={index}

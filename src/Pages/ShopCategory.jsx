@@ -16,7 +16,7 @@ import axios from "axios";
 import kichenwarebanner from "../Components/Assets/ninja5.jpg";
 
 const ShopCategory = (props) => {
-  const { allProduct2, shopProducts } = useContext(ShopContext);
+  const { shopProducts } = useContext(ShopContext);
   const [data, setData] = useState([]);
   // const fetch = async () => {
   //   const res = await axios.get("http://localhost:4400/api/product");
@@ -32,10 +32,9 @@ const ShopCategory = (props) => {
   };
 
   useEffect(() => {
-    allProduct2();
     console.log(shopProducts);
     setData(shopProducts);
-  }, []);
+  }, [shopProducts]);
   return (
     <div className="shopCategory">
       <div className="heading">
@@ -88,7 +87,7 @@ const ShopCategory = (props) => {
                 </div>
                 <div>
                   <div>
-                    <h2>title</h2>
+                    <h2>title - outdoor items</h2>
                     <p> title</p>
                   </div>
                 </div>
@@ -106,7 +105,7 @@ const ShopCategory = (props) => {
                 </div>
                 <div>
                   <div>
-                    <h2>title</h2>
+                    <h2>title - selfcare items</h2>
                     <p>info</p>
                   </div>
                 </div>
@@ -119,7 +118,7 @@ const ShopCategory = (props) => {
             <div className="kwcontainer">
               <div className="kwwrapper">
                 {data.map((el, index) => (
-                  <div key={index} className="item" onClick={windowscroll}>
+                  <div key={index} className="item onsale" onClick={windowscroll}>
                     <Link to={`/products/${el.id}`}>
                       {" "}
                       <LazyLoadImage

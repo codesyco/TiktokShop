@@ -127,7 +127,9 @@
 }
 .kwwrapper{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-rows: repeat(1, minmax(200px, 1fr));
+    row-gap: 20px;
     justify-items: center;
 }
 .kwcontainer{
@@ -278,7 +280,6 @@
     display: flex;
     flex-direction: row;
     gap: 20px;
-    width: 200px;
 }
 .itemPricesNew{
     color: black;
@@ -303,7 +304,7 @@
 }
 @media (max-width:500px) {
     .item{
-        width: 150px;
+        width: fit-content;
     }
     .item a{
         width: 150px;
@@ -321,6 +322,17 @@
     .item p{
         margin: 6px 0px;
         width: 150px;
+    }
+    .catselector{
+        gap: 2rem;
+    }
+    .onsale{
+        
+    }
+}
+@media (max-width: 768px) {
+    .kwbanner{
+        flex-direction: column;
     }
 }
 @media (min-width:501px) {

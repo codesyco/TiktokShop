@@ -73,11 +73,13 @@
     color: black;
     font-size: 18px;
     font-weight: 600;
+    width: fit-content;
 }
 
 .itemPricesOld{
     color: #d2d3d3;
     font-size: 18px;
+    width: fit-content;
     font-weight: 500;
     text-decoration: line-through;
 }

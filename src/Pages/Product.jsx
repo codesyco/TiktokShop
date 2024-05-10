@@ -8,9 +8,14 @@ import ShopCategory from './ShopCategory';
 
 
 const Product = () => {
-  const {allProduct} = useContext(ShopContext);
+  const {allProduct, shopProducts} = useContext(ShopContext);
   const {productId} = useParams();
-  const product = allProduct.find((e)=> e.id === Number(productId))
+  let product
+  if (productId > 10) {
+    product = shopProducts.find((e)=> e.id === Number(productId))
+  }else{
+    product = allProduct.find((e)=> e.id === Number(productId))
+  }
   return (
     <div>
       {product ? (
